@@ -1,0 +1,123 @@
+.input-pages{
+    height: 36em;
+    background: #FFF8E7;
+}
+.input-page{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 5em;
+}
+.words h1{
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 3em;
+    line-height: 70px;
+    color: #131313;
+    width: 70%;
+}
+.words h3{
+    margin-top: 1.4375em;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 1.125em;
+}
+.words h6{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1em;
+    padding-top: .8em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.input .top{
+    display: flex;
+    gap: .8em;
+}
+input, textarea{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom:1.4em ;
+    background: transparent;
+    border: 1px solid rgb(238, 227, 227);
+    resize: none;
+}
+label{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: .9375em;
+    line-height: 1px;
+    color: #434343;
+}
+form button{
+    width: 7.9375em;
+    height: 3.125em;
+    background: #fe7e00;
+    border-radius: 8px;
+    color: #fff;
+    margin: 0 auto 0 0;
+    margin-top: .325em;
+    font-size: 1em;
+    line-height: 24px;
+    font-family: 'Inter';
+}
+.input button:hover{
+    background: #ecb883;
+}
+.input input:focus,
+.input textarea:focus{
+    border: 1px #ecb883 solid;
+}
+
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 600px) {
+    .container-input-pages{
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .input-page{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: .4375em;
+        padding-right: .4375em;
+    }
+
+    .words h1{
+        font-size: 2em;
+        width: 100%;
+        line-height: 42px;
+    }
+    .words h3{
+        font-size: 1.125em;
+        line-height: 42px;
+    }
+    .words h6{
+        font-size: 1em;
+        line-height: 24px;
+    }
+    .input{
+        padding: 2.5em 0;
+    }
+    .input-pages{
+        height: 55em;
+    }
+    .input label{
+        font-size: .9375em;
+        line-height: 18px;
+    }
+    .input button{
+        font-size: 1em;
+        line-height: 24px;
+    }
+    .input-pages{
+        height: 57em;
+    }
+}

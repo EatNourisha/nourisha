@@ -1,0 +1,29 @@
+.container-terms ul li{
+    font-size: 1em;
+    color: #878787;
+    line-height: 26px;
+    padding-top: 1em;
+    font-family: 'Inter';
+    list-style: none;
+}
+.container-terms h1{
+    font-size: 1.5em;
+    line-height: 32px;
+    font-family: 'Manjari';
+    padding-top: 1em;
+    color: #131313;
+}
+.container-terms h2{
+    font-size: 1.5em;
+    font-family: 'Manjari';
+    padding-top: 1em;
+    color: #131313;
+    line-height: 32px;
+}
+.container-terms p{
+    font-size: 1em;
+    color: #878787;
+    padding-top: 1em;
+    line-height: 26px;
+    font-family: 'Inter';
+}

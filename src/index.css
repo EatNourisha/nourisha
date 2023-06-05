@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Manjari:wght@100;400;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* list-style: none; */
+  border: 0;
+  text-decoration: none;
+  outline: 0;
+}
+
+:root{
+  --container-width-lg: 85%;
+  --container-width-md: 90%;
+  --container-width-sm: 95%;
+}
+/* img{
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+} */
+
+html, body{
+  overflow-x: hidden;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'Manjari', sans-serif;
+}
+button{
+  cursor: pointer;
+} 
+nav{
+  color: black;
+}
+
+.container{
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+/* added button with disabled state */
+button:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  transition: 0.2s ease-in;
+}
+.disabledC {
+  opacity: 0.4;
+  pointer-events: none;
+  transition: 0.2s ease-in;
+}
+/* */
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px) {
+  .container{
+    width: var(--container-width-md);
+  }
+}
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 600px) {
+  .container{
+    width: var(--container-width-sm);
+  }
+
+}
+
+
+

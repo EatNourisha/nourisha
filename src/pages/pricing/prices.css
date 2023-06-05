@@ -1,0 +1,207 @@
+.prices-head h1{
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 3em;
+    line-height: 60px;
+    text-align: center;
+    color: #131313;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.prices-head h2{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.2px;
+    color: #404040;
+    width: 36%;
+    margin: 0 auto;
+    margin-top: .375em;
+}
+
+.cards-box{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    gap: 2rem;
+    margin-top: 2.5em;
+    margin-bottom: 10em;
+}
+
+.card-box{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #F5F5F5;
+    border-radius: 16px;
+    padding: .7em .4375em;
+    align-items: center;
+    height: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12)
+}
+
+.card-box h3{
+    margin-top: 1.25em;
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height: 26px;
+    text-align: center;
+    color: #131313;
+}
+
+.card-box h4{
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 24px;
+    text-align: center;
+    color: #2E2E2E;
+}
+
+.card-box h5{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 24px;
+    text-align: center;
+    color: #2E2E2E;
+    padding: .3125em 0;
+}
+
+.card-box nav{
+    display: flex;
+    flex-direction: column;
+    background: #FBFBFB;
+    border-radius: 16px;
+    padding:  25px;
+    margin-top: 20px;
+}
+
+.card-box nav ul li{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 24px;
+    color: #474747;
+    margin-bottom: 20px;
+    list-style: disc;
+}
+
+.card-box nav button{
+    /* width: 15em; */
+    font-size: 1em;
+    height: 2.75em;
+    background: #fe7e00;
+    border-radius: 8px;
+    font-family: 'Inter';
+    color: #fff;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1280px){
+    .card-box{
+        height: auto;
+    }
+}
+@media screen and (max-width: 1114px) {
+    .cards-box{
+        justify-content: center;
+    }
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px) {
+    .prices-head{
+        width: 100%;
+    }
+
+    .cards-box{
+        width: 95%;
+    }
+
+    .card-box{
+        height: auto;
+    }
+
+    .card-box nav button{
+        align-self: center;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 834px){
+    .card-box{
+        height: auto;
+    }
+    .cards-box nav button{
+        width: 100%;
+    }
+}
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 600px) {
+    .prices-head{
+        width: 100%;
+    }
+
+    .prices-head h1{
+        width: 90%;
+        font-size: 2em;
+        line-height: 42px;
+    }
+
+    .prices-head h2{
+        width: 90%;
+        font-size: 1em;
+        line-height: 24px;
+    }
+
+    .cards-box{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .card-box{
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .card-box h3{
+        font-size: 1.5em;
+        line-height: 26px;
+    }
+    .card-box h4{
+        font-size: 1em;
+        line-height: 24px;
+    }
+    .card-box h5, .card-box button{
+        font-size: 1em;
+        line-height: 24px;
+    }
+    .card-box nav ul li{
+        font-size: 1em;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .card-box{
+        height: auto;
+    }
+}
+@media screen and (max-width: 320px){
+    .cards-box{
+        width: 95%;
+    }
+    .card-box nav {
+        padding: 2em .6em;
+    }
+    .card-box nav ul li{
+        margin-left: 1em;
+    }
+}

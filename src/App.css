@@ -1,0 +1,202 @@
+.meals{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 152vh;
+}
+.meal h1{
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 3.125em;
+    color: #2B2B2B;
+    padding: 2.5em 6.25em;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: .625em;
+    color: #2F2F2F;
+}
+.meal p{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 32px;
+    margin-top: -5em;
+    margin-bottom: 1em;
+    color: #454545;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.container-meals{
+    display: flex;
+    flex-direction: column;
+}
+.tabs{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+}
+
+.tab{
+    background: transparent;
+    padding: .9em 5em;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 24px;
+    color: #7E8494;
+}
+  
+.active-tabs  {
+    border-bottom: 2px solid #FE7E00;
+    color: #FE7E00;    
+}
+.tab:hover,
+.tab:focus{
+    color: #FE7E00;
+}
+.content-tabs img{
+    width: 100%;
+    border-radius: 15.3025px;
+}
+.contentFull {
+    display: grid;
+    gap: .7em;
+    grid-template-columns: repeat(4, 1fr);
+    animation: fadeIn 2s;
+  }
+
+ @keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+  } 
+.ima p{
+    font-size: 1.25em;
+    text-align: center;
+    color: #303237;
+    margin-top: .7em;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+  }
+.buttons{
+    position: absolute;
+    right: 100px;
+    bottom: -3160px;
+}
+.buttons button{
+    background: transparent;
+    margin-left: .5em;
+}
+
+.chev{
+    width: 44.66px;
+    height: 44.66px;
+    padding: .9em;
+    background: #FE7E00;
+    border-radius: 12px;
+    color: #fff;
+}
+.chevrons{
+    display: none;
+}
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1114px){
+    .meal h1{
+        width: 24em;
+    }
+    .bin button{
+        margin-top: 5em;
+    }
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px){
+    .meal h1{
+        width: 23em;
+    }
+    .meal p{
+        font-size: 1.6em;
+    }
+    /* .bin button{
+        margin-top: 5em;
+    } */
+    .meals{
+        height: 17vh;
+    }
+     .buttons{
+        position: absolute;
+        right: 100px;
+        bottom: -3050px;
+    } 
+}
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 670px) {
+    .meal h1{
+        font-size: 2em;
+        width: 24em;
+    }
+
+    .meal p{
+        font-size: 1.125em;
+        margin-top: -4.4em;
+    }
+    .contentFull{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .tabs{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+        position: relative;
+        visibility: hidden;
+        opacity: 0;
+        margin-top: -13em;
+    }
+   
+    .tab{
+        text-align: start;
+        line-height: 14px;
+        padding: 1em 0;
+    }
+    .tabs-active{
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    .chevrons{
+        box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        color: #fff;  
+        padding: 1em;
+        display: flex;
+        justify-content: end; 
+        
+    }
+    .meals{
+        height: 255vh;
+    }
+    .buttons{
+        bottom: -4880px;
+    }
+    .active-tabs  {
+        color: #FE7E00;
+        border-bottom: 1px grey solid;
+
+    }
+    .chevrons button{
+        background: transparent;
+    }
+
+    .bs{
+        font-size: 2em;
+    }
+}

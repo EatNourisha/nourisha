@@ -1,0 +1,140 @@
+header{
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+.container-header{
+    display: flex;
+    justify-content: space-between;
+    height: 6.25em;
+    padding: 2.1875em 0;
+    margin: 0 auto;
+}
+
+header nav a.active{
+    border-bottom: 3px solid #FE7E00;
+    padding-bottom: .2em ;
+}
+header nav a{
+    color:#323333 ;
+}
+header nav a:hover{
+    color: #FE7E00;
+    font-size: 1.06em;
+}
+
+.left{ 
+    display: flex;
+    align-items: center;
+    gap: .375em;
+} 
+
+.left img{
+    margin-top: -.5em;
+    width: 39px;
+    /* height: 32.78px; */
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.container-header .left h2{
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: -1px;
+    color: #303237;
+}
+
+.mobile-menus nav{
+    display: flex;
+    gap: 1.875em;
+    color: #323333;
+    align-self: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: .875em;
+    cursor: pointer;
+} 
+.mobile-menus p{
+    color: #323333;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+.btn{
+  display: flex;
+  background: #FE7E00;
+  border-radius: 8px;
+  padding: 1em 1.6875em;
+  align-self: center;
+  color: #fff;
+} 
+
+.btn button{
+    color: #fff;
+    background-color: transparent;
+    font-size: .875em;
+    font-weight: bold;
+}
+.btn:hover{
+    background: #ecb883;
+}
+.mobile-menus .nav-btn{
+    cursor: pointer;
+    background: transparent;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.3em;
+} 
+.mobile-menus .nav-close-btn{
+    cursor: pointer;
+    background: transparent;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.3em;
+} 
+ @media screen and (max-width: 960px) {
+    .mobile-menus .nav-btn{
+        visibility: visible;
+        opacity: 1;
+        /* color: #FE7E00; */
+        color: #000;
+    }
+    
+     .container-header .btn{
+        display: none;
+    }   
+    .mobile-menus nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1s;
+        transform: translateY(-100vh);
+        gap: 1.5em;
+        background: #FE7E00;
+        z-index: 20;
+        font-size: 1.3em;
+    } 
+    .mobile-menus .responsive_nav{
+        transform: none;
+    }
+    .mobile-menus .nav-close-btn{
+        position: absolute;
+        visibility: visible;
+        opacity: 1;
+        top: 2rem;
+        right: 2rem;
+        /* color: #fff; */
+        color: #000;
+        font-size: 1.3em;
+        background: transparent;
+    }
+    header nav a:hover{
+        color: #fff;
+        font-size: 1.06em;
+    }
+} 

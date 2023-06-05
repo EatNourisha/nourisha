@@ -1,0 +1,31 @@
+.container-privacy ul li{
+    list-style: disc;
+    font-size: 1em;
+    color: #878787;
+    margin-left: 1em;
+    line-height: 28px;
+    font-family: 'Inter';
+}
+
+.container-privacy h1{
+    font-size: 1.7em;
+    font-family: 'Manjari';
+    padding-top: 1em;
+    color: #131313;
+    line-height: 32px;
+}
+.container-privacy h2{
+    font-size: 1.5em;
+    padding-top: 1em;
+    color: #131313;
+    line-height: 32px;
+    /* font-family: 'Inter'; */
+    font-family: 'Manjari';
+}
+.container-privacy p{
+    font-size: 1em;
+    color: #878787;
+    padding-top: 1em;
+    line-height: 26px;
+    font-family: 'Inter';
+}

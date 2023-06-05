@@ -1,0 +1,194 @@
+.food-plans{
+    margin-top: 9em;
+    background: #FFF8E7;
+}
+
+.food-plan h1{
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 3.375em;
+    color: #2B2B2B;
+    padding: 1.5em 0;
+    margin: 0 auto;
+    line-height: 55px;
+    text-align: center;
+    margin-top: .625em;
+    color: #131313;
+}
+
+.food-plan p{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: -0.2px;
+    color: #555555;
+    width: 36.875em;
+    height: 3.5em;
+    margin: 0 auto;
+    margin-top: -3.125em;
+}
+.container-boxings{
+    display: flex;
+    padding: 1em;
+    gap: 2em;
+    width: 85%;
+    margin: 0 auto;
+    border-radius: 8px;
+    justify-content: center;
+}
+.boxing{
+    display: flex;
+    max-width: 26.25em;
+    justify-content: center;
+    align-items: center;
+    height: 6.875em;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 1em 1em 1em 1.875em;
+    gap: .7em;
+    margin-bottom: 5em;
+}
+.boxing img{
+    /* margin-left: 0.125em;  */
+    width: 3.25em;
+    object-fit: cover;
+    height: 3.25em;  
+}
+.boxing h6{
+    font-family: 'Inter';
+    font-size: 1.125em;
+    margin-bottom: .3em;
+    font-weight: 600;
+}
+
+.boxing p{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 1em;
+    width: 16em;
+    text-align: start;
+    color: #575757;
+}
+
+@media screen and (max-width: 1280px){
+    .boxing{
+        height: auto;
+    }
+}
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1114px){
+    .boxing{
+        height: auto;
+        width: 22.25em;
+    }
+    .container-boxings{
+        gap: 1em;
+        padding: 1em 0;
+        width: 90%;
+    }
+    .boxing p{
+        font-size: .9em;
+    }
+    
+}
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px){
+    .food-plan h1{
+        width: 18em;
+        padding: 1.5em 0;
+    }
+    .boxing h6{
+        font-size: 1em;
+    }
+    
+    .boxing p{
+        font-size: .7em;
+    }
+    .boxing{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 834px){
+    .boxing{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .food-plan h1{
+        width: 8em;
+    }
+    .write-up1 h6, .write-up2 h6, .write-up3 h6 {
+        text-align: center;
+    }
+    .write-up1 p, .write-up2 p{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .food-plan h1{
+        width: 15em;
+    }
+}
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 670px) {
+    .food-plan p{
+        width: 21em;
+        font-size: 1em;
+        margin: 0 auto;
+        margin-bottom: -1em;
+        line-height: 24px;
+    }
+
+    .food-plan h1{
+        width: 7.6em;
+        font-size: 2em;
+        padding: 1.1625em 0 .1875em 0;
+        line-height: 45px;
+    }
+
+    .container-boxings{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25em;
+    }
+
+    .boxing{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* height: 9em; */
+        width: 90%;
+        margin: .625em;  
+    }
+    .boxing img{
+        display: block;
+        object-fit: cover;
+    }
+
+    .boxing .write-up1, .write-up2, .write-up3{
+        text-align: center;
+    }
+    .boxing p{
+        text-align: center;
+        font-size: .875em;
+        line-height: 19px;
+    }
+    .boxing .write-up1 h6, .write-up2 h6, .write-up3 h6{
+        font-size: 1em;
+        line-height: 24px;
+    }
+
+}
+
+@media screen and (max-width: 320px){
+    .food-plan p{
+        width: 20em;
+        margin-bottom: .2em;
+    }   
+}

@@ -1,0 +1,20 @@
+  .faqs{
+    margin-bottom: 6em;
+}
+.faqs h1{
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 3em;
+    line-height: 60px;
+    text-align: center;
+    color: #131313;
+    margin-top: 1.5em;
+    margin-bottom: 1.3em;
+}
+
+@media screen and (max-width: 600px){
+  .faqs h1{
+    font-size: 2em;
+    line-height: 37.5px;
+  }
+}

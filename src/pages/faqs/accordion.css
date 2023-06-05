@@ -1,0 +1,84 @@
+.container-accordion{
+    overflow: hidden;
+}
+.accords{
+    background: #F4F5F8;
+    padding: 4em;
+}
+.accords p{
+    font-size: 1em;
+    line-height: 22.4px;
+}
+.accordion-label{
+    cursor: pointer;
+    display: block;
+    position: relative;
+    transition: background 0.1s;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 1em;
+    color: #000000;
+    align-items: center;
+    margin-bottom: 2em;
+    line-height: 24px;
+}
+.accordion-label:hover{
+    background: rgba(0,0,0,0.1);
+}
+.accordion-label, .accordion-content{
+    padding: 14px ;
+}
+.accordion-label::after{
+    content: "";
+    position: absolute;
+    transform: translateY(-50%);
+    right: 20px;
+    margin-top: .6em;
+    width: 1em;
+    height: 1em;
+    background-image: url(../../assets/plus.png);
+    background-size: contain;
+    transition: transform 1s;
+}
+.accordion-content{
+    display: none;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 1em;
+    color: rgba(60, 60, 67, 0.85);
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+.accordion-input{
+    display: none;
+}
+.accordion-input:checked ~ .accordion-content{
+    display: block;
+    list-style: disc;
+    margin-top: -2em;
+}
+.accordion-input:checked ~ .accordion-label::after{
+    transform: translateY(-50%) rotate(0.5turn);
+    background-image: url(../../assets/xmark.png);
+}
+
+/* MEDIA QUERIES (SMALL DEVICES) */
+@media screen and (max-width: 600px){
+    .accords{
+        padding: .5em;
+    }  
+    /* .accordion-label{
+        font-size: 1em;
+    }
+    .accordion-content{
+        font-size: 1em;
+    }    */
+    
+}
+@media screen and (max-width: 320px){
+    .accordion-label{
+        font-size: .6em;
+    }
+    .accordion-content{
+        font-size: .6em;
+    } 
+}

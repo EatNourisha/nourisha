@@ -1,0 +1,158 @@
+.container-phones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tops h1{
+    width: 66.25em;
+    height: 8.75em;
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 70px;
+    padding: 100px 0;
+    margin: 0 auto;
+    text-align: center;
+    color: #2F2F2F;
+}
+.cards{
+    display: flex;
+    padding: 2em .625em ;
+    margin: 0 auto;
+    margin-top: -14.5em;
+}
+.card{
+    height: auto; 
+    width: 31.7%;
+    padding:  2.5em;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #F4F5F8;
+    border-radius: 15px;
+}
+.card img{
+    width: 100%;
+    margin-bottom: -6px;
+    margin-top: 10px;
+    /* display: block; */
+    object-fit: cover;
+}
+.phone1{
+    background-image: url(../../assets/Rectangle1.png);
+    border-radius: 10px;
+    background-size: cover;
+    padding: 20px 30px 0 30px;
+}
+.wrote{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.phone2{
+    background-image: url(../../assets/Rectangle2.png);
+    border-radius: 10px;
+    background-size: cover;
+    padding: 20px 30px 0 30px;
+}
+.phone3{
+    background-image: url(../../assets/Rectangle3.png);
+    border-radius: 10px;
+    background-size: cover;
+    padding: 20px 30px 0 30px;
+}
+
+.card span{
+    padding: 1.25em 0 .625em 0;
+    font-family: 'Manjari';
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #2B2B2B;
+    line-height: 31px;
+}
+.card p{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: .9em;
+    color: #4A4A4A;
+    line-height: 20px;
+    margin-bottom: -1em;
+} 
+.bon button{
+    padding: .875em 2em;
+    background: #FE7E00;
+    border-radius: 8px;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 1em;
+    font-family: 'Inter';
+    align-items: center;
+    /* width: 155px; */
+    height: 3.25em;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 1280px){
+    .card{
+        height: auto;
+    }
+}
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1114px){
+    .card{
+        height: auto;
+    }
+}
+@media screen and (max-width: 1024px){
+    .card{
+        height: auto;
+    }
+}
+@media screen and (max-width: 834px){
+    .card{
+        height: auto;
+    }
+
+}
+
+@media screen and (max-width: 670px) {
+    .cards{
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        margin-top: -16em;
+    }
+    .card{
+        width: 100%;
+        height: auto;
+        padding: 3em;
+    }
+    .phone1, .phone2, .phone3{
+        padding: 30px 50px 0 50px;
+    }
+    .container-phones h1{
+        font-family: 'Manjari';
+        font-style: normal;
+        font-weight: 700;
+        line-height: 42px;
+        color: #2B2B2B;
+    }
+    .card span{
+        font-family: 'Manjari';
+        font-style: normal;
+        font-weight: 700;
+        line-height: 26px;
+        /* font-size: 20px; */
+        color: #2B2B2B;
+    }
+    .card p{
+        /* font-size: 16px; */
+        line-height: 24px;
+        text-align: center;
+        color: #4A4A4A;
+    }
+    .tops h1{
+        padding-bottom: 0;
+    }
+}
