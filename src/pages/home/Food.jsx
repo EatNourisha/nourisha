@@ -21,10 +21,7 @@ const Food = () => {
           name="description"
           content="Craving fresh, chef-cooked meals in the UK? Order from our diverse menu and enjoy hassle-free delivery across all cities. No market runs, no prep-time. Just heat, eat, and enjoy!"
         />
-        <meta
-          name="keywords"
-          content="Craving fresh, chef-cooked meals in the UK? Order from our diverse menu and enjoy hassle-free delivery across all cities. No market runs, no prep-time. Just heat, eat, and enjoy!"
-        />
+        <meta name="keywords" content="eatnourisha, nourisha" />
       </Helmet>
       <div className="showcase-one">
         <div className="sides">
