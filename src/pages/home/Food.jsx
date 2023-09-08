@@ -31,7 +31,7 @@ const Food = () => {
               <span>Food</span> for here, there and everywhere.
             </h1>
             <p>
-              Welcome to Eatnourisha, your gateway to indulging in mouthwatering
+              Welcome to Nourisha, your gateway to indulging in mouthwatering
               chef-cooked meals from our diverse menu. We're excited to bring
               the culinary experience to your doorstep across all cities in the
               UK. Say goodbye to the challenges of shopping and cooking. With
@@ -40,7 +40,12 @@ const Food = () => {
             <h3>Download the App</h3>
             <div className="images">
               <img src={Google} alt="Get it on Google Play" />
-              <img src={App} alt="Download from the App Store" />
+              <a
+                href="https://apps.apple.com/gb/app/nourisha-budget-meal-planner/id6451458690"
+                target="_blank"
+              >
+                <img src={App} alt="Download from the App Store" />
+              </a>
             </div>
           </div>
 

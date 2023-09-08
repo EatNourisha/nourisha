@@ -1,13 +1,10 @@
 .sides {
-  /* display: flex; */
-  /* justify-content: space-between; */
   display: grid;
   grid-template-columns: 60% 40%;
   padding-top: 2em;
 }
 .left-side {
   padding-top: 6.5em;
-  /* width: 50%; */
 }
 
 .left-side button {
@@ -56,14 +53,12 @@
 }
 .images img {
   max-width: 100%;
-  /* height: 52.00000197600002px; */
   width: 11.45em;
   display: block;
   object-fit: cover;
+  cursor: pointer;
 }
 .right-side {
-  /* background-image: url(../../assets/Rectangle17.png); */
-  /* width: 40%; */
   border-radius: 20px;
   position: relative;
   height: 42em;
@@ -74,15 +69,12 @@
   border-radius: 20px;
   object-fit: cover;
   position: absolute;
-  /* right: 19%; */
-  /* top: 42.2%; */
 }
 .bottom {
   display: flex;
   width: 94%;
   margin: 0 auto;
   margin-top: 60px;
-  /* gap: 1em; */
 }
 .showcase-one .box {
   display: flex;

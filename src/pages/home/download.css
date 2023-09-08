@@ -51,6 +51,7 @@
   width: 9.2em;
   display: block;
   object-fit: cover;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1280px) {
