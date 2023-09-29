@@ -10,7 +10,7 @@ import TermsOfService from "./pages/terms/TermsOfService";
 import PrivacyPolicy from "./pages/privacy/PrivacyPolicy";
 import WeAreHiring from "./pages/hiring/WeAreHiring";
 import { HelmetProvider } from "react-helmet-async";
-import JoinNourisha from "./pages/JoinNourisha/JoinNourisha";
+// import JoinNourisha from "./pages/JoinNourisha/JoinNourisha";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             <Route path="faqs" element={<Faqs />} />
             <Route path="terms-of-service" element={<TermsOfService />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="join-nourisha" element={<JoinNourisha />} />
+            {/* <Route path="join-nourisha" element={<JoinNourisha />} /> */}
           </Routes>
         </main>
       </HelmetProvider>
