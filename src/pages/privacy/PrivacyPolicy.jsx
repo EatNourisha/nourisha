@@ -133,10 +133,7 @@ const TermsOfService = () => {
             <li>providing training services to our customers</li>
             <li>improving and developing our services</li>
             <li>the administration of our business</li>
-            <li>
-              monitoring and maintaining standards within the Pitman Training
-              network
-            </li>
+            <li>monitoring and maintaining standards within Nourisha</li>
             <li>establishing, exercising or defending our legal rights</li>
           </ul>
         </div>
@@ -205,7 +202,7 @@ const TermsOfService = () => {
             London,{" "}
           </p>
           <p>United Kingdom, WC2H 9JQ</p>
-          <p>Email: support@eatnourisha.com</p>
+          <p>Email: help@eatnourisha.com</p>
         </div>
       </div>
       <Footer />
