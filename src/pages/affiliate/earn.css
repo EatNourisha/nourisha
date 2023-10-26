@@ -1,0 +1,144 @@
+.earns {
+  display: flex;
+  padding: 2.5rem 7.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e6f7e4;
+  margin-top: 5rem;
+}
+.earns h1 {
+  color: #131313;
+  text-align: center;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  padding-bottom: 2rem;
+  font-family: "Manjari";
+}
+.earns h2 {
+  color: #000;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: -0.0125rem;
+  padding-bottom: 2.75rem;
+}
+.earns h2 span {
+  font-weight: 700;
+}
+.earnCards {
+  display: flex;
+  gap: 0.75rem;
+}
+.earnCard {
+  border-radius: 1rem;
+  border: 1px solid #f0d5ba;
+  background: #fff;
+  display: flex;
+  padding: 2.75rem 1.5625rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.earnCard h4 {
+  color: var(--color-4, #000b33);
+  text-align: center;
+  font-family: "Poppins";
+
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.875rem;
+  letter-spacing: 0.01rem;
+  padding-bottom: 2.62rem;
+}
+.earnCard h3 {
+  color: var(--color-4, #000b33);
+  font-family: "Poppins";
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 4.95rem;
+  letter-spacing: -0.03125rem;
+}
+.earnCard h6 {
+  color: #000;
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.625rem;
+  padding-bottom: 2.25rem;
+}
+.earns .checksT {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+.checkT {
+  padding-bottom: 1.88rem;
+  display: flex;
+  padding-right: 5rem;
+  /* align-items: center; */
+  align-items: first baseline;
+  gap: 0.3rem;
+}
+.earns .checkT span {
+  color: #000;
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+}
+
+@media screen and (max-width: 834px) {
+  .checkT {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .earns h1 {
+    font-size: 1.5rem;
+    line-height: 120%;
+  }
+  .earns {
+    padding: 1.25rem 1.5rem;
+  }
+  .earns h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.0125rem;
+  }
+  .earnCards {
+    display: flex;
+    flex-direction: column;
+  }
+  .earnCard {
+    width: 22rem;
+    /* width: 100%; */
+    margin: 0 auto;
+    /* margin-left: 0; */
+  }
+  .earnCard h4 {
+    color: var(--color-4, #000b33);
+    font-size: 0.89138rem;
+    line-height: 1.67138rem;
+    letter-spacing: 0.00894rem;
+  }
+  .earnCard h3 {
+    font-size: 4.01131rem;
+    line-height: 4.41244rem;
+    letter-spacing: -0.02788rem;
+  }
+  .earnCard h6 {
+    font-size: 0.89138rem;
+    line-height: 1.4485rem;
+  }
+  .earns .checkT span {
+    color: #000;
+    font-size: 0.89138rem;
+    font-weight: 400;
+    line-height: 1.4485rem;
+  }
+}

@@ -1,174 +1,157 @@
-.container-chef{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    position: relative;
+.container-chef {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  position: relative;
 }
-.showcase-two .left{
+.showcase-two .left {
+  display: flex;
+  flex-direction: column;
+}
+.container-chef img {
+  width: 100%;
+}
+.container-chef .left {
+  margin-top: 5em;
+}
+.container-chef .right {
+  margin-top: 2.5em;
+}
+.container-chef .left span {
+  color: #fe7e00;
+}
+.container-chef .left h1 {
+  font-family: "Manjari";
+  font-weight: 700;
+  font-size: 3.5em;
+  color: #000000;
+  line-height: 60px;
+}
+.container-chef .left p {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 1em;
+  color: #555555;
+  width: 75%;
+  margin: 0 auto 0 0;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+}
+.zig img {
+  position: absolute;
+  left: 50%;
+  top: 67%;
+  width: 85px;
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1280px) {
+  .container-chef {
+    grid-template-columns: 57% 43%;
+  }
+  .zig img {
+    position: absolute;
+    left: 47%;
+    top: 60%;
+    width: 92px;
+  }
+  .container-chef .left p {
+    line-height: 26px;
+  }
+}
+
+@media screen and (max-width: 1114px) {
+  .container-chef {
+    grid-template-columns: 57% 43%;
+  }
+  .zig img {
+    position: absolute;
+    left: 46%;
+    top: 68%;
+    width: 72px;
+  }
+  .container-chef .left h1 {
+    font-size: 3em;
+    margin-top: -0.5em;
+  }
+  .container-chef .left p {
+    font-size: 1.02em;
+    /* width: 8%; */
+    line-height: 20px;
+  }
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1024px) {
+  .container-chef {
+    display: grid;
+    grid-template-columns: 56% 44%;
+  }
+  .container-chef .left {
+    margin-top: 4em;
+  }
+  .container-chef .left h1 {
+    line-height: 45px;
+  }
+
+  .container-chef .left p {
+    line-height: 24px;
+    width: 90%;
+  }
+
+  .zig img {
+    position: relative;
+    left: 47%;
+    top: -75px;
+    /* width: 5em; */
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .container-chef {
+    /* grid-template-columns: 50% 50%; */
     display: flex;
     flex-direction: column;
-}
-.container-chef img{
-    width: 100%;
-}
-.container-chef .left{
-    margin-top: 5em;
-}
-.container-chef .right{
-    margin-top: 2.5em;
-}
-.container-chef .left span{
-    color: #FE7E00;
-}
-.container-chef .left h1{
-    font-family: 'Manjari';
-    font-weight: 700;
-    font-size: 3.5em;
-    color: #000000;
-    line-height: 60px;
-}
-.container-chef .left p{
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 1em;
-    color: #555555;
-    width: 75%;
-    margin: 0 auto 0 0;
+  }
+  .container-chef button {
+    margin-top: 0;
+  }
+  .container-chef .left h1 {
+    font-size: 2.25rem;
+  }
+  .container-chef .left p {
+    margin-top: 0;
     line-height: 28px;
-    letter-spacing: -0.2px;
-}
-.zig img{
-    position: absolute;
-    left: 50%;
-    top: 67%;
-    width: 85px;
-}
-
-/* MEDIA QUERIES (MEDIUM DEVICES) */
-@media screen and (max-width: 1280px){
-    .container-chef{
-        grid-template-columns: 57% 43%;
-    }
-    .zig img{
-        position: absolute;
-        left: 47%;
-        top: 60%;
-        width: 92px;
-    }
-    .container-chef .left p{
-        line-height: 26px;
-    }
-}
-
-@media screen and (max-width: 1114px){
-    .container-chef{
-        grid-template-columns: 57% 43%;
-    }
-    .zig img{
-        position: absolute;
-        left: 46%;
-        top: 68%;
-        width: 72px;
-    }
-    .container-chef .left h1{
-        font-size: 3em;
-        margin-top: -.5em;
-    }
-    .container-chef .left p{
-        font-size: 1.02em;
-        /* width: 8%; */
-        line-height: 20px;
-    }
-}
-
-/* MEDIA QUERIES (MEDIUM DEVICES) */
-@media screen and (max-width: 1024px){
-    .container-chef{
-        display: grid;
-        grid-template-columns: 56% 44%;
-    }
-    .container-chef .left{
-        margin-top: 4em;
-    }
-    .container-chef .left h1{
-        line-height: 45px;
-    }
-
-    .container-chef .left p{
-        line-height: 24px;
-        width: 90%;
-    }
-
-    .zig img{
-        position: relative;
-        left: 47%;
-        top: -75px;
-        /* width: 5em; */
-    }
-}
-
-@media screen and (max-width: 834px){
-    .container-chef{
-        grid-template-columns: 53% 47%;
-    }
-    .zig img{
-        display: none;
-    }
-    .container-chef .left h1{
-        font-size: 3.5em;
-        line-height: 58px;
-    }
-    .container-chef .left p{
-        font-size: 1em;
-        width: 100%;
-        line-height: 24px;
-    }
-    .container-chef .left{
-        margin-top: 2.9em;
-    }
-}
-@media screen and (max-width: 834px){
-    .container-chef{
-        grid-template-columns: 50% 50%;
-    }
-    .zig img{
-        display: none;
-    }
-    .container-chef .left h1{
-        font-size: 3em;
-        /* line-height: 56px; */
-    }
-    .container-chef .left p{
-        font-size: .9em;
-        width: 100%;
-    }
-    .container-chef .left{
-        margin-top: 2.9em;
-    }
+    width: 100%;
+  }
+  .zig img {
+    display: none;
+  }
+  .container-chef .left {
+    margin-top: 2em;
+  }
 }
 
 /* MEDIA QUERIES (SMALL DEVICES) */
-@media screen and (max-width: 768px){
-    .container-chef{
-        display: flex;
-        flex-direction: column;
-    }
+@media screen and (max-width: 768px) {
+  .container-chef {
+    display: flex;
+    flex-direction: column;
+  }
 
-    
-    .container-chef .left h1{
-        font-size: 2.25em;
-        width: 100%;
-        line-height: 41px;
-    }
+  .container-chef .left h1 {
+    font-size: 2.25em;
+    width: 100%;
+    line-height: 41px;
+  }
 
-    .container-chef .left p{
-        font-size: 1em;
-        line-height: 28px;
-        width: 89%;
-        /* margin: 0 -30px 20px 0; */
-        height: auto;
-    }
+  .container-chef .left p {
+    font-size: 1em;
+    line-height: 28px;
+    width: 89%;
+    height: auto;
+  }
 
-    .zig img{
-       display: none;
-    }
+  .zig img {
+    display: none;
+  }
 }

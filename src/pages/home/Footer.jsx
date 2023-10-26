@@ -26,7 +26,10 @@ const Footer = () => {
           </div>
           <h4>Start eating amazing food today.</h4>
           <div className="apps">
-            <a href="">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.eatnourisha.app&hl=en&gl=US"
+              target="_blank"
+            >
               <img src={Play} alt="Google Playstore" />
             </a>
             <a
@@ -47,6 +50,7 @@ const Footer = () => {
             <NavLink to="/faqs">FAQs</NavLink>
             <NavLink to="/terms-of-service">Terms of service</NavLink>
             <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+            <NavLink to="/affiliate">Affiliate</NavLink>
             {/* <NavLink to="/join-nourisha">Join Nourisha</NavLink> */}
           </nav>
         </div>

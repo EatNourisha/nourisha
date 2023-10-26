@@ -1,0 +1,160 @@
+.Packages {
+  padding-top: 5rem;
+  padding-bottom: 1rem;
+}
+.container-packages h5 {
+  color: #000;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: -0.0125rem;
+  padding-bottom: 2rem;
+}
+.container-packages h1 {
+  color: #131313;
+  text-align: center;
+  font-family: "Manjari";
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 120%;
+  padding-bottom: 4rem;
+}
+.packagesCard {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.card-gr {
+  display: flex;
+  padding: 2.5rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  /* gap: 2rem; */
+  border-radius: 0.75rem;
+  background: #e6f7e4;
+}
+.card-pi {
+  display: flex;
+  padding: 2.5rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  /* gap: 2rem; */
+  border-radius: 0.75rem;
+  background: #fff8e7;
+}
+.packagesCard h3 {
+  color: #131313;
+  font-family: "Manjari";
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-bottom: 2rem;
+  line-height: 2.25rem;
+}
+.card-gr h2 {
+  color: #125309;
+  font-family: "Barlow";
+  padding-bottom: 0.75rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+.packagesCard p {
+  color: var(--gray-1, #454745);
+  /* font-family: "Calibre"; */
+  padding-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 150%;
+  /* width: 100%; */
+  display: grid;
+  grid-auto-rows: 30px auto;
+  /* height: 10vh auto; */
+  letter-spacing: -0.01125rem;
+}
+.card-pi h2 {
+  color: #fe7e00;
+  font-family: "Barlow";
+  padding-bottom: 0.75rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+.card-gr .howBtn {
+  border-radius: 0.5rem;
+  background: #125309;
+  display: flex;
+  padding: 0.875rem 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.card-gr .howBtn .Butn,
+.card-pi .howBtn .Butn {
+  color: #fff;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  background: transparent;
+}
+.card-pi .howBtn {
+  display: flex;
+  padding: 0.875rem 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background: #fe7e00;
+}
+
+@media screen and (max-width: 834px) {
+  .packagesCard p {
+    display: grid;
+    grid-auto-rows: 60px auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container-packages h5 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.0125rem;
+    padding-bottom: 1.5rem;
+  }
+  .container-packages h1 {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+    line-height: 120%;
+  }
+  .card-gr,
+  .card-pi {
+    display: flex;
+    padding: 2.5rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .packagesCard h3 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+  .card-gr h2 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+  .packagesCard p {
+    display: flex;
+    font-size: 1.125rem;
+    line-height: 150%;
+    padding-bottom: 1.5rem;
+    letter-spacing: -0.01125rem;
+    /* grid-auto-rows: 60px auto; */
+  }
+  .packagesCard {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

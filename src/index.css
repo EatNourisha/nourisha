@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Manjari:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Manjari:wght@100;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;800;900&display=swap");
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,7 +12,7 @@
   outline: 0;
 }
 
-:root{
+:root {
   --container-width-lg: 85%;
   --container-width-md: 90%;
   --container-width-sm: 95%;
@@ -21,23 +23,24 @@
   object-fit: cover;
 } */
 
-html, body{
+html,
+body {
   overflow-x: hidden;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
-body{
-  font-family: 'Manjari', sans-serif;
+body {
+  font-family: "Manjari", sans-serif;
 }
-button{
+button {
   cursor: pointer;
-} 
-nav{
+}
+nav {
   color: black;
 }
 
-.container{
+.container {
   width: var(--container-width-lg);
   margin: 0 auto;
 }
@@ -56,18 +59,14 @@ button:disabled {
 
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 1024px) {
-  .container{
+  .container {
     width: var(--container-width-md);
   }
 }
 
 /* MEDIA QUERIES (SMALL DEVICES) */
 @media screen and (max-width: 600px) {
-  .container{
+  .container {
     width: var(--container-width-sm);
   }
-
 }
-
-
-

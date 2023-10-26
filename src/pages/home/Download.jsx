@@ -16,7 +16,12 @@ const Download = () => {
             cities in the UK.
           </p>
           <div className="down">
-            <img src={Play} alt="Google Playstore" />
+            <a
+              href="https://play.google.com/store/apps/details?id=com.eatnourisha.app&hl=en&gl=US"
+              target="_blank"
+            >
+              <img src={Play} alt="Google Playstore" />
+            </a>
             <a
               href="https://apps.apple.com/gb/app/nourisha-budget-meal-planner/id6451458690"
               target="_blank"

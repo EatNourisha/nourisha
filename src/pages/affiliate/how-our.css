@@ -1,0 +1,95 @@
+.howOur {
+  padding-top: 5rem;
+}
+.container-howOur {
+  border-radius: 0.75rem;
+  border: 1px solid #f0d5ba;
+  background: #fff8e7;
+  display: flex;
+  padding: 2.5rem 3.5rem;
+  align-items: center;
+  gap: 3.5rem;
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: 50% 45.5%;
+  /* display: flex; */
+}
+.container-howOur img {
+  width: 100%;
+}
+.container-howOur h1 {
+  color: #131313;
+  font-family: "Manjari";
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+  padding-bottom: 2.44rem;
+}
+.container-howOur h2 {
+  color: #fe7e00;
+  font-family: "Barlow";
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  padding-bottom: 0.75rem;
+}
+.container-howOur p {
+  color: var(--gray-1, #454745);
+  font-family: "Manjari";
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.01125rem;
+  padding-bottom: 1rem;
+}
+.container-howOur .howBtn {
+  border-radius: 0.5rem;
+  background: var(--Nourisha-Primary, #fe7e00);
+  display: flex;
+  padding: 0.875rem 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.container-howOur .howBtn button {
+  color: #fff;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  background: transparent;
+}
+
+@media screen and (max-width: 1024px) {
+  .container-howOur p {
+    padding-bottom: 0.1rem;
+  }
+  .container-howOur h2 {
+    padding-bottom: 0.5rem;
+  }
+}
+@media screen and (max-width: 834px) {
+  .container-howOur p {
+    padding-bottom: 1rem;
+  }
+  .container-howOur h2 {
+    padding-bottom: 0.75rem;
+  }
+  .container-howOur {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container-howOur {
+    padding: 2.5rem 0.75rem;
+    gap: 1.5rem;
+  }
+  .container-howOur h1 {
+    font-size: 2rem;
+    line-height: 2.5625rem;
+  }
+  .container-howOur p {
+    padding-bottom: 1.5rem;
+  }
+}

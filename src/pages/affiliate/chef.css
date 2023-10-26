@@ -1,0 +1,117 @@
+.container-chefT {
+  display: grid;
+  grid-template-columns: 54% 44%;
+  /* position: relative; */
+  gap: 1rem;
+}
+.showcase-two .left {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.container-chefT img {
+  width: 100%;
+}
+.container-chefT .left {
+  margin-top: 5em;
+}
+.container-chefT .right {
+  margin-top: 2.5em;
+}
+.container-chefT .left span {
+  color: #fe7e00;
+}
+.container-chefT .left h1 {
+  font-family: "Manjari";
+  font-weight: 700;
+  font-size: 4em;
+  color: #000000;
+  /* line-height: 60px; */
+  line-height: 120%;
+}
+.container-chefT .left p {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 1em;
+  color: #555555;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+  margin-top: -1rem;
+}
+.container-chefT button {
+  display: flex;
+  padding: 0.875rem 2rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border-radius: 0.5rem;
+  background: var(--Nourisha-Primary, #fe7e00);
+  color: #fff;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin-top: -5rem;
+}
+/* .container-chefT .chef-btn {
+  display: flex;
+  justify-content: flex-start;
+} */
+.zigT img {
+  position: absolute;
+  left: 47%;
+  top: 77%;
+  width: 85px;
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1280px) {
+  .container-chefT .left p {
+    line-height: 24px;
+  }
+  .zigT img {
+    position: absolute;
+    left: 47%;
+    top: 64%;
+    width: 85px;
+  }
+}
+/* MEDIA QUERIES (MEDIUM DEVICES) */
+@media screen and (max-width: 1114px) {
+  .container-chefT .left p {
+    line-height: 18.3px;
+  }
+  .container-chefT .left h1 {
+    font-size: 3rem;
+  }
+  .zigT img {
+    position: absolute;
+    left: 47%;
+    top: 69%;
+    width: 75px;
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .container-chefT {
+    /* grid-template-columns: 50% 50%; */
+    display: flex;
+    flex-direction: column;
+  }
+  .container-chefT button {
+    margin-top: 0;
+  }
+  .container-chefT .left h1 {
+    font-size: 2.25rem;
+  }
+  .container-chefT .left p {
+    margin-top: 0;
+    line-height: 28px;
+  }
+  .zigT img {
+    display: none;
+  }
+  .container-chefT .left {
+    margin-top: 2em;
+  }
+}

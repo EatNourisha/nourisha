@@ -39,7 +39,12 @@ const Food = () => {
             </p>
             <h3>Download the App</h3>
             <div className="images">
-              <img src={Google} alt="Get it on Google Play" />
+              <a
+                href="https://play.google.com/store/apps/details?id=com.eatnourisha.app&hl=en&gl=US"
+                target="_blank"
+              >
+                <img src={Google} alt="Get it on Google Play" />
+              </a>
               <a
                 href="https://apps.apple.com/gb/app/nourisha-budget-meal-planner/id6451458690"
                 target="_blank"
