@@ -28,9 +28,11 @@ const HowOur = () => {
             You earn anytime someone uses your link to signup and subscribe to
             either our weekly or monthly food subscription.
           </p>
-          <div className="howBtn">
-            <button className="Butn">Partner with us</button>
-          </div>
+          <a href="#container-downloading">
+            <div className="howBtn">
+              <button className="Butn">Partner with us</button>
+            </div>
+          </a>
         </article>
       </section>
     </div>

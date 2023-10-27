@@ -35,9 +35,11 @@ const Packages = () => {
               </p>
               <h2>06</h2>
               <p>Payout within 72 hours.</p>
-              <div className="howBtn">
-                <button className="Butn">Partner with us</button>
-              </div>
+              <a href="#container-downloading">
+                <div className="howBtn">
+                  <button className="Butn">Partner with us</button>
+                </div>
+              </a>
             </article>
           </div>
           <div className="packageCard card-pi">
@@ -67,9 +69,11 @@ const Packages = () => {
               </p>
               <h2>06</h2>
               <p>Payout within 72 hours of meeting target.</p>
-              <div className="howBtn">
-                <button className="Butn">Partner with us</button>
-              </div>
+              <a href="#container-downloading">
+                <div className="howBtn">
+                  <button className="Butn">Partner with us</button>
+                </div>
+              </a>
             </article>
           </div>
         </div>

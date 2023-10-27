@@ -15,19 +15,20 @@ const Chef = () => {
             Nourisha is a culinary haven that brings together all the vibrant
             tastes of Africa, all in one place. Our mission is to nourish our
             subscribers’ through an exciting fusion of flavors that transcend
-            borders. <br />
-            At Nourisha, every subscriber on either our WEEKLY or MONTHLY plans
-            —Staring from £120/week and £400/month, gets enjoy 2 freshly-cooked,
-            African meals, daily. Served 7 days a week, delivered once weekly to
-            each subscriber, anywhere in the UK.
+            borders. At Nourisha, every subscriber on either our WEEKLY or
+            MONTHLY plans —Staring from £120/week and £400/month, gets enjoy 2
+            freshly-cooked, African meals, daily. Served 7 days a week,
+            delivered once weekly to each subscriber, anywhere in the UK.
           </p>
         </div>
         <div className="right">
           <img src={FemaleChef} alt="Chef" />
         </div>
-        <div className="chef-btn">
-          <button>Join us</button>
-        </div>{" "}
+        <a href="#container-downloading">
+          <div className="chef-btn">
+            <button>Join us</button>
+          </div>{" "}
+        </a>
       </div>
       <div className="zigT">
         <img src={Zag} alt="zig-zag" />

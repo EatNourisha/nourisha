@@ -51,7 +51,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 1.5rem;
-  margin-top: -5rem;
+  margin-top: -6rem;
 }
 /* .container-chefT .chef-btn {
   display: flex;
@@ -60,7 +60,7 @@
 .zigT img {
   position: absolute;
   left: 47%;
-  top: 77%;
+  top: 75%;
   width: 85px;
 }
 
@@ -72,7 +72,7 @@
   .zigT img {
     position: absolute;
     left: 47%;
-    top: 64%;
+    top: 60%;
     width: 85px;
   }
 }
@@ -87,7 +87,7 @@
   .zigT img {
     position: absolute;
     left: 47%;
-    top: 69%;
+    top: 66%;
     width: 75px;
   }
 }
@@ -113,5 +113,8 @@
   }
   .container-chefT .left {
     margin-top: 2em;
+  }
+  .container-chefT .right {
+    margin-top: 0rem;
   }
 }

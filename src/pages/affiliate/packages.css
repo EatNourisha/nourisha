@@ -70,7 +70,7 @@
   line-height: 150%;
   /* width: 100%; */
   display: grid;
-  grid-auto-rows: 30px auto;
+  grid-auto-rows: 35px auto;
   /* height: 10vh auto; */
   letter-spacing: -0.01125rem;
 }
