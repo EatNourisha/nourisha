@@ -51,7 +51,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 1.5rem;
-  margin-top: -6rem;
+  margin-top: -5rem;
 }
 /* .container-chefT .chef-btn {
   display: flex;
@@ -59,8 +59,8 @@
 } */
 .zigT img {
   position: absolute;
-  left: 47%;
-  top: 75%;
+  left: 47.7%;
+  top: 78%;
   width: 85px;
 }
 
@@ -71,9 +71,12 @@
   }
   .zigT img {
     position: absolute;
-    left: 47%;
+    left: 47.6%;
     top: 60%;
     width: 85px;
+  }
+  .container-chefT button {
+    margin-top: -3.5rem;
   }
 }
 /* MEDIA QUERIES (MEDIUM DEVICES) */
@@ -87,7 +90,7 @@
   .zigT img {
     position: absolute;
     left: 47%;
-    top: 66%;
+    top: 74%;
     width: 75px;
   }
 }

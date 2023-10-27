@@ -60,7 +60,7 @@ const Footer = () => {
           <div className="call">
             <div className="img">
               <MdCall />
-              <h6>020 3443 3303</h6>
+              <h6>020 8058 3407</h6>
             </div>
           </div>
 
