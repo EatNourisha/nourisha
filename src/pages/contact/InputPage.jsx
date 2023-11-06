@@ -63,9 +63,9 @@ const InputPage = () => {
           <div className="words">
             <h1>We would love to hear from you.</h1>
             <h3>Email</h3>
-            <h6>help@eatnourisha.com</h6>
+            <h6>hello@eatnourisha.com</h6>
             <h3>Telephone</h3>
-            <h6>020 3443 3303</h6>
+            <h6>020 8058 3407</h6>
           </div>
           <div className="input">
             <form ref={form} onSubmit={sendEmail}>

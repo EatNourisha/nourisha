@@ -67,7 +67,7 @@ const Footer = () => {
           <div className="call">
             <div className="img">
               <MdEmail />
-              <h6>help@eatnourisha.com</h6>
+              <h6>hello@eatnourisha.com</h6>
             </div>
           </div>
         </div>
