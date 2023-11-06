@@ -80,10 +80,10 @@
   padding: 25px;
   margin-top: 20px;
 }
-.card-box nav ul {
+/* .card-box nav ul {
   display: grid;
-  grid-auto-rows: 70px auto;
-}
+  grid-auto-rows: 65px auto;
+} */
 
 .card-box nav ul li {
   font-family: "Inter";
@@ -123,7 +123,15 @@
   .prices-head {
     width: 100%;
   }
+  .prices-head h1 {
+    width: 85%;
+    line-height: 42px;
+  }
 
+  .prices-head h2 {
+    width: 85%;
+    line-height: 24px;
+  }
   .cards-box {
     width: 95%;
   }
@@ -171,10 +179,10 @@
     gap: 1rem;
   }
 
-  .card-box {
+  /* .card-box {
     height: auto;
     margin-bottom: 10px;
-  }
+  } */
   .card-box h3 {
     font-size: 1.5em;
     line-height: 26px;

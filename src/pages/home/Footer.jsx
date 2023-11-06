@@ -102,7 +102,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <p>&copy; 2023 House of Nourisha Ltd</p>
+      <p>&copy; 2023 Nourisha</p>
     </div>
   );
 };

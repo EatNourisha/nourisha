@@ -16,9 +16,9 @@ const Prices = () => {
           <h5>(Plan for just 1 person)</h5>
           <nav>
             <ul>
-              <li>Dinner and Launch daily for 1 month(28 days)</li>
+              <li>Dinner and Lunch daily for 1 week(7 days)</li>
               <li>Customise your meal plan from our wide range of menu</li>
-              <li>Weekly meal delivered once a week</li>
+              <li>Meal delivered once a week</li>
             </ul>
             <a href="#container-downloading">
               <button>Subscribe</button>
@@ -31,7 +31,7 @@ const Prices = () => {
           <h5>(Plan for just 1 person)</h5>
           <nav>
             <ul>
-              <li>Dinner and Launch daily for 1 month(28 days)</li>
+              <li>Dinner and Lunch daily for 1 month(28 days)</li>
               <li>Customise your meal plan from our wide range of menu</li>
               <li>Meal delivered once a week</li>
             </ul>
