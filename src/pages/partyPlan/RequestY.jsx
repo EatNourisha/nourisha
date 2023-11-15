@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./requesty.css";
+import emailjs from "emailjs-com";
 
 const RequestY = () => {
   const [enteredFirstName, setEnteredFirstName] = useState("");
