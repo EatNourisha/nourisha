@@ -1,0 +1,95 @@
+.why-ch {
+  background: #125309;
+  margin-top: 2rem;
+}
+.container-whyCh {
+  padding: 5rem 0;
+}
+.container-whyCh h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 4.375rem;
+}
+.container-whyCh p {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: -0.0125rem;
+  padding-bottom: 4rem;
+}
+.container-whyCh section {
+  width: 87%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.38rem;
+}
+.container-whyCh article {
+  border-radius: 0.75rem;
+  background: #0e3609;
+  padding: 1.5rem;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 1.5625rem; */
+}
+.container-whyCh h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 4.375rem;
+  padding-bottom: 1rem;
+}
+.container-whyCh h4 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.01875rem;
+}
+
+@media screen and (max-width: 834px) {
+  .container-whyCh section {
+    width: 87%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.38rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container-whyCh {
+    padding: 3rem 0;
+  }
+  .container-whyCh h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  .container-whyCh p {
+    font-size: 1.15rem;
+    padding-bottom: 2rem;
+    line-height: 1.4rem;
+  }
+  .container-whyCh section {
+    width: 100%;
+    gap: 1rem;
+  }
+  .container-whyCh article {
+    padding: 1rem;
+  }
+  .container-whyCh h2 {
+    font-size: 1.5rem;
+    line-height: 4.375rem;
+    padding-bottom: 0.5rem;
+  }
+  .container-whyCh h4 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 130%;
+  }
+}

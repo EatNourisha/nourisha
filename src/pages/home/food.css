@@ -163,6 +163,9 @@
   .write p {
     width: 173px;
   }
+  .left-side h1 {
+    font-size: 2.4em;
+  }
   .left-side p {
     width: 90%;
   }

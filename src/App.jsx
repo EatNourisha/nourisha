@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/privacy/PrivacyPolicy";
 import WeAreHiring from "./pages/hiring/WeAreHiring";
 import { HelmetProvider } from "react-helmet-async";
 import Affiliate from "./pages/affiliate/Affiliate";
+import PartyPlan from "./pages/partyPlan/PartyPlan";
 // import JoinNourisha from "./pages/JoinNourisha/JoinNourisha";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
             <Route path="terms-of-service" element={<TermsOfService />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="affiliate" element={<Affiliate />} />
-            {/* <Route path="join-nourisha" element={<JoinNourisha />} /> */}
+            <Route path="party-plan" element={<PartyPlan />} />
           </Routes>
         </main>
       </HelmetProvider>

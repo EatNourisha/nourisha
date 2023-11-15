@@ -1,0 +1,163 @@
+.requesty {
+  width: 87%;
+  margin: 0 auto;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+}
+.container-req {
+  border-radius: 0.75rem;
+  border: 3px solid #f0d5ba;
+  background: #fff;
+  padding: 3.5rem 0;
+}
+.requesty h1 {
+  color: var(--Nourisha-Primary, #fe7e00);
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 4.6875rem;
+  letter-spacing: -0.125rem;
+}
+.requesty p {
+  color: var(--grey-grey-2, #565c69);
+  text-align: center;
+  font-family: "Inter";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: -0.0125rem;
+  padding-top: 1.25rem;
+  padding-bottom: 2rem;
+  width: 90%;
+  margin: 0 auto;
+}
+.requesty form section {
+  width: 85%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.94rem 3rem;
+}
+.Mea {
+  width: 85%;
+  margin: 0 auto;
+  padding-top: 2.94rem;
+}
+.requesty form label {
+  color: var(--grey-grey-3, #7e8494);
+  font-family: "Inter";
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+}
+.requesty form input {
+  margin-top: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #bdc0ce;
+  border-radius: 0;
+  width: 100%;
+  padding: 0.6rem 0;
+}
+.requesty form textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #bdc0ce;
+  opacity: 0.8;
+  background: #fff;
+  margin-top: 0.5rem;
+}
+.reqBtn {
+  border-radius: 0.5rem;
+  background: var(--Nourisha-Primary, #fe7e00);
+  display: flex;
+  padding: 0.875rem 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+.requesty form .req-bt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+form input:focus {
+  outline: none;
+  /* border-color: #3e5f1b; */
+  border: 2px solid #3e5f1b;
+  border-radius: 6px;
+  /* box-shadow: 0px 0px 0px 4px #3e5f1b; */
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #d1d5db;
+  color: #ffffff;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.invalid input {
+  border: 1px solid red;
+}
+
+.invalid input:focus {
+  border: 1px solid red;
+  box-shadow: 0px 0px 0px 4px #ef444440;
+}
+
+.container-req .error-text {
+  color: #b40e0e;
+  font-size: 0.7rem;
+}
+
+@media screen and (max-width: 834px) {
+  .requesty h1 {
+    font-size: 3rem;
+  }
+  .requesty p {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .requesty {
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+  }
+  .container-req {
+    padding: 2.5rem 0;
+  }
+  .requesty h1 {
+    font-size: 2.4rem;
+    line-height: 2.6875rem;
+  }
+  .requesty p {
+    font-size: 1rem;
+    line-height: 1.65rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  .requesty form section {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem 2.9rem;
+  }
+  .Mea {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2.4rem;
+  }
+
+  .requesty form .req-bt {
+    padding-top: 0.7rem;
+  }
+}

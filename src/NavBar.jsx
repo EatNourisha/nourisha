@@ -38,7 +38,10 @@ const NavBar = () => {
             <NavLink to="affiliate" onClick={showNavBar}>
               Affiliate
             </NavLink>
-            <p to="we-are-hiring">We Are Hiring</p>
+            <NavLink to="party-plan" onClick={showNavBar}>
+              Party Plan
+            </NavLink>
+            {/* <p to="we-are-hiring">We Are Hiring</p> */}
             <button className="nav-close-btn" onClick={showNavBar}>
               <FaTimes />
             </button>
