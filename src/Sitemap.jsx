@@ -5,7 +5,11 @@ const Sitemap = () => {
     <div>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
-          <loc>https://www.eatnourisha.com/</loc>
+          <a href="https://www.eatnourisha.com/">
+            <loc>https://www.eatnourisha.com/</loc>
+            {/* https://www.eatnourisha.com/ */}
+          </a>
+          {/* <loc>https://www.eatnourisha.com/</loc> */}
           <lastmod>2023-11-21T16:15:58+01:00</lastmod>
           <priority>0.8</priority>
         </url>
