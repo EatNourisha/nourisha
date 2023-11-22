@@ -12,6 +12,7 @@ import WeAreHiring from "./pages/hiring/WeAreHiring";
 import { HelmetProvider } from "react-helmet-async";
 import Affiliate from "./pages/affiliate/Affiliate";
 import PartyPlan from "./pages/partyPlan/PartyPlan";
+import Sitemap from "./Sitemap";
 // import JoinNourisha from "./pages/JoinNourisha/JoinNourisha";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="affiliate" element={<Affiliate />} />
             <Route path="party-plan" element={<PartyPlan />} />
+            <Route path="site-map" element={<Sitemap />} />
           </Routes>
         </main>
       </HelmetProvider>
