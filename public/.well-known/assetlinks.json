@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.eatnourisha.app",
+    "sha256_cert_fingerprints":
+    ["0F:07:23:A5:6B:4A:A3:D0:C1:45:8F:B7:A4:75:E2:45:3D:B7:E6:7F:45:DA:6C:2C:B7:25:AA:26:10:4F:EE:F0"]
+  }
+}]
