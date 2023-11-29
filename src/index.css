@@ -6,7 +6,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* list-style: none; */
   border: 0;
   text-decoration: none;
   outline: 0;
@@ -17,11 +16,6 @@
   --container-width-md: 90%;
   --container-width-sm: 95%;
 }
-/* img{
-  max-width: 100%;
-  display: block;
-  object-fit: cover;
-} */
 
 html,
 body {
