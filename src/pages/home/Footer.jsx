@@ -52,6 +52,7 @@ const Footer = () => {
             <NavLink to="/privacy-policy">Privacy Policy</NavLink>
             <NavLink to="/affiliate">Affiliate</NavLink>
             <NavLink to="/party-plan">Party Plan</NavLink>
+            <a href="http://eatnourisha.blog/">Blog</a>
           </nav>
         </div>
 
