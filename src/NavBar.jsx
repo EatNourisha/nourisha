@@ -41,7 +41,7 @@ const NavBar = () => {
             <NavLink to="party-plan" onClick={showNavBar}>
               Party Plan
             </NavLink>
-            <a href="http://eatnourisha.blog/" onClick={showNavBar}>
+            <a href="https://blog.eatnourisha.com/" onClick={showNavBar}>
               Blog
             </a>
             {/* <p to="liwe-are-hiring">We Are Hiring</p> */}
