@@ -55,8 +55,13 @@ const NavBar = () => {
         </div>
 
         <div className="btn">
-          <a href="#container-downloading">
+          <a href="/register">
             <button>Get Started</button>
+          </a>
+        </div>
+        <div className="btn">
+          <a href="/login">
+            <button>Login</button>
           </a>
         </div>
       </div>
