@@ -16,6 +16,44 @@
   --container-width-md: 90%;
   --container-width-sm: 95%;
 }
+.tabTitle {
+  cursor: pointer;
+}
+.tabSides{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tabTitle li{
+  list-style: none;
+}
+.tabTitle h4{
+  font-size: 24px;
+font-weight: 400;
+line-height: 32px;
+letter-spacing: -0.5px;
+color: #454545;
+}
+input[type="radio"] {
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid #FE7E00;
+  background-color: #FE7E00;
+  /* border: solid 1px var(--Grey2); */
+}
+
+input:checked[type="radio"] {
+  width: 1.5em;
+  height: 1.5em;
+  color: red;
+  border: 1px solid #FE7E00;
+  background-color: #FE7E00;
+}
+
+
+.activeS h4 {
+  color: #FE7E00;
+}
 
 html,
 body {
@@ -62,5 +100,11 @@ button:disabled {
 @media screen and (max-width: 600px) {
   .container {
     width: var(--container-width-sm);
+  }
+  .tabSides{
+    gap: .5rem;
+  }
+  .tabTitle h4{
+    font-size: 1.2rem;
   }
 }

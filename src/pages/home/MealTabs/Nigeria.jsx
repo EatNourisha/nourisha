@@ -1,72 +1,72 @@
-import "./meals.css";
+import "./nigeria.css";
 import { useState, useEffect } from "react";
-import IMG1 from "../../assets/IMG1.png";
-import IMG2 from "../../assets/IMG2.png";
-import IMG3 from "../../assets/IMG3.png";
-import IMG4 from "../../assets/IMG4.png";
-import IMG5 from "../../assets/IMG5.png";
-import IMG6 from "../../assets/IMG6.png";
-import IMG7 from "../../assets/IMG7.png";
-import IMG8 from "../../assets/IMG8.png";
-import IMG9 from "../../assets/IMG9.png";
-import IMG10 from "../../assets/IMG10.png";
-import IMG11 from "../../assets/IMG11.png";
-import IMG12 from "../../assets/IMG12.png";
-import IMG13 from "../../assets/IMG13.png";
-import IMG14 from "../../assets/IMG14.png";
-import IMG15 from "../../assets/IMG15.png";
-import IMG16 from "../../assets/IMG16.png";
-import IMG17 from "../../assets/IMG17.png";
-import IMG18 from "../../assets/IMG18.png";
-import IMG19 from "../../assets/IMG19.png";
-import IMG20 from "../../assets/IMG20.png";
-import IMG21 from "../../assets/IMG21.png";
-import IMG22 from "../../assets/IMG22.png";
-import IMG23 from "../../assets/IMG23.png";
-import IMG24 from "../../assets/IMG24.png";
-import IMG25 from "../../assets/IMG25.png";
-import IMG26 from "../../assets/IMG26.png";
-import IMG27 from "../../assets/IMG27.png";
-import IMG28 from "../../assets/IMG28.png";
-import IMG29 from "../../assets/IMG29.png";
-import IMG30 from "../../assets/IMG30.png";
-import IMG31 from "../../assets/IMG31.png";
-import IMG32 from "../../assets/IMG32.png";
-import IMG33 from "../../assets/IMG33.png";
-import IMG34 from "../../assets/IMG34.png";
-import IMG35 from "../../assets/IMG35.png";
-import IMG36 from "../../assets/IMG36.png";
-import IMG37 from "../../assets/IMG37.png";
-import IMG38 from "../../assets/IMG38.png";
-import IMG39 from "../../assets/IMG39.png";
-import IMG40 from "../../assets/IMG40.png";
-import IMG41 from "../../assets/IMG41.png";
-import IMG42 from "../../assets/IMG42.png";
-import IMG43 from "../../assets/IMG43.png";
-import IMG44 from "../../assets/IMG44.png";
-import IMG45 from "../../assets/IMG45.png";
-import IMG46 from "../../assets/IMG46.png";
-import IMG47 from "../../assets/IMG47.png";
-import IMG48 from "../../assets/IMG48.png";
-import IMG49 from "../../assets/IMG49.png";
-import IMG50 from "../../assets/IMG50.png";
-import IMG51 from "../../assets/IMG51.png";
-import IMG52 from "../../assets/IMG52.png";
-import IMG53 from "../../assets/IMG53.png";
-import IMG54 from "../../assets/IMG54.png";
-import IMG55 from "../../assets/IMG55.png";
-import IMG56 from "../../assets/IMG56.png";
-import IMG57 from "../../assets/IMG57.png";
-import IMG58 from "../../assets/IMG58.png";
-import IMG59 from "../../assets/IMG59.png";
-import IMG60 from "../../assets/IMG60.png";
-import IMG61 from "../../assets/IMG61.png";
-import IMG62 from "../../assets/IMG62.png";
-import IMG63 from "../../assets/IMG63.png";
-import IMG64 from "../../assets/IMG64.png";
-import IMG65 from "../../assets/IMG65.png";
-import IMG66 from "../../assets/IMG66.png";
-import IMG67 from "../../assets/IMG67.png";
+import IMG1 from "../../../assets/IMG1.png";
+import IMG2 from "../../../assets/IMG2.png";
+import IMG3 from "../../../assets/IMG3.png";
+import IMG4 from "../../../assets/IMG4.png";
+import IMG5 from "../../../assets/IMG5.png";
+import IMG6 from "../../../assets/IMG6.png";
+import IMG7 from "../../../assets/IMG7.png";
+import IMG8 from "../../../assets/IMG8.png";
+import IMG9 from "../../../assets/IMG9.png";
+import IMG10 from "../../../assets/IMG10.png";
+import IMG11 from "../../../assets/IMG11.png";
+import IMG12 from "../../../assets/IMG12.png";
+import IMG13 from "../../../assets/IMG13.png";
+import IMG14 from "../../../assets/IMG14.png";
+import IMG15 from "../../../assets/IMG15.png";
+import IMG16 from "../../../assets/IMG16.png";
+import IMG17 from "../../../assets/IMG17.png";
+import IMG18 from "../../../assets/IMG18.png";
+import IMG19 from "../../../assets/IMG19.png";
+import IMG20 from "../../../assets/IMG20.png";
+import IMG21 from "../../../assets/IMG21.png";
+import IMG22 from "../../../assets/IMG22.png";
+import IMG23 from "../../../assets/IMG23.png";
+import IMG24 from "../../../assets/IMG24.png";
+import IMG25 from "../../../assets/IMG25.png";
+import IMG26 from "../../../assets/IMG26.png";
+import IMG27 from "../../../assets/IMG27.png";
+import IMG28 from "../../../assets/IMG28.png";
+import IMG29 from "../../../assets/IMG29.png";
+import IMG30 from "../../../assets/IMG30.png";
+import IMG31 from "../../../assets/IMG31.png";
+import IMG32 from "../../../assets/IMG32.png";
+import IMG33 from "../../../assets/IMG33.png";
+import IMG34 from "../../../assets/IMG34.png";
+import IMG35 from "../../../assets/IMG35.png";
+import IMG36 from "../../../assets/IMG36.png";
+import IMG37 from "../../../assets/IMG37.png";
+import IMG38 from "../../../assets/IMG38.png";
+import IMG39 from "../../../assets/IMG39.png";
+import IMG40 from "../../../assets/IMG40.png";
+import IMG41 from "../../../assets/IMG41.png";
+import IMG42 from "../../../assets/IMG42.png";
+import IMG43 from "../../../assets/IMG43.png";
+import IMG44 from "../../../assets/IMG44.png";
+import IMG45 from "../../../assets/IMG45.png";
+import IMG46 from "../../../assets/IMG46.png";
+import IMG47 from "../../../assets/IMG47.png";
+import IMG48 from "../../../assets/IMG48.png";
+import IMG49 from "../../../assets/IMG49.png";
+import IMG50 from "../../../assets/IMG50.png";
+import IMG51 from "../../../assets/IMG51.png";
+import IMG52 from "../../../assets/IMG52.png";
+import IMG53 from "../../../assets/IMG53.png";
+import IMG54 from "../../../assets/IMG54.png";
+import IMG55 from "../../../assets/IMG55.png";
+import IMG56 from "../../../assets/IMG56.png";
+import IMG57 from "../../../assets/IMG57.png";
+import IMG58 from "../../../assets/IMG58.png";
+import IMG59 from "../../../assets/IMG59.png";
+import IMG60 from "../../../assets/IMG60.png";
+import IMG61 from "../../../assets/IMG61.png";
+import IMG62 from "../../../assets/IMG62.png";
+import IMG63 from "../../../assets/IMG63.png";
+import IMG64 from "../../../assets/IMG64.png";
+import IMG65 from "../../../assets/IMG65.png";
+import IMG66 from "../../../assets/IMG66.png";
+import IMG67 from "../../../assets/IMG67.png";
 // import ArrowRight from "../../assets/arrow-right.png";
 // import ArrowLeft from "../../assets/arrow-left.png";
 import {
@@ -76,7 +76,7 @@ import {
   BsChevronUp,
 } from "react-icons/bs";
 
-const Meals = ({ selected, setSelected }) => {
+const Nigeria = ({ selected, setSelected }) => {
   const [currentFood, setCurrentFood] = useState("rice");
   const [currenPg, setCurrentPg] = useState(1);
   // add total pages state, to indicate total page for each food
@@ -120,10 +120,6 @@ const Meals = ({ selected, setSelected }) => {
 
   return (
     <div className="meals">
-      <div className="meal">
-        <h1>Our Menu</h1>
-        <p>Available meals on our menu</p>
-      </div>
       <div className="container container-meals">
         <div className="chevrons" onClick={handleClick}>
           <div className="tops-btn">
@@ -519,4 +515,4 @@ const Meals = ({ selected, setSelected }) => {
   );
 };
 
-export default Meals;
+export default Nigeria;
