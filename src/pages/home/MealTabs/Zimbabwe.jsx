@@ -1,22 +1,22 @@
 import "./nigeria.css";
 import { useState, useEffect } from "react";
-import IMG81 from "../../../assets/IMG81.JPG";
-import IMG82 from "../../../assets/IMG82.JPG";
-import IMG83 from "../../../assets/IMG83.JPG";
-import IMG84 from "../../../assets/IMG84.JPG";
-import IMG85 from "../../../assets/IMG85.JPG";
-import IMG86 from "../../../assets/IMG86.JPG";
-import IMG87 from "../../../assets/IMG87.JPG";
-import IMG88 from "../../../assets/IMG88.JPG";
-import IMG89 from "../../../assets/IMG89.JPG";
-import IMG90 from "../../../assets/IMG90.JPG";
-import IMG91 from "../../../assets/IMG91.JPG";
-import IMG92 from "../../../assets/IMG92.JPG";
-import IMG93 from "../../../assets/IMG93.JPG";
-import IMG94 from "../../../assets/IMG94.JPG";
-import IMG95 from "../../../assets/IMG95.JPG";
-import IMG96 from "../../../assets/IMG96.JPG";
-import IMG97 from "../../../assets/IMG97.JPG";
+import IMG81 from "../../../assets/IMG81.jpg";
+import IMG82 from "../../../assets/IMG82.jpg";
+import IMG83 from "../../../assets/IMG83.jpg";
+import IMG84 from "../../../assets/IMG84.jpg";
+import IMG85 from "../../../assets/IMG85.jpg";
+import IMG86 from "../../../assets/IMG86.jpg";
+import IMG87 from "../../../assets/IMG87.jpg";
+import IMG88 from "../../../assets/IMG88.jpg";
+import IMG89 from "../../../assets/IMG89.jpg";
+import IMG90 from "../../../assets/IMG90.jpg";
+import IMG91 from "../../../assets/IMG91.jpg";
+import IMG92 from "../../../assets/IMG92.jpg";
+import IMG93 from "../../../assets/IMG93.jpg";
+import IMG94 from "../../../assets/IMG94.jpg";
+import IMG95 from "../../../assets/IMG95.jpg";
+import IMG96 from "../../../assets/IMG96.jpg";
+import IMG97 from "../../../assets/IMG97.jpg";
 
 import {
   BsChevronDown,
