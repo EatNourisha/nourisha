@@ -41,7 +41,10 @@ const NavBar = () => {
             <NavLink to="party-plan" onClick={showNavBar}>
               Party Plan
             </NavLink>
-            {/* <p to="we-are-hiring">We Are Hiring</p> */}
+            <a href="https://blog.eatnourisha.com/" onClick={showNavBar}>
+              Blog
+            </a>
+            {/* <p to="liwe-are-hiring">We Are Hiring</p> */}
             <button className="nav-close-btn" onClick={showNavBar}>
               <FaTimes />
             </button>
