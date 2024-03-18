@@ -107,7 +107,7 @@ const Zimbabwe = ({ selected, setSelected }) => {
               </figure>
               <figure className="ima">
                 <img src={IMG82} alt="" />
-                <p>CN 3</p>
+                <p>Sadza with Ox tongue</p>
               </figure>
               <figure className="ima">
                 <img src={IMG83} alt="" />

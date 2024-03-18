@@ -39,6 +39,7 @@ const Footer = () => {
               <img src={App} alt="Appstore" />
             </a>
           </div>
+          <h5>Please be aware that our food may contain or come into contact with common allergens, such as dairy, eggs, wheat, soybeans, tree nuts, peanuts, fish, shellfish or wheat.</h5>
         </div>
 
         <div className="second">
@@ -103,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <p>&copy; 2023 Nourisha</p>
+      <p>&copy; 2024 Nourisha</p>
     </div>
   );
 };
