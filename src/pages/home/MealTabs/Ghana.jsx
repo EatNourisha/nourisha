@@ -1,18 +1,18 @@
 import "./nigeria.css";
 import { useState, useEffect } from "react";
-import IMG68 from "../../../assets/IMG68.jpg";
-import IMG69 from "../../../assets/IMG69.jpg";
-import IMG70 from "../../../assets/IMG70.jpg";
-import IMG71 from "../../../assets/IMG71.jpg";
-import IMG72 from "../../../assets/IMG72.jpg";
-import IMG73 from "../../../assets/IMG73.jpg";
-import IMG74 from "../../../assets/IMG74.jpg";
-import IMG75 from "../../../assets/IMG75.jpg";
-import IMG76 from "../../../assets/IMG76.jpg";
-import IMG77 from "../../../assets/IMG77.jpg";
-import IMG78 from "../../../assets/IMG78.jpg";
-import IMG79 from "../../../assets/IMG79.jpg";
-import IMG80 from "../../../assets/IMG80.jpg";
+import IMG68 from "../../../assets/IMG68.png";
+import IMG69 from "../../../assets/IMG69.png";
+import IMG70 from "../../../assets/IMG70.png";
+import IMG71 from "../../../assets/IMG71.png";
+import IMG72 from "../../../assets/IMG72.png";
+import IMG73 from "../../../assets/IMG73.png";
+import IMG74 from "../../../assets/IMG74.png";
+import IMG75 from "../../../assets/IMG75.png";
+import IMG76 from "../../../assets/IMG76.png";
+import IMG77 from "../../../assets/IMG77.png";
+import IMG78 from "../../../assets/IMG78.png";
+import IMG79 from "../../../assets/IMG79.png";
+import IMG80 from "../../../assets/IMG80.png";
 
 import {
   BsChevronDown,
@@ -102,7 +102,7 @@ const Ghana = ({ selected, setSelected }) => {
 
         <div className="content-tabs">
           {currentFood === "rice" && currenPg === 1 && (
-            <div className="contentFull contentFullT">
+            <div className="contentFull">
               <figure className="ima">
                 <img src={IMG68} alt="" />
                 <p>Assorted Fried Rice (Chicken and Shito_Hot Sauce)</p>
@@ -116,7 +116,7 @@ const Ghana = ({ selected, setSelected }) => {
       
 
           {currentFood === "swallow" && currenPg === 1 && (
-            <div className="contentFull contentFullT">
+            <div className="contentFull">
               <figure className="ima">
                 <img src={IMG70} alt="" />
                 <p>Chicken Soup</p>
@@ -189,7 +189,7 @@ const Ghana = ({ selected, setSelected }) => {
           )} */}
 
           {currentFood === "others" && currenPg === 1 && (
-            <div className="contentFull contentFullT">
+            <div className="contentFull">
               <figure className="ima">
                 <img src={IMG78} alt="" />
                 <p>Waakye, Assorted Meat, Fish, Stew and Shito</p>
@@ -204,7 +204,7 @@ const Ghana = ({ selected, setSelected }) => {
               </figure>
             </div>
           )}
-          <div className="buttons buttonsT">
+          <div className="buttons">
             <button
               onClick={prevPage}
               disabled={currenPg === 1}
@@ -223,9 +223,6 @@ const Ghana = ({ selected, setSelected }) => {
         </div>
       </div>
 
-      {/* <div className="bin">
-            <button>I Want a Meal Plan</button>
-        </div> */}
     </div>
   );
 };

@@ -61,25 +61,14 @@
     width: 100%;
     border-radius: 15.3025px;
 }
-figure{
-    height: 265px;
-}
-figure img{
-border-radius: 7.229533672332764;
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
+
 .contentFull {
     display: grid;
     gap:.7em;
     grid-template-columns: repeat(4, 1fr);
     animation: fadeIn 2s;
   }
-.contentFullT {
-    display: grid;
-    gap: 5.5rem .7em;
-  }
+
 
  @keyframes fadeIn {
     from{
@@ -112,9 +101,7 @@ object-fit: cover;
     margin-left: .5em;
     margin-top: 4em;
 }
-.buttonsT button{
-    margin-top: 9rem;
-}
+
 .chev{
     width: 44.66px;
     height: 44.66px;

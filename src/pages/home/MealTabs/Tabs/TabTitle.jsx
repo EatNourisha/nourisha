@@ -14,7 +14,7 @@ function TabTitle({ id, title, activeTab, setActiveTab }) {
         <li id={id} >
           <div className="tabSides">
             <div>
-            <input type="radio" name="" id="" />
+            <input type="radio" name="" id="" checked={activeTab === id ? true : false} readOnly/>
             </div>
           <h4>{title}</h4>
           </div>
