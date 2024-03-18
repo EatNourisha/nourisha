@@ -1,22 +1,22 @@
 import "./nigeria.css";
 import { useState, useEffect } from "react";
-import IMG81 from "../../../assets/IMG81.jpg";
-import IMG82 from "../../../assets/IMG82.jpg";
-import IMG83 from "../../../assets/IMG83.jpg";
-import IMG84 from "../../../assets/IMG84.jpg";
-import IMG85 from "../../../assets/IMG85.jpg";
-import IMG86 from "../../../assets/IMG86.jpg";
-import IMG87 from "../../../assets/IMG87.jpg";
-import IMG88 from "../../../assets/IMG88.jpg";
-import IMG89 from "../../../assets/IMG89.jpg";
-import IMG90 from "../../../assets/IMG90.jpg";
-import IMG91 from "../../../assets/IMG91.jpg";
-import IMG92 from "../../../assets/IMG92.jpg";
-import IMG93 from "../../../assets/IMG93.jpg";
-import IMG94 from "../../../assets/IMG94.jpg";
-import IMG95 from "../../../assets/IMG95.jpg";
-import IMG96 from "../../../assets/IMG96.jpg";
-import IMG97 from "../../../assets/IMG97.jpg";
+import IMG81 from "../../../assets/IMG81.png";
+import IMG82 from "../../../assets/IMG82.png";
+import IMG83 from "../../../assets/IMG83.png";
+import IMG84 from "../../../assets/IMG84.png";
+import IMG85 from "../../../assets/IMG85.png";
+import IMG86 from "../../../assets/IMG86.png";
+import IMG87 from "../../../assets/IMG87.png";
+import IMG88 from "../../../assets/IMG88.png";
+import IMG89 from "../../../assets/IMG89.png";
+import IMG90 from "../../../assets/IMG90.png";
+import IMG91 from "../../../assets/IMG91.png";
+import IMG92 from "../../../assets/IMG92.png";
+import IMG93 from "../../../assets/IMG93.png";
+import IMG94 from "../../../assets/IMG94.png";
+import IMG95 from "../../../assets/IMG95.png";
+import IMG96 from "../../../assets/IMG96.png";
+import IMG97 from "../../../assets/IMG97.png";
 
 import {
   BsChevronDown,
@@ -136,7 +136,7 @@ const Zimbabwe = ({ selected, setSelected }) => {
             </div>
           )}
           {currentFood === "swallow" && currenPg === 2 && (
-            <div className="contentFull contentFullT">
+            <div className="contentFull">
             <figure className="ima">
                 <img src={IMG89} alt="" />
                 <p>Sadza ne rurimi rwe mombe (Sadza with ox tongue)</p>
@@ -145,7 +145,7 @@ const Zimbabwe = ({ selected, setSelected }) => {
           )}
 
           {currentFood === "others" && currenPg === 1 && (
-            <div className="contentFull contentFullT">
+            <div className="contentFull">
               <figure className="ima">
                 <img src={IMG90} alt="" />
                 <p>Mazondo (cow feet)</p>
@@ -180,7 +180,7 @@ const Zimbabwe = ({ selected, setSelected }) => {
               </figure>
             </div>
           )}
-          <div className="buttons buttonsT">
+          <div className="buttons">
             <button
               onClick={prevPage}
               disabled={currenPg === 1}
@@ -199,9 +199,6 @@ const Zimbabwe = ({ selected, setSelected }) => {
         </div>
       </div>
 
-      {/* <div className="bin">
-            <button>I Want a Meal Plan</button>
-        </div> */}
     </div>
   );
 };
