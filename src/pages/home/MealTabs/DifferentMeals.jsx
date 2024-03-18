@@ -9,8 +9,8 @@ const DifferentMeals = () => {
 
   return (
     // <div className="">
-    <div className="bG">
-        <div className="meal">
+    <div className="">
+        <div className="mel">
         <h1>Our Menu</h1>
         <p>Available meals on our menu</p>
       </div>

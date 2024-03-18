@@ -7,22 +7,21 @@
     gap: 1rem;
     padding-bottom: 1rem;
   }
-  .meal h1{
+  .mel h1{
     font-family: 'Manjari';
     font-weight: 700;
     font-size: 3.125em;
     color: #2B2B2B;
-    padding: 2.5em 6.25em;
-    margin: 0 auto;
     text-align: center;
     color: #2F2F2F;
+    padding-top: 6rem;
 }
-.meal p{
+.mel p{
     font-family: 'Inter';
     font-weight: 400;
     font-size: 1.5em;
     line-height: 32px;
-    margin-top: -5em;
+    /* margin-top: -5em; */
     margin-bottom: 1em;
     color: #454545;
     text-align: center;
@@ -30,32 +29,22 @@
 }
 
 @media screen and (max-width: 1114px){
-    .meal h1{
-        /* width: 24em; */
-    }
     .tab{
-        /* padding: .9em 4em; */
+        padding: .9em 4em;
     }  
 }
 
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 1024px){
-    .meal h1{
-        /* width: 23em; */
-        text-align: center;
-    }
     .meal p{
-        /* font-size: 1.6em; */
+        font-size: 1.6em;
     } 
 }
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 670px){
     .meal h1{
         font-size: 2em;
-        width: 24em;
-        margin: 0 auto;
         line-height: 55px;
-        text-align: center;
     }
 
     .meal p{

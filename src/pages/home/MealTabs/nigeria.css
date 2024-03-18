@@ -3,27 +3,6 @@
     flex-direction: column;
     align-items: center;
 }
-.meal h1{
-    font-family: 'Manjari';
-    font-weight: 700;
-    font-size: 3.125em;
-    color: #2B2B2B;
-    padding: 2.5em 6.25em;
-    margin: 0 auto;
-    text-align: center;
-    color: #2F2F2F;
-}
-.meal p{
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 1.5em;
-    line-height: 32px;
-    margin-top: -5em;
-    margin-bottom: 1em;
-    color: #454545;
-    text-align: center;
-    letter-spacing: -0.5px;
-}
 
 .container-meals{
     display: flex;
@@ -153,11 +132,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: .5em;
-    }
-    .contentFullT{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        gap:6.5rem .5em;
     }
     .tabs{
         display: flex;
