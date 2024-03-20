@@ -54,7 +54,15 @@
 
 .account-second-container{
     background-color: #FFFFFF;
-    width: 60%;
+    width: auto;
     border-radius: 10px;
-    padding: 20px
+    padding: 20px;
+    
+}
+.active{
+    width: 370px;
+    height: 40px;
+    background-color: #F4F4F4;
+    Padding: 8px 12px 8px 12px;
+    border-radius: 8px;
 }

@@ -1,0 +1,41 @@
+.billings-modal-container h1{
+ font-weight: 600;
+ font-size: 18px;
+ line-height: 18px;
+
+}
+
+.billings-modal-center-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 70px; */
+    gap: 10px;
+    width: 242px;
+    margin: 40% 40px;
+}
+
+.billings-modal-center-container p {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.billings-modal-center-container img {
+    width: 96px;
+    height: 96px;
+}
+
+.billings-modal-center-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FE7E00;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    width: 144px;
+}
