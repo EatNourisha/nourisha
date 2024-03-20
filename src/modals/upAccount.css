@@ -17,11 +17,16 @@
     gap: 10px;
 }
 
-.update-modal-input-container1 div {
+.update-modal-input-container1 {
     display: flex;
-    flex-direction: row;
-    gap: 5px;
+    gap: 10px;
+}
+.update-modal-input-container1 div {
+    flex: 1;  
+}
 
+.update-modal-input-container1 div input {
+    width: 100%; 
 }
 .update-modal-input-container1 div input {
     padding: 10px;
@@ -35,4 +40,23 @@
     border: 1px solid #EDEDF3;
     border-radius: 5px;
     height: 56px;
+}
+
+.update-modal-button-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FE7E00;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    width: 144px;
+}
+
+.update-modal-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }

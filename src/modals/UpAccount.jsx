@@ -38,7 +38,9 @@ const UpAccount = () => {
             <label>Address</label>
             <input type="text" placeholder="Address" />
           </div>
+          <div className="update-modal-button-container">
           <button>Save</button>
+          </div>
         </div>
       </form>
     </div>
