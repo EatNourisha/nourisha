@@ -16,7 +16,7 @@ const Footer = () => {
     <div className="container container-footer">
       <footer>
         <div className="first">
-          <div className="logo">
+          <div className="logo12">
             <Link to="/">
               <img src={logo} alt="nourisha logo" />
             </Link>

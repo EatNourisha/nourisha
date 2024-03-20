@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <HelmetProvider>
-      {window.location.pathname !== "/dashboard" && <NavBar />}
+      {window.location.pathname !== "/dashboard/*" && <NavBar />}
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -36,7 +36,7 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="affiliate" element={<Affiliate />} />
             <Route path="party-plan" element={<PartyPlan />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
           </Routes>
         </main>
       </HelmetProvider>

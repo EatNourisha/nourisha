@@ -1,14 +1,13 @@
 import React from "react";
-import Logo from "../../assets/dashboardLogo.png";
 import { NavLink, Link } from "react-router-dom";
-import { ImProfile } from "react-icons/im";
-import { CiCreditCard2 } from "react-icons/ci";
-import { MdEditNote, MdOutlineRateReview } from "react-icons/md";
-import { FaUserFriends } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
-import { RiLogoutCircleLine } from "react-icons/ri";
+import { RxDashboard } from "react-icons/rx";
+import { IoMdTime } from "react-icons/io";
+import { BiParty } from "react-icons/bi";
+import { MdOutlineFoodBank } from "react-icons/md";
+import { RiLogoutCircleLine, RiAccountCircleLine } from "react-icons/ri";
 import "./sidebar.css";
 import Logo1 from "../../assets/group16.png";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -16,145 +15,91 @@ const Sidebar = () => {
   const handleModal = () => {
     setOpenModal(!openModal);
   };
+
+ const { logout } = useAuth();
+
+
   return (
     <>
       <nav className="sidenav">
-        <div className="sidenav-container">
-          <div>
-            <Link to="/" className="link-log-side">
-              <div className="logo">
-                <div>
-                  <img src={Logo1} alt="Nourisha Logo" />
-                </div>
-                <div className="logo-text">
-                  <span>nourisha</span>
-                </div>
+        <div className="sidebar-logo">
+          <Link to="/" >
+            <div className="logo">
+              <div className="logo-text">
+                <img src={Logo1} alt="Nourisha Logo" />
               </div>
-            </Link>
-          </div>
-          <div>
-            <ul>
-              <li>
-                <NavLink
-                  // className={({ isActive }) =>
-                  //   isActive || window.location.pathname.includes('dashboard/')
-                  //     ? 'sidenav-link active'
-                  //     : 'sidenav-link'
-                  // }
-                  to="profile"
-                >
-                  <div className="sidebar-link-content">
-                    <ImProfile className="sidebar-icon" />
-                    <span>Profile</span>
-                  </div>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  // className={({ isActive }) =>
-                  //   isActive || window.location.pathname.includes('dashboard/')
-                  //     ? 'sidenav-link active'
-                  //     : 'sidenav-link'
-                  // }
-                  to="billings"
-                >
-                  <CiCreditCard2 className="sidebar-icon" />
-                  <span>Billing</span>
-                </NavLink>
-              </li>
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive || window.location.pathname.includes('loans/')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="loans"
-                > */}
-                <CiCreditCard2 className="sidebar-icon" />
-                <span>Subscription AutoRenewal</span>
-                {/* </NavLink> */}
-              </li>
-
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive ||
-                    window.location.pathname.includes('/investments')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="investments"
-                > */}
-                <MdEditNote className="sidebar-icon" />
-                <span>Edit Food Services</span>
-                {/* </NavLink> */}
-              </li>
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive || window.location.pathname.includes('guarantors/')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="users"
-                > */}
-                <MdEditNote className="sidebar-icon" />
-                <span>Edit Food Preferences</span>
-                {/* </NavLink> */}
-              </li>
-
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive || window.location.pathname.includes('wallet/')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="admins"
-                > */}
-                <FaUserFriends className="sidebar-icon" />
-                <span>Refer A friend</span>
-                {/* </NavLink> */}
-              </li>
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive || window.location.pathname.includes('limit/')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="limit"
-                > */}
-                <MdOutlineRateReview className="sidebar-icon" />
-                <span>Review</span>
-                {/* </NavLink> */}
-              </li>
-              <li>
-                {/* <NavLink
-                  className={({ isActive }) =>
-                    isActive || window.location.pathname.includes('wallet/')
-                      ? 'sidenav-link active'
-                      : 'sidenav-link'
-                  }
-                  to="wallets"
-                > */}
-                <IoSettingsOutline className="sidebar-icon" />
-                <span>Settings</span>
-                {/* </NavLink> */}
-              </li>
-            </ul>
-          </div>
-          <div>
-            <button
-              type="button"
+              <div className="logo-text">
+                <span>nourisha</span>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="sidenav-container">
+          <ul className="list-item-dashboard">
+            <li>
+              <NavLink
+                to="overview"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <div className="sidebar-link-content">
+                  <RxDashboard className="sidebar-icon" />
+                  <span>Dashboard</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="account"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <div className="sidebar-link-content">
+                  <RiAccountCircleLine className="sidebar-icon" />
+                  <span>Account</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="party"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <div className="sidebar-link-content">
+                  <BiParty className="sidebar-icon" />
+                  <span>Party plan</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="single-plan"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <div className="sidebar-link-content">
+                  <MdOutlineFoodBank className="sidebar-icon" />
+                  <span>Single orders</span>
+                </div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="history"
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+              >
+                <div className="sidebar-link-content">
+                  <IoMdTime className="sidebar-icon" />
+                  <span>History</span>
+                </div>
+              </NavLink>
+            </li>
+            <div
               onClick={handleModal}
-              style={{ color: "white" }}
+              style={{ color: "#FF4159" }}
+              className="logout-dashboard"
             >
-              <RiLogoutCircleLine />
+              <RiLogoutCircleLine className="sidebar-icon" />
               <span>Log out</span>
-            </button>
-          </div>
+            </div>
+          </ul>
         </div>
       </nav>
 
@@ -176,7 +121,7 @@ const Sidebar = () => {
                 <button
                   type="button"
                   className="secondary-btn px-4"
-                  //   onClick={handleLogOut}
+                    onClick={()=> logout()}
                 >
                   Yes
                 </button>
