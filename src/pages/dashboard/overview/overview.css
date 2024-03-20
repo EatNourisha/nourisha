@@ -1,6 +1,8 @@
 .overview-container {
+  display: flex;
   background-color: #f4f4f4;
   padding: 10px;
+  gap: 10px;
 }
 
 .overview-container-first {
@@ -119,4 +121,24 @@
  justify-content: center;
 align-items: center;
 color: white;
+}
+
+.overview-last-container{
+  background-color: #FFF2EB;
+ width: 351px;
+ height: 280px;
+ padding: 18px 17px 18px 17px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.overview-last-container button {
+  background: linear-gradient(to right, #FE7E00, #FE0000);
+  border-radius: 8px;
+  padding: 10px;
+  width: 198px;
+  height: 36px;
+  color: white;
 }

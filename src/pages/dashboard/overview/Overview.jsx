@@ -5,8 +5,12 @@ import useMeal from "../../../hooks/useMeal";
 
 const Overview = () => {
   const { data, loading, error } = useMeal();
- 
-  console.log("----", data);
+  // const [page, setPage] = useState(1);
+  // console.log("----", data);
+
+  //  const handleViewMore = () => {
+  //   setPage(page + 1);
+  // };
   return (
     <div className="overview-container">
       <div className="overview-container-first">
@@ -54,7 +58,11 @@ const Overview = () => {
           )}
         </div>
       </div>
-      <div></div>
+      <div className="overview-last-container">
+        <h3>Unlock 60+ Premium Menu</h3>
+        <button>Subscribe to a meal plan</button>
+        <p>Treading Menu</p>
+      </div>
     </div>
   );
 };
