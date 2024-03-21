@@ -109,23 +109,15 @@ const Sidebar = () => {
             <div className="close_modal" onClick={handleModal}>
               X
             </div>
-            <div className="imgg">
-              <img
-                // src={`${BaseDirectories.IMAGES_DIR}/cancel.png`}
-                alt=""
-              />
-            </div>
-            <div className="logout_modal justify-content-center py-3">
+            <div className="logout_modal">
               <h3>Are you sure you want to logout? </h3>
-              <div className="py-5 d-flex gap-3">
+              <div className="logout-button-container">
                 <button
-                  type="button"
-                  className="secondary-btn px-4"
                     onClick={()=> logout()}
                 >
                   Yes
                 </button>
-                <button onClick={handleModal} classes="primary-btn px-4">
+                <button onClick={handleModal} >
                   No
                 </button>
               </div>

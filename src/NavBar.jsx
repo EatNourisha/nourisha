@@ -11,6 +11,7 @@ import {
 import PartyLogo from "../src/assets/noto_party-popper.png";
 import { BsCart2 } from "react-icons/bs";
 import useAuth from "./hooks/useAuth";
+import Cart from "./modals/Cart";
 
 const NavBar = () => {
   const navRef = useRef();
@@ -20,6 +21,10 @@ const NavBar = () => {
 
   const location = useLocation();
   const [navHeading, setNavHeading] = useState("");
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const toggleCartModal = () => {
+    setIsCartModalOpen(!isCartModalOpen);
+  };
 
   useEffect(() => {
     const determineHeading = () => {
@@ -65,7 +70,7 @@ const NavBar = () => {
               <div className="cont-nav-left">
                 <img src={PartyLogo} alt="party-logo" />
               </div>
-              <div className="dashboard-cart-container">
+              <div className="dashboard-cart-container" onClick={toggleCartModal}>
                 <span style={{color: "#fe7e00"}}>Cart</span>
                 <BsCart2 style={{color: "#fe7e00"}}/>
                 <div>0</div>
@@ -133,6 +138,8 @@ const NavBar = () => {
           </div>
         </div>
       )}
+
+{isCartModalOpen && <Cart onClose={() => setIsCartModalOpen(false)} />}
     </header>
   );
 };
