@@ -71,17 +71,6 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to="single-plan"
-                className={({ isActive }) => (isActive ? "active-link" : "")}
-              >
-                <div className="sidebar-link-content">
-                  <MdOutlineFoodBank className="sidebar-icon" />
-                  <span>Single orders</span>
-                </div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="history"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
@@ -130,3 +119,15 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+{/* <li>
+<NavLink
+  to="single-plan"
+  className={({ isActive }) => (isActive ? "active-link" : "")}
+>
+  <div className="sidebar-link-content">
+    <MdOutlineFoodBank className="sidebar-icon" />
+    <span>Single orders</span>
+  </div>
+</NavLink>
+</li> */}
