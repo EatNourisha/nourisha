@@ -91,9 +91,9 @@ const NavBar = () => {
 
           <div className="mobile-menus">
             <nav ref={navRef}>
-              <NavLink to="/" onClick={showNavBar}>
+              {/* <NavLink to="/" onClick={showNavBar}>
                 Home
-              </NavLink>
+              </NavLink> */}
               <NavLink to="why-nourisha" onClick={showNavBar}>
                 Why Nourisha?
               </NavLink>

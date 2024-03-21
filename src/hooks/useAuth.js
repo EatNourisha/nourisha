@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { post } from "../utils/makeRequest";
-import useAuthStore from "../stores/Auth";
+import useAuthStore from "../stores/auth";
 import useErrorStore from "../stores/error";
 import { useNavigate } from 'react-router-dom';
 
