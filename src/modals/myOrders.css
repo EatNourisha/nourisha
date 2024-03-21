@@ -1,0 +1,22 @@
+.myorders-modal-container h1{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.myorders-modal-center-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+    color: #5E5D58;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    width: 144px;
+}
+
+.myorders-modal-center-container{
+    margin-top: 50px;
+}

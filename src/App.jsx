@@ -12,16 +12,21 @@ import WeAreHiring from "./pages/hiring/WeAreHiring";
 import { HelmetProvider } from "react-helmet-async";
 import Affiliate from "./pages/affiliate/Affiliate";
 import PartyPlan from "./pages/partyPlan/PartyPlan";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <HelmetProvider>
-        <NavBar />
+      {window.location.pathname !== "/dashboard/*" && <NavBar />}
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="why-nourisha" element={<WhyNourisha />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="contact-us" element={<ContactUs />} />
@@ -31,6 +36,7 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="affiliate" element={<Affiliate />} />
             <Route path="party-plan" element={<PartyPlan />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
           </Routes>
         </main>
       </HelmetProvider>

@@ -1,0 +1,145 @@
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 20%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-right: 1px solid gray;
+}
+
+.sidebar-logo{
+  margin-bottom: 40px;
+  padding-top: 15px;
+}
+
+.logout-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+ .logo-text span {
+  color: #5c556c;
+  margin-left: -35px;
+  padding-top: 20px;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 24px;
+  
+}
+
+.logo img {
+  height: 20%;
+  width: 50%;
+  object-fit: cover;
+}
+
+.sidenav-container ul {
+  padding: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.active-link .sidebar-link-content {
+  color: #fe7e00;
+  padding: 8px;
+  background-color: #fff2e6;
+  border-radius: 8px;
+  /* width: 100%; */
+}
+
+/* .active-link .sidebar-link-content{
+  
+} */
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-link-content {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #5c556c;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-header .logo {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidenav {
+    display: none;
+  }
+}
+
+.dc-popp-modal {
+  width: 100%;
+  height: 100vh;
+  transform: scale(1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999999999;
+  background-color: rgba(58, 65, 80, 0.3);
+  backdrop-filter: blur(3px);
+  transition: 0.2s linear;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dc-popp-modal .dc-modal {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 10px 30px;
+}
+
+@media (max-width: 600px) {
+  .dc-popp-modal .dc-modal {
+    width: 90%;
+  }
+}
+
+.dc-popp-modal .dc-modal .logout_modal {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dc-popp-modal .dc-modal .close_modal {
+  font-size: larger;
+  cursor: pointer;
+  text-align: end;
+}
+
+.dc-popp-modal .dc-modal .imgg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
