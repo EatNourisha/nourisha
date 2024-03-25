@@ -19,7 +19,7 @@ const Enjoy = () => {
         </div>
         <div className="check">
           <AiFillCheckCircle className="i" />
-          <span>No market run. No prep-time. No extra delivery fees</span>
+          <span>No market run. No prep-time. No extra delivery charge</span>
         </div>
         <div className="check">
           <AiFillCheckCircle className="i" /> <span>Just heat and eat</span>

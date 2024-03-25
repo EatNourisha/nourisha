@@ -1,11 +1,26 @@
-import useSWR from "swr";
-import { post } from "../utils/makeRequest";
+import useSWR, { mutate } from "swr";
+import { put } from "../utils/makeRequest";
 
-export default function useCart() {
-  const { data, error } = useSWR(`cart/`, post);
+const useCart = () => {
+  const { data, error } = useSWR(`cart/`, put);
+
+  
+  const addToCart = async (mealId) => {
+    try {
+      await put(`cart`, { itemId: mealId, quantity: 1 }); 
+      mutate("cart/");
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+      throw error; 
+    }
+  };
+
   return {
-    data: data?.data || [], 
+    data: data?.data || [],
     isLoading: !error && !data,
     error,
+    addToCart, 
   };
-}
+};
+
+export default useCart;

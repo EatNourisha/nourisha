@@ -2,15 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
 import useMeal from "../../../hooks/useMeal";
+import useCart from "../../../hooks/useCart";
 
 const Overview = () => {
   const { data, loading, error } = useMeal();
-  // const [page, setPage] = useState(1);
-  // console.log("----", data);
+  const [cartItems, setCartItems] = useState([]);
 
-  //  const handleViewMore = () => {
-  //   setPage(page + 1);
-  // };
+  const handleClickAddToCart = async (mealId) => {
+    try {
+      await useCart(mealId);
+     
+    } catch (error) {
+      // Handle error scenario
+      console.error('Error adding item to cart:', error);
+    }
+  };
+ 
   return (
     <div className="overview-container">
       <div className="overview-container-first">
