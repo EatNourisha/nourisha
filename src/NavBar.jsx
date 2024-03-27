@@ -12,18 +12,26 @@ import PartyLogo from "../src/assets/noto_party-popper.png";
 import { BsCart2 } from "react-icons/bs";
 import useAuth from "./hooks/useAuth";
 import Cart from "./modals/Cart";
+import CheckOut from "./modals/CheckOut";
+import useGetCart from "./hooks/useGetCart";
 
 const NavBar = () => {
   const navRef = useRef();
   const showNavBar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+  const { data } = useGetCart();
 
   const location = useLocation();
   const [navHeading, setNavHeading] = useState("");
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const toggleCartModal = () => {
     setIsCartModalOpen(!isCartModalOpen);
+  };
+  const handleProceedToCheckout = () => {
+    setIsCartModalOpen(false); 
+    setIsCheckoutModalOpen(true); 
   };
 
   useEffect(() => {
@@ -70,14 +78,17 @@ const NavBar = () => {
               <div className="cont-nav-left">
                 <img src={PartyLogo} alt="party-logo" />
               </div>
-              <div className="dashboard-cart-container" onClick={toggleCartModal}>
-                <span style={{color: "#fe7e00"}}>Cart</span>
-                <BsCart2 style={{color: "#fe7e00"}}/>
-                <div>0</div>
+              <div
+                className="dashboard-cart-container"
+                onClick={toggleCartModal}
+              >
+                <span style={{ color: "#fe7e00" }}>Cart</span>
+                <BsCart2 style={{ color: "#fe7e00" }} />
+                <div>{data?.items?.totalCount}</div>
               </div>
             </div>
             <div className="dashboard-last-div">
-              <RiAccountCircleLine style={{color: "#fe7e00"}}/>
+              <RiAccountCircleLine style={{ color: "#fe7e00" }} />
               <span>Account</span>
               <RiArrowDropDownLine />
             </div>
@@ -139,23 +150,18 @@ const NavBar = () => {
         </div>
       )}
 
-{isCartModalOpen && <Cart onClose={() => setIsCartModalOpen(false)} />}
+      {isCartModalOpen && (
+        <Cart
+          onClose={() => setIsCartModalOpen(false)}
+          onProceedToCheckout={handleProceedToCheckout}
+        />
+      )}
+      {isCheckoutModalOpen && (
+        <CheckOut onClose={() => setIsCheckoutModalOpen(false)} />
+      )}
     </header>
   );
 };
 
 export default NavBar;
-// const stripe = require('stripe')('sk_test_yourSecretKey');
 
-// async function createPercentOffCoupon() {
-//   const coupon = await stripe.coupons.create({
-//     percent_off: 10,
-//     duration: 'repeating',
-//     duration_in_months: 3,
-//     max_redemptions: 10,
-//   });
-
-//   console.log(coupon);
-// }
-
-// createPercentOffCoupon();

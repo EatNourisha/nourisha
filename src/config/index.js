@@ -3,6 +3,8 @@ const configs = {
     // baseUrl: "https://api-stage.eatnourisha.com/v1",
     baseUrl: "https://api.eatnourisha.com/v1",
 
+    authKey: "x231nxj",
+
 };
 
 export default configs;

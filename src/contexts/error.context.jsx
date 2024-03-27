@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect } from "react";
-import { toast } from 'react-toastify';
-// import { useToast } from "@chakra-ui/react";
+// import { toast } from 'react-toastify';
+import { useToast } from "@chakra-ui/react";
 import useAuth from "../hooks/useAuth";
 import useErrorStore from "../stores/error";
 import toLower from "lodash/toLower";
@@ -8,7 +8,7 @@ import toLower from "lodash/toLower";
 const ErrorContext = createContext({});
 
 const ErrorContextProvider = (props) => {
- 
+  const toast = useToast();
   const { logout } = useAuth();
   const { actions, next } = useErrorStore();
 

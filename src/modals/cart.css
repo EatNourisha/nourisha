@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: scroll;
 }
 
 .cart-content {
@@ -53,6 +54,7 @@
 .cart-items {
   margin-bottom: 20px;
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 .cart-item {
