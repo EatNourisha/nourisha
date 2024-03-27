@@ -90,6 +90,7 @@
   color: #FF4159;
   font-size: 14px;
   line-height: 21px;
+  cursor: pointer;
 }
 
 .cart-plus-minus-container{
