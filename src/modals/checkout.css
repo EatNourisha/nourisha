@@ -38,4 +38,15 @@
     font-weight: 400;
     font-size: 15px;
   }
+
+  .proceed-checkout-btn {
+    display: block; 
+    margin: 20px auto 0; 
+    padding: 10px 20px; 
+    border: none; 
+    background-color: #FE7E00; 
+    color: white; 
+    cursor: pointer; 
+    border-radius: 4px; 
+  }
   
