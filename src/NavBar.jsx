@@ -30,8 +30,8 @@ const NavBar = () => {
     setIsCartModalOpen(!isCartModalOpen);
   };
   const handleProceedToCheckout = () => {
-    setIsCartModalOpen(false); 
-    setIsCheckoutModalOpen(true); 
+    setIsCartModalOpen(false);
+    setIsCheckoutModalOpen(true);
   };
 
   useEffect(() => {
@@ -51,11 +51,7 @@ const NavBar = () => {
         setNavHeading("Navigation");
       }
     };
-
-    // Call the function initially and whenever location changes
     determineHeading();
-
-    // Clean up any effects when component unmounts
     return () => {
       // Optionally, you can clean up any subscriptions or timers here
     };
@@ -107,9 +103,6 @@ const NavBar = () => {
 
           <div className="mobile-menus">
             <nav ref={navRef}>
-              {/* <NavLink to="/" onClick={showNavBar}>
-                Home
-              </NavLink> */}
               <NavLink to="why-nourisha" onClick={showNavBar}>
                 Why Nourisha?
               </NavLink>
@@ -128,24 +121,18 @@ const NavBar = () => {
               <a href="https://blog.eatnourisha.com/" onClick={showNavBar}>
                 Blog
               </a>
+              <a href="/register">Get Started</a>
+              <a href="/login">Login</a>
+
               {/* <p to="liwe-are-hiring">We Are Hiring</p> */}
               <button className="nav-close-btn" onClick={showNavBar}>
                 <FaTimes />
               </button>
             </nav>
+
             <button className="nav-btn" onClick={showNavBar}>
               <FaBars />
             </button>
-          </div>
-          <div className="btn-container-navbar">
-            <div className="btn">
-              <a href="/register">
-                <button>Get Started</button>
-              </a>
-            </div>
-            <div className="btn">
-              <a href="/login">Login</a>
-            </div>
           </div>
         </div>
       )}
@@ -164,4 +151,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

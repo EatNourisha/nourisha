@@ -12,7 +12,7 @@ const useCart = () => {
     setIsLoading(true);
     try {
      
-      const response = await put(`cart/`, itemData);
+      const response = await put(`cart`, itemData);
      
       if (response.data) {
       
