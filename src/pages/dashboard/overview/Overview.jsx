@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
 import useMeal from "../../../hooks/useMeal";
 import useCart from '../../../hooks/useCart';
 
 const Overview = () => {
-  const { data, loading, error } = useMeal();
+  const [page, setPage] = useState(1);
+  const { data, loading, error } = useMeal(page);
   const { addItemToCart } = useCart();
+  const itemsPerPage = 10; // Assuming you load 10 items per page, adjust based on your actual limit
+  const totalItems = data?.totalCount; 
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handleAddToCart = async (meal) => {
 
@@ -23,7 +27,17 @@ const Overview = () => {
         // Handle the error (e.g., show an error message to the user)
     }
 };
+const handleViewMore = () => {
+  if (page < totalPages) {
+    setPage((prevPage) => prevPage + 1);
+  }
+};
 
+const handleViewLess = () => {
+  setPage((prevPage) => Math.max(prevPage - 1, 1));
+};
+
+console.log({ page, totalItems });
  
   return (
     <div className="overview-container">
@@ -45,7 +59,12 @@ const Overview = () => {
         </div>
         <div className="overview-meal-heading">
           <h3>Order a single meal</h3>{" "}
-          <p >View more</p>
+          {page > 1 && (
+          <p onClick={handleViewLess}>View Less</p>
+        )}
+        {page < totalPages && (
+          <p onClick={handleViewMore} className="overview-meal-heading-p">View More</p>
+        )}
         </div>
         <div className="overview-meal-container">
           {loading ? (
