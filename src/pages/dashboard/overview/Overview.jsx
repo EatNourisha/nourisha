@@ -32,7 +32,7 @@ const Overview = () => {
       loading = loadingGhana;
       break;
     default:
-      currentData = { data: [] }; // Default empty data
+      currentData = { data: [] }; 
       loading = false;
   }
 
@@ -125,7 +125,7 @@ const Overview = () => {
                 <img
                   src={meal.image_url}
                   alt={meal.name}
-                  style={{ width: "138px", height: "142px" }}
+                  style={{ width: "215px", height: "142px" }}
                 />
                 <h3>{meal.name}</h3>
 

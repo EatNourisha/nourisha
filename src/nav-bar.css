@@ -143,6 +143,10 @@ gap: 20px;
   border-radius: 24px;
   padding: 7px;
   color: #F2F4F7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 .dashboard-cart-container span {
   font-weight: 500;

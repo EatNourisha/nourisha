@@ -6,11 +6,7 @@ import useGetCart from "../hooks/useGetCart";
 const CheckOut = ({ onClose }) => {
   const { placeOrder } = usePlaceOrder();
   const { data } = useGetCart();
-  console.log(data.cart.session_id
-    );
-
-
-
+ 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");

@@ -28,7 +28,7 @@ const Login = () => {
     if (isSignedIn && token) {
       setTimeout(() => {
         navigate('/dashboard/overview');
-      }, 0);
+      }, 5000);
     }
   }, [isSignedIn, token]);
   const isDisabled = useMemo(

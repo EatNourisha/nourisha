@@ -31,10 +31,10 @@ export default function useAuth() {
       setStatus('loading');
       try {
         const response = await post('/auth/login', data);
-        const res = response.data; // Ensuring that the response from 'post' contains the necessary data
+        const res = response.data;
     
         if (res && res.token) {
-          // Saving the token in localStorage or any other storage as per your application's architecture
+         
           ls.set('authToken', res.token);
     
           persist({
@@ -43,7 +43,7 @@ export default function useAuth() {
             isVerified: res.payload.is_verified,
             token: res.token,
           });
-          setStatus('success'); // Update status to success
+          setStatus('success'); 
           showToast({
             title: "Login Successful",
             description: "You have successfully logged in.",
@@ -52,12 +52,12 @@ export default function useAuth() {
             isClosable: true,
           });
         } else {
-          // If the response does not have a token, throw an error
+         
           throw new Error('Login failed: No token received');
         }
       } catch (error) {
         console.error('Login Error', error);
-        setStatus('error'); // Update status to error
+        setStatus('error'); 
         actions?.setError({
           action: { type: 'auth/login', payload: data },
           message: error.message || 'An unknown error occurred',
@@ -73,45 +73,10 @@ export default function useAuth() {
         });
       }
     },
-    [setStatus, persist, actions] // Dependencies for useCallback
+    [setStatus, persist, actions]
   );
   
-  
 
-  // const login = useCallback(
-  //   async (data) => {
-  //     setStatus('loading');
-  //     try {
-  //       const response = await post('/auth/login', data);
-  //       const res = response.data; // Assuming the response from 'post' directly contains the data
-  
-  //       if (res && res.token) {
-  //         // Assuming 'res' contains 'token' and 'payload' directly
-  //         ls.set('authToken', res.token); 
-  
-  //         persist({
-  //           ...res.payload,
-  //           sub: res.payload.sub, // This seems redundant unless there's additional logic
-  //           isVerified: res.payload.is_verified,
-  //           token: res.token,
-  //         });
-  //         setStatus('success');
-  //       } else {
-  //         throw new Error('Login failed: No token received');
-  //       }
-  //     } catch (error) {
-  //       console.error('Login Error', error);
-  //       setStatus('error');
-  //       actions?.setError({
-  //         action: { type: 'auth/login', payload: data },
-  //         message: error.message || 'An unknown error occurred',
-  //         status: error.statusCode || 500,
-  //         showUser: true,
-  //       });
-  //     }
-  //   },
-  //   [setStatus, persist, actions] // Ensure these dependencies are correctly managed in your component
-  // );
   
   const register = useCallback(
     async (data) => {
@@ -125,6 +90,14 @@ export default function useAuth() {
             isVerified: res?.payload.is_verified,
             token: res.token,
           });
+          setStatus('success'); 
+          showToast({
+            title: "Register Successful",
+            description: "You have successfully Registered",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          })
       } catch (error) {
         actions.setError({
           actions: { type: "auth/register", payload: data },
@@ -132,8 +105,15 @@ export default function useAuth() {
           status: error?.statusCode,
           showUser: true,
         });
+        showToast({
+          title: "Registration Failed",
+          description: error.message || "An error occurred while registering. Please try again.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
       }
-      setStatus("success");
+    
     },
     [setStatus, persist, actions]
   );

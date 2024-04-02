@@ -2,6 +2,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import { put } from '../utils/makeRequest';
 import { destroy } from  '../utils/makeRequest';
+import { showToast } from "../utils/toast";
 
 const useCart = () => {
   const { data, error, mutate } = useSWR('cart/', put);
@@ -19,6 +20,13 @@ const useCart = () => {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
         }, false); 
+        showToast({
+          title: "Add to Cart",
+          description: "Item added to cart successfully.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
       }
       setIsLoading(false);
     } catch (error) {
