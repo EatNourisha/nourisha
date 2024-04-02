@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useSWR from 'swr';
 import { destroy } from  '../utils/makeRequest';
+import { showToast } from "../utils/toast";
 
 const useDelCart = () => {
   const { data, error, mutate } = useSWR('cart', destroy);
@@ -18,6 +19,13 @@ const useDelCart = () => {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
         }, false); 
+        showToast({
+          title: "Remove from Cart",
+          description: "Item removed from cart successfully.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
       }
       setIsLoading(false);
     } catch (error) {

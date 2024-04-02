@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 import { post } from '../utils/makeRequest';
 import { useState } from 'react';
+import { showToast } from "../utils/toast";
 
 const usePlaceOrder = () => {
   const { data, error, mutate } = useSWR('orders/', post);
@@ -15,6 +16,13 @@ const usePlaceOrder = () => {
             mutate((currentData) => {
                 return { ...currentData, ...response.data };   
             }, false)
+            showToast({
+                title: "Place Order",
+                description: "Order placed successfully.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
         } 
         setIsLoading(false); 
     } catch (error) {
