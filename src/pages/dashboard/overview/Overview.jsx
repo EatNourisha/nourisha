@@ -107,12 +107,14 @@ const Overview = () => {
 
         <div className="overview-meal-heading">
           <h3>Order a single meal</h3>{" "}
-          {page > 1 && <p onClick={handleViewLess}>View Less</p>}
+          <div className="overview-meal-pagination-container">
+          {page > 1 && <button onClick={handleViewLess}>Previous</button>}
           {page < totalPages && (
-            <p onClick={handleViewMore} className="overview-meal-heading-p">
-              View More
-            </p>
+            <button onClick={handleViewMore} className="overview-meal-heading-p">
+              Next
+            </button>
           )}
+          </div>
         </div>
         <div className="overview-meal-container">
           {loading ? (
@@ -125,7 +127,8 @@ const Overview = () => {
                 <img
                   src={meal.image_url}
                   alt={meal.name}
-                  style={{ width: "215px", height: "142px" }}
+                  style={{ width: "223px", height: "136px",  }}
+                  className="meal-image"
                 />
                 <h3>{meal.name}</h3>
 

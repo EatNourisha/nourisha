@@ -64,6 +64,9 @@
 .overview-meal-heading {
   display: flex;
   justify-content: space-between;
+  width: 730px;
+  align-items: center;
+ 
 }
 
 .overview-meal-heading h3 {
@@ -71,23 +74,46 @@
   font-size: 16px;
   line-height: 24px;
   color: #303237;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
-.overview-meal-heading p {
+.overview-meal-pagination-container{
+  display: flex;
+  width: 220px;
+  justify-content: flex-end;
+  gap: 10px;
+  
+}
+
+
+
+.overview-meal-heading button {
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
   color: #fe7e00;
+  padding: 10px;
+  background-color: #FFE8D1;
+  border-radius: 5px;
+  width: 100px;
 }
 
 .meal-container {
-  background-color: #f4f5f8;
+  background-color: #F4F5F8;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  width: 223px;
+  height: 275px;
+}
+
+.meal-image{
+  border-radius: 12px 12px 0 0;
 }
 
 .meal-container h3 {
@@ -99,6 +125,7 @@
 .cart-container {
   width: 100%;
   display: flex;
+  padding: 10px;
 }
 
 .add-to-cart {

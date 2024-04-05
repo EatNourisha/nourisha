@@ -47,10 +47,9 @@ dehydrate,
           title: "Login Successful",
           description: "You have successfully logged in.",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
         });
-        navigate('/dashboard'); // Navigate to dashboard upon successful login
       } else {
         throw new Error('Login failed: No token received');
       }

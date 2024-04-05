@@ -27,9 +27,11 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
       quantity: 1,
     };
 
+    // console.log("itemData", itemData);
+
     try {
       await removeItemToCart(itemData);
-      alert("Item removed from cart!");
+      
     } catch (error) {
       console.error("Failed to remove item from cart", error);
     }
