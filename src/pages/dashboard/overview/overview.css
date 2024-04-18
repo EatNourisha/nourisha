@@ -23,22 +23,34 @@
   padding: 10px 10px 0 10px;
 }
 
+.overview-container-img{
+  max-width: 130px;
+  align-self: flex-end;
+}
+
+.overview-container-img img{
+  width: 100%;
+}
+
 .overview-top-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 368px;
+  max-width: 50%;
 }
 
 .overview-top-content h2 {
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
   line-height: 24px;
+  letter-spacing: -0.015em;  
 }
+
 .overview-top-content p {
-  font-weight: 500;
   font-size: 14px;
+  font-weight: 500;
   line-height: 21px;
+  letter-spacing: -0.015em;
+  margin: 4px 0 10px 0;
 }
 
 .overview-top-content button {
@@ -54,41 +66,37 @@
   margin-bottom: 10px;
 }
 
+.loading-container{
+  height: 75vh;
+}
+
 
 .overview-meal-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-gap: 14px;
 }
 
 .overview-meal-heading {
   display: flex;
   justify-content: space-between;
-  width: 730px;
   align-items: center;
- 
+  margin: 24px 0 16px 0;
 }
 
-.overview-meal-heading h3 {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+.overview-meal-heading .overview-meal-heading-title {
   color: #303237;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.015em;
 }
 
 .overview-meal-pagination-container{
   display: flex;
-  width: 220px;
-  justify-content: flex-end;
-  gap: 10px;
-  
+  align-items: center;
+  gap: 12px;
 }
-
-
 
 .overview-meal-heading button {
   font-weight: 500;
@@ -101,43 +109,64 @@
   width: 100px;
 }
 
+.overview-meal-heading .pages-data{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.015em;
+}
+
 .meal-container {
-  background-color: #F4F5F8;
+  background-color: rgba(244, 245, 248, 1);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 223px;
-  height: 275px;
+}
+
+.meal-image-container{
+  margin-top: 8px;
+  width: 100%;
+  align-self: center;
 }
 
 .meal-image{
-  border-radius: 12px 12px 0 0;
+  margin: auto;
+  border-radius: 12px;
+  width: 94%;
+  max-height: 150px;
+  object-fit: cover;
 }
 
-.meal-container h3 {
-  font-weight: 500;
-  font-size: 16px;
-  text-align: center;
+.meal-details-container{
+  margin: 0 9.74px;
 }
 
-.cart-container {
-  width: 100%;
-  display: flex;
-  padding: 10px;
+.meal-details-container .meal-name{
+  font-weight: 400;
+  font-size: 17.04px;
+  line-height: 24.34px;
 }
 
-.add-to-cart {
-  width: 24px;
-  height: 24px;
+.meal-details-container .meal-price{
+  color: rgba(254, 126, 0, 1);
+  font-weight: 700;
+  font-size: 19.47px;
+  line-height: 29.21px;
+}
+
+
+.add-to-cart-button {
+  width: 29.21px;
+  height: 29.21px;
   border-radius: 16px;
   background-color: #fe7e00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  cursor: pointer;
+  box-shadow: 0px 4.87px 4.87px 0px rgba(254, 126, 0, 0.3);
+  align-self: flex-end;
+  margin: 0 9.74px 5.74px 0;
+}
+
+.add-to-cart-button img{
+  margin: auto;
 }
 
 .overview-last-container {

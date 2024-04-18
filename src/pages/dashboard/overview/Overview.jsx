@@ -5,6 +5,8 @@ import useMeal from "../../../hooks/useMeal";
 import useCart from "../../../hooks/useCart";
 import useMealZimbabwe from "../../../hooks/useMealZimbabwe";
 import useMealGhana from "../../../hooks/useMealGhana";
+import AddIcon from "../../../assets/icons/add-icon.svg"
+import Loader from "../../../components/loader";
 
 const Overview = () => {
   const [page, setPage] = useState(1);
@@ -71,79 +73,107 @@ const Overview = () => {
     setIsDropdownOpen(false);
   };
 
+  // Render main content
+
+  const renderMeals = () => {
+    if (loading) {
+      return (
+        <div className="loading-container">
+          <Loader/>
+        </div>
+      )
+    }
+
+    if (error) {
+      return (
+        <div>
+
+        </div>
+      )
+    }
+
+    return (
+      <>
+        <div className="overview-meal-container">
+          {
+            currentData?.data?.map((meal) => (
+              <div key={meal._id} className="meal-container">
+                <div className="meal-image-container">
+                  <img
+                    src={meal.image_url}
+                    alt={meal.name}
+                    className="meal-image"
+                  />
+                </div>
+                <div className="meal-details-container">
+                  <h3 className="meal-name">{meal.name}</h3>
+                  <p className="meal-price">£{meal.price.amount}</p>
+                </div>
+                <button
+                  className="add-to-cart-button"
+                  onClick={() => handleAddToCart(meal)}
+                >
+                  <img src={AddIcon} alt="Add Icon"/>
+                </button>
+              </div>
+            ))
+          }
+        </div>
+      </>
+    )
+  }
+
   return (
     <div className="overview-container">
       <div className="overview-container-first">
         <div className="overview-container-first-section">
-          <img src={man} alt="annouce" />
+          <div className="overview-container-img">
+            <img src={man} alt="annouce" />
+          </div>
           <div className="overview-top-content">
             <h2>Get £10 for Every Referral!</h2>
             <p>
               Earn £10 for every friend, or anyone, who subscribes with your
               referral code! No limits on referrals. Let's gooooo!
             </p>
-
             <button>Refer a friend</button>
           </div>
         </div>
-       
-        <div className="overview-dropdown">
-          <div
-            className="overview-dropdown-button"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            {selectedCountry}
-          </div>
-          {isDropdownOpen && (
-            <div className="overview-dropdown-content">
-              {countries.map((country) => (
-                <p key={country} onClick={() => handleSelectCountry(country)}>
-                  {country}
-                </p>
-              ))}
+        <div>
+          <div className="overview-dropdown">
+            <div
+              className="overview-dropdown-button"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              {selectedCountry}
             </div>
-          )}
-        </div>
-
-        <div className="overview-meal-heading">
-          <h3>Order a single meal</h3>{" "}
-          <div className="overview-meal-pagination-container">
-          {page > 1 && <button onClick={handleViewLess}>Previous</button>}
-          {page < totalPages && (
-            <button onClick={handleViewMore} className="overview-meal-heading-p">
-              Next
-            </button>
-          )}
-          </div>
-        </div>
-        <div className="overview-meal-container">
-          {loading ? (
-            <p>loading.....</p>
-          ) : error ? (
-            <p>Error: {error.message}</p>
-          ) : (
-            currentData?.data?.map((meal) => (
-              <div key={meal._id} className="meal-container">
-                <img
-                  src={meal.image_url}
-                  alt={meal.name}
-                  style={{ width: "223px", height: "136px",  }}
-                  className="meal-image"
-                />
-                <h3>{meal.name}</h3>
-
-                <p>Price: £{meal.price.amount}</p>
-                <div className="cart-container">
-                  <div
-                    className="add-to-cart"
-                    onClick={() => handleAddToCart(meal)}
-                  >
-                    +
-                  </div>
-                </div>
+            {isDropdownOpen && (
+              <div className="overview-dropdown-content">
+                {countries.map((country) => (
+                  <p key={country} onClick={() => handleSelectCountry(country)}>
+                    {country}
+                  </p>
+                ))}
               </div>
-            ))
-          )}
+            )}
+          </div>
+          <div className="overview-meal-heading">
+            <h3 className="overview-meal-heading-title">Order a single meal</h3>
+            {
+              !loading ? (
+                <div className="overview-meal-pagination-container">
+                  <button disabled={page === 1} onClick={handleViewLess}>Previous</button>
+                  <h3 className="pages-data">{`${page} of ${totalPages}`}</h3>
+                  <button disabled={page === totalPages} onClick={handleViewMore} className="overview-meal-heading-p">
+                    Next
+                  </button>
+                </div>
+              ) : null
+            }
+          </div>
+          <div>
+            {renderMeals()}
+          </div>
         </div>
       </div>
       <div className="overview-last-container">
