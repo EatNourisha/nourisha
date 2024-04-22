@@ -180,12 +180,19 @@
   align-items: center;
   gap: 10px;
 }
+
+.overview-last-container h3{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+  max-width: 50%;
+}
+
 .overview-last-container button {
   background: linear-gradient(to right, #fe7e00, #fe0000);
   border-radius: 8px;
   padding: 10px;
-  width: 198px;
-  height: 36px;
   color: white;
 }
 
@@ -228,5 +235,141 @@
 .overview-dropdown .overview-dropdown-button:active + .overview-dropdown-content,
 .overview-dropdown .overview-dropdown-content:hover {
   display: block;
+}
+
+/* Update */
+
+/* Select country */
+.select-country-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 1);
+  border: 0.5px solid rgba(181, 181, 181, 1);
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.select-country-btn > .select-country-btn-title{
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.06px;
+  color: rgba(181, 181, 181, 1);
+}
+
+
+/* Order now */
+
+.order-now-container{
+  margin-bottom: 24px;
+  border-radius: 8px;
+  padding: 25px;
+  background: linear-gradient(207.81deg, #FE7E00 16.32%, #FE0000 105.01%);
+}
+
+.order-now-title{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23px;
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 14.11px;
+}
+
+.order-now-price-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-now-price-tag{
+  color: #ffffff;
+  background: rgba(255, 0, 0, 1);
+  padding: 8.89px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.21px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  width: fit-content;
+  z-index: 1;
+}
+
+.order-now-price-card{
+  margin-top: -20px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.3);
+  padding: 24px 8px 16px 8px;
+  border-radius: 12px;
+}
+
+.order-now-price-card-header{
+  text-align: center;
+}
+
+.order-now-price-card-header-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+
+.order-now-price-card-header-subtitle{
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+  color: rgba(92, 85, 108, 1);
+}
+
+.days-of-the-week-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 18px 0 18px;
+  border-top: 0.8px solid rgba(30, 30, 30, 0.2);
+  margin: 24px 0;
+}
+
+.day-of-the-week{
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-of-the-week-name{
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+}
+
+.order-now-btn-container{
+  width: 100%;
+}
+
+.order-now-btn{
+  background: linear-gradient(264.09deg, #FE7E00 11.59%, #FE0000 105.81%);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 12px 0;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 1);
+  width: 100%;
+}
+
+.order-now-subtext{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 11.48px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  margin-top: 12px;
+  background: linear-gradient(264.09deg, #FE7E00 11.59%, #FE0000 105.81%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 

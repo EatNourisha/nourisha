@@ -49,12 +49,12 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to="account"
+                to="history"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
                 <div className="sidebar-link-content">
-                  <RiAccountCircleLine className="sidebar-icon" />
-                  <span>Account</span>
+                  <IoMdTime className="sidebar-icon" />
+                  <span>History</span>
                 </div>
               </NavLink>
             </li>
@@ -71,12 +71,12 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to="history"
+                to="account"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
                 <div className="sidebar-link-content">
-                  <IoMdTime className="sidebar-icon" />
-                  <span>History</span>
+                  <RiAccountCircleLine className="sidebar-icon" />
+                  <span>Account</span>
                 </div>
               </NavLink>
             </li>

@@ -97,7 +97,7 @@ const Account = () => {
         </div>
       </div>
       <div className="account-second-container">
-      {renderContent()}
+        {renderContent()}
       </div>
   
     </div>

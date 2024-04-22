@@ -6,6 +6,8 @@ import useCart from "../../../hooks/useCart";
 import useMealZimbabwe from "../../../hooks/useMealZimbabwe";
 import useMealGhana from "../../../hooks/useMealGhana";
 import AddIcon from "../../../assets/icons/add-icon.svg"
+import CheckIcon from "../../../assets/icons/check_icon.svg"
+import NigerianFlag from "../../../assets/icons/nigeria-flag.svg"
 import Loader from "../../../components/loader";
 
 const Overview = () => {
@@ -72,6 +74,8 @@ const Overview = () => {
     setSelectedCountry(country);
     setIsDropdownOpen(false);
   };
+
+  const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
   // Render main content
 
@@ -140,6 +144,12 @@ const Overview = () => {
           </div>
         </div>
         <div>
+          <button className="select-country-btn">
+            <h3 className="select-country-btn-title">Which country's cuisine do you prefer</h3>
+            <div className="country-icon">
+              <img src={NigerianFlag} alt="Nigerian Flag"/>
+            </div>
+          </button>
           <div className="overview-dropdown">
             <div
               className="overview-dropdown-button"
@@ -176,10 +186,44 @@ const Overview = () => {
           </div>
         </div>
       </div>
-      <div className="overview-last-container">
-        <h3>Unlock 60+ Premium Menu</h3>
-        <button>Subscribe to a meal plan</button>
-        <p>Treading Menu</p>
+      <div>
+        <div className="order-now-container">
+          <div>
+            <h3 className="order-now-title">Don't Miss Out! Save Big. <br/> Up to 40% off your first order.</h3>
+            <div className="order-now-price-container">
+              <h2 className="order-now-price-tag">
+                £120
+              </h2>
+              <div className="order-now-price-card">
+                <div className="order-now-price-card-header">
+                  <h3 className="order-now-price-card-header-title">Weekly Plan</h3>
+                  <p className="order-now-price-card-header-subtitle">2 chef-cooked meals daily (Lunch and Dinner from Mon. to Sun.)  for a week, of your choice meal.</p>
+                </div>
+                <div className="days-of-the-week-container">
+                  {
+                    daysOfTheWeek.map((day, idx) => {
+                      return (
+                        <div className="day-of-the-week" key={idx}>
+                          <h4 className="day-of-the-week-name">{day}</h4>
+                          <img src={CheckIcon} alt="Check"/>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+                <div className="order-now-btn-container">
+                  <button className="order-now-btn">Order now</button>
+                  <h4 className="order-now-subtext">+ £10 For delivery</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="overview-last-container">
+          <h3>Unlock 60+ Premium Menu</h3>
+          <button>Subscribe to a meal plan</button>
+          <p>Trending Menu</p>
+        </div>
       </div>
     </div>
   );
