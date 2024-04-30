@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Icon } from "@iconify/react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
 import useMeal from "../../../hooks/useMeal";
@@ -8,6 +9,7 @@ import useMealGhana from "../../../hooks/useMealGhana";
 
 const Overview = () => {
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("Nigeria");
   const { data: dataNigeria, loading: loadingNigeria, error: errorNigeria } = useMeal(page);
@@ -117,8 +119,8 @@ const Overview = () => {
           </div>
         </div>
         <div className="overview-meal-container">
-          {loading ? (
-            <p>loading.....</p>
+          {isLoading ? (
+            <Icon icon="gg:spinner" className="animate-spin w-10 h-10 md:w-16 md:h-16 text-orange-400 ml-72 justify-center items-center mx-auto" />
           ) : error ? (
             <p>Error: {error.message}</p>
           ) : (

@@ -47,7 +47,7 @@ dehydrate,
           title: "Login Successful",
           description: "You have successfully logged in.",
           status: "success",
-          duration: 3000,
+          duration: 2000,
           isClosable: true,
         });
       } else {
@@ -66,7 +66,7 @@ dehydrate,
         title: "Login Failed",
         description: error.message || "Invalid email or password. Please try again.",
         status: "error",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     }
@@ -90,7 +90,7 @@ dehydrate,
           title: "Registration Successful",
           description: "You have successfully registered.",
           status: "success",
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
         });
         navigate('/dashboard'); // Navigate to dashboard upon successful registration
@@ -110,7 +110,7 @@ dehydrate,
         title: "Registration Failed",
         description: error.message || "An error occurred while registering. Please try again.",
         status: "error",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     }

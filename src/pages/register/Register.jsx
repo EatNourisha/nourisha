@@ -1,5 +1,6 @@
 import "./register.css";
 import React, { useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
 import Footer from "../home/Footer";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
@@ -7,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
+
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -25,7 +28,10 @@ const Register = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     await register(state);
+
+    setIsLoading(false)
   };
   const navigate = useNavigate();
   useEffect(() => {
@@ -95,12 +101,12 @@ const Register = () => {
                 </span>
               </div>
               <div className="input-country">
-              <label>Phone Number</label>
+                <label>Phone Number</label>
                 <PhoneInput
                   defaultCountry="gb"
                   value={state.phone ?? ""}
                   onChange={(phone) => handleState({ phone })}
-                  style={{ width: '100%', border: "2px solid #EDEDF3" }}
+                  style={{ width: "100%", border: "2px solid #EDEDF3" }}
                   className="phone-input"
                 />
               </div>
@@ -108,7 +114,16 @@ const Register = () => {
                 By Creating account you are agreeing to our terms and condition{" "}
               </p>
               <div className="register-buttom-container">
-                <button className="btn">Create account</button>
+                <button className="btn ">
+                  {isLoading ? (
+                    <span className="flex items-center">
+                      <Icon icon="gg:spinner" className="animate-spin" />
+                      <span className="pl-2">Loading...</span>{" "}
+                    </span>
+                  ) : (
+                    <span>Create account</span>
+                  )}
+                </button>
                 <div className="register-buttom-footer">
                   <p>Already have an account?</p>
                   <a href="/login">Sign in</a>
@@ -116,6 +131,7 @@ const Register = () => {
               </div>
             </div>
           </form>
+
         </div>
       </div>
       <Footer />

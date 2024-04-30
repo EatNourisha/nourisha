@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Icon } from "@iconify/react";
 import Footer from "../home/Footer";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -18,8 +19,13 @@ const Login = () => {
     setState({ ...state, ...newState });
   };
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     await login(state);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);  
   };
 
   const navigate = useNavigate();
@@ -27,8 +33,8 @@ const Login = () => {
   useEffect(() => {
     if (isSignedIn && token) {
       setTimeout(() => {
-        navigate('/dashboard/overview');
-      }, 3000);
+        navigate("/dashboard/overview");
+      }, 50);
     }
   }, [isSignedIn, token]);
   const isDisabled = useMemo(
@@ -74,9 +80,16 @@ const Login = () => {
                   className="btn"
                   type="submit"
                   isLoading={status === "loading"}
-                  disabled={isDisabled}
+                  // disabled={isLoading}
                 >
-                  Sign In
+                  {isLoading ? (
+                    <span className="flex items-center">
+                      <Icon icon="gg:spinner" className="animate-spin" />
+                      <span className="pl-2">Loading...</span>{" "}
+                    </span>
+                  ) : (
+                    <span>Sign In</span>
+                  )}
                 </button>
                 <div className="register-buttom-footer">
                   <p>Don't have account?</p>
