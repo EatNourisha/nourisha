@@ -94,13 +94,14 @@ const Register = () => {
                   {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </span>
               </div>
-              <div className="input-container">
+              <div className="input-country">
               <label>Phone Number</label>
                 <PhoneInput
                   defaultCountry="gb"
                   value={state.phone ?? ""}
                   onChange={(phone) => handleState({ phone })}
                   style={{ width: '100%', border: "2px solid #EDEDF3" }}
+                  className="phone-input"
                 />
               </div>
               <p>

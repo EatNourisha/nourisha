@@ -55,6 +55,10 @@
     position: relative
 }
 
+.input-country{
+    width: 100%;
+}
+
 .input-container input {
     padding-right: 30px; 
     border: 2px solid #EDEDF3;
@@ -62,6 +66,20 @@
     height: 56px;
     border-radius: 8px;
     padding: 10px;
+}
+
+.input-country .phone-input {
+    padding-right: 30px !important; 
+    border: 2px solid #EDEDF3 !important;
+    /* width: 259px; */
+    height: 56px !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+}
+
+.react-international-phone-input-container .react-international-phone-input{
+    border: none !important;
+    font-size: 15px !important;
 }
 
 .input-container span {
