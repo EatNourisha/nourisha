@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProtectedRoutes from "./protectedRoute";
 import ScrollToTop from "./ScrollToTop";
 import NavBar from "./NavBar";
 import Home from "./pages/home/Home";
@@ -36,7 +37,10 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="affiliate" element={<Affiliate />} />
             <Route path="party-plan" element={<PartyPlan />} />
-            <Route path="/dashboard/*" element={<Dashboard />} />
+
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/dashboard/*" element={<Dashboard />} />
+            </Route>
           </Routes>
         </main>
       </HelmetProvider>
