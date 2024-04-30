@@ -52,7 +52,6 @@ const Overview = () => {
 
     try {
       await addItemToCart(itemData);
-      alert("Item added to cart!");
     } catch (error) {
       console.error("Failed to add item to cart", error);
       // Handle the error (e.g., show an error message to the user)
@@ -140,8 +139,9 @@ const Overview = () => {
                     className="add-to-cart"
                     onClick={() => handleAddToCart(meal)}
                   >
-                    +
+                    + 
                   </div>
+        
                 </div>
               </div>
             ))
