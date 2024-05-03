@@ -12,10 +12,14 @@ const Overview = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("Nigeria");
-  const { data: dataNigeria, loading: loadingNigeria, error: errorNigeria } = useMeal(page);
-  const { data: dataZimbabwe, loading: loadingZimbabwe, error: errorZimbabwe } = useMealZimbabwe(page);
-  const { data: dataGhana, loading: loadingGhana, error: errorGhana } = useMealGhana(page);
+  const { data: dataNigeria, isLoading: loadingNigeria, error: errorNigeria } = useMeal(page);
+  const { data: dataZimbabwe, isLoading: loadingZimbabwe, error: errorZimbabwe } = useMealZimbabwe(page);
+  const { data: dataGhana, isLoading: loadingGhana, error: errorGhana } = useMealGhana(page);
   const countries = ["Nigeria", "Zimbabwe", "Ghana"];
+
+  const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
+  console.log("dataLoading:", loadingData)
+
   let currentData;
   let loading;
   let error;
@@ -118,7 +122,7 @@ const Overview = () => {
           </div>
         </div>
         <div className="overview-meal-container">
-          {isLoading ? (
+          {loadingData ? (
             <Icon icon="gg:spinner" className="animate-spin w-10 h-10 md:w-16 md:h-16 text-orange-400 ml-72 justify-center items-center mx-auto" />
           ) : error ? (
             <p>Error: {error.message}</p>

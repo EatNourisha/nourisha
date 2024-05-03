@@ -11,6 +11,7 @@ import { BsGift } from "react-icons/bs";
 import UpAccount from "../../../modals/UpAccount";
 import Billings from "../../../modals/Billings";
 import MyOrders from "../../../modals/MyOrders";
+import FoodService from "../../../modals/FoodService";
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -23,6 +24,8 @@ const Account = () => {
         return <MyOrders />;
       case "Billings":
         return <Billings />;
+        case "FoodService":
+          return <FoodService />;
       default:
         return null;
     }
@@ -59,7 +62,9 @@ const Account = () => {
             <GoCreditCard style={{ width: "24px", height: "24px" }} />
             <p>Billings</p>
           </div>
-          <div className="account-section-tab">
+          <div className="account-section-tab"
+            onClick={() => setActiveTab("FoodService")}
+          >
             <FaRegEdit style={{ width: "24px", height: "24px" }} />
             <p>Edit Food Service</p>
           </div>

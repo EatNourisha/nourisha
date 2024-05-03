@@ -1,19 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./upAccount.css";
 import useUpdateProfile from "../hooks/useUpdateProfile";
+import { Icon } from "@iconify/react";
+
 
 const UpAccount = () => {
-  const { update, isLoading, error } = useUpdateProfile();
-  const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    country: "",
-    postalCode: "",
-    address: "",
-    city: "",
-  });
+  const { update, data, isLoading, error } = useUpdateProfile();
+
+  useEffect(() => {
+    if(!data) return;
+
+    setState({
+      firstName: data?.first_name,
+      lastName: data?.last_name,
+      email: data?.email,
+      phoneNumber: data?.phone,
+      country: data?.address?.country,
+      postalCode: data?.address?.postcode,
+      address: data?.address?.address_,
+      city: data?.address?.city,
+    })
+  },[data]);
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  country: "",
+  postalCode: "",
+  address: "",
+  city: "",
+}
+  const [state, setState] = useState(initialState);
 
   const handleState = (e) => {
     const { name, value } = e.target;
@@ -130,7 +149,16 @@ const UpAccount = () => {
             />
           </div>
           <div className="update-modal-button-container">
-            <button type="submit">Save</button>
+            <button type="submit">
+            {isLoading ? (
+                    <span className="flex items-center">
+                      <Icon icon="gg:spinner" className="animate-spin" />
+                      <span className="pl-2">Loading...</span>{" "}
+                    </span>
+                  ) : (
+                    <span>Sign In</span>
+                  )}
+            </button>
           </div>
         </div>
       </form>

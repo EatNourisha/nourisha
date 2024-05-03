@@ -1,11 +1,11 @@
 import React from 'react';
 import useSWR from 'swr';
-import { put } from '../utils/makeRequest';
+import { put, get } from '../utils/makeRequest';
 import { showToast } from "../utils/toast";
 
 
 const useUpdateProfile = () => {
-  const { data, error, mutate } = useSWR('customers/me', put);
+  const { data, error, mutate } = useSWR('customers/me', get);
   const [isLoading, setIsLoading] = React.useState(false);
   const [requestError, setRequestError] = React.useState(null);
 
