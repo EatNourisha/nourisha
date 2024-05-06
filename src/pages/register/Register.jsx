@@ -116,9 +116,8 @@ const Register = () => {
               <div className="register-buttom-container">
                 <button className="btn ">
                   {isLoading ? (
-                    <span className="flex items-center">
-                      <Icon icon="gg:spinner" className="animate-spin" />
-                      <span className="pl-2">Loading...</span>{" "}
+                    <span className="flex items-center px-9">
+                      <Icon icon="gg:spinner" className="animate-spin h-6 w-8" />
                     </span>
                   ) : (
                     <span>Create account</span>

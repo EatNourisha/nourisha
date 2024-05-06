@@ -2,25 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./upAccount.css";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Icon } from "@iconify/react";
+import { Spinner } from "react-bootstrap";
 
 
 const UpAccount = () => {
-  const { update, data, isLoading, error } = useUpdateProfile();
+  const { update, data, isLoading } = useUpdateProfile();
 
-  useEffect(() => {
-    if(!data) return;
-
-    setState({
-      firstName: data?.first_name,
-      lastName: data?.last_name,
-      email: data?.email,
-      phoneNumber: data?.phone,
-      country: data?.address?.country,
-      postalCode: data?.address?.postcode,
-      address: data?.address?.address_,
-      city: data?.address?.city,
-    })
-  },[data]);
 
 const initialState = {
   firstName: "",
@@ -57,10 +44,27 @@ const initialState = {
     // Use the update function here to submit the form data
     await update(updatedProfileData);
   };
-  return (
-    <div className="update-modal-account">
-      <h1>Profile</h1>
 
+  useEffect(() => {
+    if(!data) return;
+
+    setState({
+      firstName: data?.first_name,
+      lastName: data?.last_name,
+      email: data?.email,
+      phoneNumber: data?.phone,
+      country: data?.address?.country,
+      postalCode: data?.address?.postcode,
+      address: data?.address?.address_,
+      city: data?.address?.city,
+    })
+
+  },[data]);
+
+  
+  return (
+    <div className="update-modal-account w-full">
+      <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
         <div className="update-modal-form-container">
           <div className="update-modal-input-container1">
@@ -151,12 +155,11 @@ const initialState = {
           <div className="update-modal-button-container">
             <button type="submit">
             {isLoading ? (
-                    <span className="flex items-center">
-                      <Icon icon="gg:spinner" className="animate-spin" />
-                      <span className="pl-2">Loading...</span>{" "}
+                    <span className="flex justify-center items-center">
+                      <Icon icon="gg:spinner" className="animate-spin h-6 w-8" />
                     </span>
                   ) : (
-                    <span>Sign In</span>
+                    <span>Save</span>
                   )}
             </button>
           </div>

@@ -83,9 +83,8 @@ const Login = () => {
                   // disabled={isLoading}
                 >
                   {isLoading ? (
-                    <span className="flex items-center">
-                      <Icon icon="gg:spinner" className="animate-spin" />
-                      <span className="pl-2">Loading...</span>{" "}
+                    <span className="flex items-center px-3">
+                      <Icon icon="gg:spinner" className="animate-spin h-6 w-6" />
                     </span>
                   ) : (
                     <span>Sign In</span>

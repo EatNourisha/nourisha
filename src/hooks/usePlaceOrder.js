@@ -1,10 +1,10 @@
 import useSWR from 'swr';
-import { post } from '../utils/makeRequest';
+import { post, get } from '../utils/makeRequest';
 import { useState } from 'react';
 import { showToast } from "../utils/toast";
 
 const usePlaceOrder = () => {
-  const { data, error, mutate } = useSWR('orders/', post);
+  const { data, error, mutate } = useSWR('orders/', get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
 
@@ -32,7 +32,7 @@ const usePlaceOrder = () => {
   };
 
   return {
-    data: data?.data || [],
+    data: data?.data?.data || [],
     isLoading: isLoading || !error && !data,
     error: requestError || error,
     placeOrder,

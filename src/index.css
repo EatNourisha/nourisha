@@ -94,6 +94,14 @@ button:disabled {
   transition: 0.2s ease-in;
 }
 /* */
+/* ChangePassword */
+button:disabled {
+  background-color: #FAC898 !important;
+}
+
+
+/*  */
+
 
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 @media screen and (max-width: 1024px) {

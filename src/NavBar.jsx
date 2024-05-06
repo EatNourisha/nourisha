@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./nav-bar.css";
 import Logo from "../src/assets/group16.png";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate  } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import {
   RiNotification2Line,
@@ -10,30 +10,35 @@ import {
 } from "react-icons/ri";
 import PartyLogo from "../src/assets/noto_party-popper.png";
 import { BsCart2 } from "react-icons/bs";
-import useAuth from "./hooks/useAuth";
 import Cart from "./modals/Cart";
 import CheckOut from "./modals/CheckOut";
 import useGetCart from "./hooks/useGetCart";
 
-const NavBar = () => {
-  const navRef = useRef();
-  const showNavBar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
-  const { data } = useGetCart();
 
+const NavBar = () => {
+  const token = localStorage.getItem('authToken')
+  const navRef = useRef();
+  const { data } = useGetCart();
+  
   const location = useLocation();
+  const navigate = useNavigate();
   const [navHeading, setNavHeading] = useState("");
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+
+  const showNavBar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
+
   const toggleCartModal = () => {
     setIsCartModalOpen(!isCartModalOpen);
   };
+
   const handleProceedToCheckout = () => {
     setIsCartModalOpen(false);
     setIsCheckoutModalOpen(true);
   };
-
+  
   useEffect(() => {
     const determineHeading = () => {
       const path = location.pathname;
@@ -48,7 +53,7 @@ const NavBar = () => {
       } else if (path === "/dashboard/history") {
         setNavHeading("History");
       } else {
-        setNavHeading("Navigation");
+        setNavHeading("");
       }
     };
     determineHeading();
@@ -57,11 +62,18 @@ const NavBar = () => {
     };
   }, [location.pathname]);
 
-  const { isSignedIn, token } = useAuth();
+
+  const pathname = location.pathname.startsWith("/dashboard")
+
+  useEffect(() => {
+    if ( location.pathname === "/dashboard") {
+      navigate("/dashboard/overview");
+    }
+  }, [pathname, location.pathname, navigate]);
 
   return (
     <header>
-      {isSignedIn ? (
+      { token && pathname ? (
         <div className="dashboard-navbar-container">
           <div className="dashboard-navbar-heading">
             <h1>{navHeading}</h1>

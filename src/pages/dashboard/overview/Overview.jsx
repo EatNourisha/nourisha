@@ -9,7 +9,6 @@ import useMealGhana from "../../../hooks/useMealGhana";
 
 const Overview = () => {
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("Nigeria");
   const { data: dataNigeria, isLoading: loadingNigeria, error: errorNigeria } = useMeal(page);
@@ -18,7 +17,6 @@ const Overview = () => {
   const countries = ["Nigeria", "Zimbabwe", "Ghana"];
 
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
-  console.log("dataLoading:", loadingData)
 
   let currentData;
   let loading;
