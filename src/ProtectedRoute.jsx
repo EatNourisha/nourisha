@@ -1,9 +1,11 @@
 import { Navigate, useOutlet } from 'react-router-dom';
+import useAuthStore from './stores/auth';
 
 const ProtectedRoutes = () => {
-  const token = localStorage.getItem("authToken")
+  const { isSignedIn } = useAuthStore();
+  const token = localStorage.getItem("authToken");
 
-  if (!token) {
+  if (!token || !isSignedIn) {
     return <Navigate to="/login" replace />; 
   }
 

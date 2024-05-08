@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProtectedRoutes from "./protectedRoute";
+import ProtectedRoutes from "./ProtectedRoute";
 import ScrollToTop from "./ScrollToTop";
 import NavBar from "./NavBar";
 import Home from "./pages/home/Home";
