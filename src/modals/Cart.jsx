@@ -112,7 +112,7 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
       setCount(count - 1)
       console.log(res)
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       console.error("Failed to remove item from cart", error);
     }
   };
