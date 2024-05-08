@@ -1,10 +1,9 @@
 const configs = {
-    // baseUrl: "http://localhost:8081/v1",
-    // baseUrl: "https://api-stage.eatnourisha.com/v1",
-    baseUrl: "https://api.eatnourisha.com/v1",
-
-    authKey: "x231nxj",
-
+    baseUrl: import.meta.env.VITE_BASE_URL,
+    authKey: import.meta.env.VITE_AUTH_KEY,
 };
 
 export default configs;
+
+
+

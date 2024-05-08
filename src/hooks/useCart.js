@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import useSWR from 'swr';
-import { put } from '../utils/makeRequest';
-import { destroy } from  '../utils/makeRequest';
+import { destroy, get, put } from  '../utils/makeRequest';
 import { showToast } from "../utils/toast";
 
 const useCart = () => {
-  const { data, error, mutate } = useSWR('cart/', put);
+  const { data, error, mutate } = useSWR('cart/', get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
 
@@ -13,7 +12,7 @@ const useCart = () => {
     setIsLoading(true);
     try {
      
-      const response = await put(`cart`, itemData);
+      const response = await put('cart/', itemData);
      
       if (response.data) {
       

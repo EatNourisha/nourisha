@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
@@ -6,6 +6,7 @@ import useMeal from "../../../hooks/useMeal";
 import useCart from "../../../hooks/useCart";
 import useMealZimbabwe from "../../../hooks/useMealZimbabwe";
 import useMealGhana from "../../../hooks/useMealGhana";
+import useAuthStore from "../../../stores/auth";
 
 const Overview = () => {
   const [page, setPage] = useState(1);
@@ -15,12 +16,15 @@ const Overview = () => {
   const { data: dataZimbabwe, isLoading: loadingZimbabwe, error: errorZimbabwe } = useMealZimbabwe(page);
   const { data: dataGhana, isLoading: loadingGhana, error: errorGhana } = useMealGhana(page);
   const countries = ["Nigeria", "Zimbabwe", "Ghana"];
+  const { count, setCount } = useAuthStore();
 
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
 
   let currentData;
   let loading;
   let error;
+
+
   switch (selectedCountry) {
     case "Nigeria":
       currentData = dataNigeria;
@@ -52,13 +56,25 @@ const Overview = () => {
       quantity: 1,
     };
 
+    const isItemInCart = meal.some(item => item.itemId === itemData.itemId);
+
+  if (isItemInCart) {
+    // Item already exists in the cart, handle accordingly (e.g., show a message)
+    console.log('Item already exists in the cart');
+    return;
+  }
+
     try {
       await addItemToCart(itemData);
+      setCount(count + 1);
+
     } catch (error) {
       console.error("Failed to add item to cart", error);
       // Handle the error (e.g., show an error message to the user)
     }
   };
+
+
   const handleViewMore = () => {
     if (page < totalPages) {
       setPage((prevPage) => prevPage + 1);

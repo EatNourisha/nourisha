@@ -13,13 +13,28 @@ import { BsCart2 } from "react-icons/bs";
 import Cart from "./modals/Cart";
 import CheckOut from "./modals/CheckOut";
 import useGetCart from "./hooks/useGetCart";
+import useAuthStore from "./stores/auth";
 
 
 const NavBar = () => {
   const token = localStorage.getItem('authToken')
   const navRef = useRef();
   const { data } = useGetCart();
+  // const { count } = useAuthStore();
+  const count = localStorage.getItem('count')
+
+
+
+  console.log(count)
+  // const [countData, setCountData] = useState(0)
+
+  // console.log("dataCount", countData)
   
+  // useEffect(() => {
+  //   setCountData(data?.items?.totalCount)
+  // }, [data?.items?.totalCount])
+
+
   const location = useLocation();
   const navigate = useNavigate();
   const [navHeading, setNavHeading] = useState("");
@@ -60,7 +75,7 @@ const NavBar = () => {
     return () => {
       // Optionally, you can clean up any subscriptions or timers here
     };
-  }, [location.pathname]);
+  }, [location.pathname, data]);
 
 
   const pathname = location.pathname.startsWith("/dashboard")
@@ -80,22 +95,22 @@ const NavBar = () => {
           </div>
           <div className="dashboard-second-div">
             <div className="dashboard-second-inner">
-              <div className="cont-nav-left">
+              <div className="cont-nav-left cursor-pointer">
                 <RiNotification2Line />
               </div>
-              <div className="cont-nav-left">
+              <div className="cont-nav-left cursor-pointer">
                 <img src={PartyLogo} alt="party-logo" />
               </div>
               <div
-                className="dashboard-cart-container"
+                className="dashboard-cart-container cursor-pointer"
                 onClick={toggleCartModal}
               >
                 <span style={{ color: "#fe7e00" }}>Cart</span>
                 <BsCart2 style={{ color: "#fe7e00" }} />
-                <div>{data?.items?.totalCount}</div>
+                <div>{count}</div>
               </div>
             </div>
-            <div className="dashboard-last-div">
+            <div className="dashboard-last-div cursor-pointer">
               <RiAccountCircleLine style={{ color: "#fe7e00" }} />
               <span>Account</span>
               <RiArrowDropDownLine />

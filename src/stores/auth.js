@@ -14,6 +14,7 @@ export const useAuthStore = create((set) => ({
   roles: [],
   exp: null,
   status: "idle",
+  count: parseInt(localStorage.getItem('count')) || 0,
 
   passwordReset: {
     status: "idle",
@@ -52,6 +53,14 @@ export const useAuthStore = create((set) => ({
       })
     ),
 
+    setCount: (count) =>{
+      set(
+        produce((state) => {
+          state.count = count;
+        })
+      )
+      localStorage.setItem('count', count);
+    },
   setStatus: (status) =>
     set(
       produce((state) => {

@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import useSWR from 'swr';
-import { destroy } from  '../utils/makeRequest';
+import { destroy, get } from  '../utils/makeRequest';
 import { showToast } from "../utils/toast";
 
 const useDelCart = () => {
-  const { data, error, mutate } = useSWR('cart', destroy);
+  const { data, error, mutate } = useSWR('cart', get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
 
+
   const removeItemToCart = async (itemData) => {
     setIsLoading(true);
+
     try {
      
       const response = await destroy(`cart/`, itemData);
@@ -38,7 +40,7 @@ const useDelCart = () => {
     data: data?.data || [],
     isLoading: isLoading || !error && !data,
     error: requestError || error,
-    removeItemToCart,
+    removeItemToCart
   };
 };
 

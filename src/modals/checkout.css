@@ -10,38 +10,42 @@
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1000;
   }
-  
+  .input-container{
+    margin-bottom: -10px ;
+  }
   .checkout-content {
-    width: 50%; 
+    width: 40%; 
     padding: 20px;
     background: #fff;
-    border-radius: 8px; 
+    border-radius: 10px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
   .close-checkout-btn {
-    display: block; 
-    margin: 20px auto 0; 
-    padding: 10px 20px; 
-    border: none; 
-    background-color: #007bff; 
-    color: white; 
-    cursor: pointer; 
-    border-radius: 4px; 
+      background-color: #ededf3;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #030517;
+      border-radius: 50px;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
   }
   
   /* Optional: Style for button hover state */
   .close-checkout-btn:hover {
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
   }
 
   .checkout-container h1{
-    font-weight: 400;
-    font-size: 15px;
+    font-weight: 600;
+    font-size: 18px;
   }
 
   .proceed-checkout-btn {
     display: block; 
+    width: 100%;
     margin: 20px auto 0; 
     padding: 10px 20px; 
     border: none; 
@@ -49,5 +53,26 @@
     color: white; 
     cursor: pointer; 
     border-radius: 4px; 
+    margin-top: -5px;
   }
   
+
+
+  @media screen and (max-width: 765px) {
+    .checkout-content{
+      width: 350px;
+    }
+
+    .checkout-container{
+        width: auto;
+    
+    }
+
+    .input-container{
+      margin-bottom: -25px;
+    }
+
+    .proceed-checkout-btn{
+      margin-top: 10px;
+    }
+}

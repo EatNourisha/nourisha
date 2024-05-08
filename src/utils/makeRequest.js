@@ -17,7 +17,7 @@ axios.interceptors.response.use(
 const makeRequest = (config) => {
   const auth = ls.get(configs.authKey);
 
-  console.log("Auth", auth);
+  // console.log("Auth", auth);
 
   const getHeaders = () => {
     if (auth?.isSignedIn && auth?.token)
