@@ -56,14 +56,6 @@ const Overview = () => {
       quantity: 1,
     };
 
-    const isItemInCart = meal.some(item => item.itemId === itemData.itemId);
-
-  if (isItemInCart) {
-    // Item already exists in the cart, handle accordingly (e.g., show a message)
-    console.log('Item already exists in the cart');
-    return;
-  }
-
     try {
       await addItemToCart(itemData);
       setCount(count + 1);

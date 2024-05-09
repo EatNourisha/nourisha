@@ -9,9 +9,9 @@ export default function useGetCart() {
   const { setCount } = useAuthStore();
 
   useEffect(() => {
-    console.log(data, "what is coming")
+    console.log(data, "data coming from overview")
     setCount(data?.data?.items?.totalCount)
-  }, [setCount])
+  }, [data?.data?.items?.totalCount])
 
   return {
     data: data?.data || [], 
