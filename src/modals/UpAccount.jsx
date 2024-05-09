@@ -59,7 +59,7 @@ const initialState = {
       city: data?.address?.city,
     })
 
-  },[data]);
+  }, [data]);
 
   
   return (
