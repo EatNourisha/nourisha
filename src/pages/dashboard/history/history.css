@@ -1,0 +1,14 @@
+.slick-prev, .slick-next {
+    top: 50% !important; /* Adjust the value to move the arrows up or down */
+    transform: translateY(-50%) !important; /* Center the arrows vertically */
+  }
+
+.slick-prev {
+    left: 10px !important; /* Adjust the distance from the left side */
+    z-index: 1 !important; /* Ensure arrow is on top of other elements */
+  }
+  
+  .slick-next {
+    right: 10px !important; /* Adjust the distance from the right side */
+    z-index: 1 !important; /* Ensure arrow is on top of other elements */
+  }

@@ -62,6 +62,10 @@ const NavBar = () => {
     setIsCartModalOpen(false);
     setIsCheckoutModalOpen(true);
   };
+
+  const handlePartyPlan = () => {
+    navigate("/dashboard/party")
+  }
   
   useEffect(() => {
     const determineHeading = () => {
@@ -107,7 +111,7 @@ const NavBar = () => {
               <div className="cont-nav-left cursor-pointer">
                 <RiNotification2Line />
               </div>
-              <div className="cont-nav-left cursor-pointer">
+              <div className="cont-nav-left cursor-pointer" onClick={handlePartyPlan}>
                 <img src={PartyLogo} alt="party-logo" />
               </div>
               <div

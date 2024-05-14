@@ -178,10 +178,10 @@ const Overview = () => {
                   src={meal.image_url}
                   alt={meal.name}
                   style={{ width: "223px", height: "136px" }}
-                  className="meal-image"
+                  className="meal-image select-none"
                   onClick={() => handleMealDetails(meal)}
                 />
-                <h3 onClick={() => handleMealDetails(meal)}>{meal.name}</h3>
+                <h3 onClick={() => handleMealDetails(meal)} className="select-none">{meal.name}</h3>
 
                 <p>Price: £{meal.price.amount}</p>
                 <div className="cart-container">
