@@ -15,7 +15,7 @@ const Tab = ({ tabs }) => {
             key={index}
             className={`${
               index === activeTab
-                ? "border-orange-500 text-orange-500 text-[14px] font-semibold"
+                ? "border-orange-500 text-orange-500 text-[14px] font-semibod"
                 : "border-transparent text-black hover:text-gray-600 hover:border-gray-300 text-[12px]"
             } flex items-center px-12 py-2 border-b-2 font-md text-[12px]`}
             onClick={() => setActiveTab(index)}

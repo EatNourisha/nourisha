@@ -1,126 +1,82 @@
 import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import "./cart.css";
 import useGetCart from "../hooks/useGetCart";
-import useDelCart from "../hooks/useDelCart";
 import useCart from "../hooks/useCart";
-import useAuthStore from "../stores/auth";
+import cartStore from '../stores/cartStore';
 
 
 
 const Cart = ({ onClose, onProceedToCheckout }) => {
-  const { data, loading, error } = useGetCart();
-  const { removeItemToCart } = useDelCart();
-  const { addItemToCart } = useCart();
-  const [cartItems, setCartItems] = useState([]);
-  const { count, setCount } = useAuthStore();
+  const [cartItems, setCartItems] = useState([])
+  const { data, loading, error } = useCart();
+  const { increaseQuantityOnServer, decreaseQuantityOnServer, removeItemToCartOnServer } = useCart()
+  const { removeFromCart, increaseQuantity, decreaseQuantity, cart, getTotalItemCount } = cartStore()
 
 
-
-
-  useEffect(() => {
-    setCartItems(data?.items?.data);
-  }, [data?.items?.data]);
-
-
-  const subtotal = cartItems?.reduce((acc, item) => {
+  const subtotal = data?.items?.data.reduce((acc, item) => {
     const priceAmount = item?.item?.price?.amount || 0;
     return acc + priceAmount * (item.quantity || 0);
   }, 0);
 
+  
+  useEffect(() => {
+    if(!data) return
+    const { items } = data;
+    const {data: itemData} = items 
+    setCartItems(itemData)
+    getTotalItemCount(items.totalCount)
+  }, [data])
 
-  const increaseQuantity = async (cartItem) => {
+
+  const increaseQuantityitem = async (cartItem) => {
     const itemData = {
       itemId: cartItem.item._id,
-      quantity: cartItem.quantity += 1,
-    };
-
-    try{
-      const response = await addItemToCart(itemData);
-      
-      // Update the local state with the new quantity
-      const updatedCartItems = cartItems.map(item => {
-        if (item._id === cartItem._id) {
-          return {
-            ...item,
-            quantity: itemData.quantity
-          };
-        }
-        return item;
-      });
-      
-      // Set the local state with the updated items
-      setCartItems(updatedCartItems);
-      
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+      quantity: cartItem.quantity + 1,
     }
 
-    // try {
-    //   const response = await addItemToCart(itemData);
-    //   cartItem.quantity = itemData.quantity;
-    //   console.log(response);
-    // } 
-    
-  };
+    try {
+      const res =  await increaseQuantityOnServer(itemData)
+      if(res?.data?._id) increaseQuantity(itemData)
+     
+    } catch (error) {
+      console.log(error, "error in increasing quantity")
+    }
+  }
+
 
   const removeQuantity = async (cartItem) => {
-    console.log("cartItem coming from DecreaseQuantity", cartItem);
-
     const itemData = {
-      itemId: cartItem.item._id,
-      quantity: (cartItem.quantity -= 1),
+          itemId: cartItem.item._id,
+          quantity: cartItem.quantity - 1,
     };
 
-    console.log(
-      cartItems.filter((item) => item._id !== cartItem._id),
-      "HandleRemoveFromCart"
-    );
-
     try {
-      if (cartItem.quantity <= 0) {
-        // If quantity becomes zero or less, remove the item from the cart
-        await handleRemoveFromCart(cartItem);
-        return;
-      } else {
-        const response = await removeItemToCart(itemData);
-
-        // Update the quantity locally after the server request succeeds
-        cartItem.quantity = itemData.quantity;
-        setCartItems([...cartItems]); // Trigger re-render
-        console.log("response from decrease", response);
-
+      if(cartItem.quantity === 1){
+        const res = await removeItemToCartOnServer(cartItem)
+        if(res?.data?._id) decreaseQuantity(itemData)
       }
-      // const response = await removeItemToCart(itemData);
     } catch (error) {
-      console.log(error);
+      console.log(error, "error in decreasing quantity")
     }
-  };
+  }
 
 
-  const handleRemoveFromCart = async (cartItem) => {
-    // console.log(cartItem._id)
-
+  const removeItemFromCart = async (cartItem) => {
     const itemData = {
-      itemId: cartItem.item._id,
-      quantity: 1,
+          itemId: cartItem.item._id,
+          quantity: cartItem.quantity,
     };
 
+
     try {
-      const res = await removeItemToCart(itemData);
-      setCartItems(cartItems.filter((item) => item._id !== cartItem._id));
-      setCount(count - 1)
-      console.log(res)
+      const res = await removeItemToCartOnServer(itemData)
+      if(res?.data?._id) removeFromCart(itemData)
+
     } catch (error) {
-      // console.log(error.message);
-      console.error("Failed to remove item from cart", error);
+      console.log(error, "error in increasing quantity")
     }
-  };
-
-
- 
-
-  
+  }  
 
 
 
@@ -140,7 +96,7 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
           </button>
         </div>
         <div className="cart-items">
-          {cartItems?.map((cartItem) => (
+          {cartItems.map((cartItem) => (
             <div key={cartItem._id} className="cart-item">
               <div className="cart-top1">
                 <img src={cartItem.item?.image_url} alt={cartItem.item?.name} />
@@ -150,22 +106,29 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
                 </div>
               </div>
               <div className="item-details">
-                <p onClick={() => handleRemoveFromCart(cartItem)}>Remove</p>
-                <div className="cart-plus-minus-container">
-                  <button
-                    className="cart-minus"
-                    onClick={() => removeQuantity(cartItem)}
-                  >
-                    -
-                  </button>
-                  <span>{cartItem.quantity}</span>
-                  <button
-                    className="cart-plus"
-                    onClick={() => increaseQuantity(cartItem)}
-                  >
-                    +
-                  </button>
-                </div>
+                <p onClick={() => removeItemFromCart(cartItem)}>Remove</p>
+                {loading ? (
+                    <span className="flex items-center px-3">
+                      <Icon icon="gg:spinner" className="animate-spin h-6 w-6" />
+                    </span>
+                  ) : (
+                    <div className="cart-plus-minus-container">
+                    <button
+                      className="cart-minus"
+                      onClick={() => removeQuantity(cartItem)}
+                    >
+                      -
+                      
+                    </button>
+                    <span>{cartItem.quantity}</span>
+                    <button
+                      className="cart-plus"
+                      onClick={() => increaseQuantityitem(cartItem)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  )}
               </div>
             </div>
           ))}

@@ -8,6 +8,25 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar{
+  background-color:#fff;
+  width: 3px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #FE7E00;
+}
+
+/* .scrollableY {
+  height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling in sidebar */
+/* }
+
+.scrollableY::-webkit-scrollbar-thumb{
+  background-color: #39CDCC;
+  display: none;
+} */ */
+
+
 * {
   box-sizing: border-box;
   margin: 0;

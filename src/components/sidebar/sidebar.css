@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #ffffff;
   min-height: 100vh;
-  width: 20%;
+  width:16%;
   position: fixed;
   top: 0;
   left: 0;
@@ -24,8 +24,8 @@
 .logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  
+  justify-content: start;
+  padding-left: 10px;
 }
 
  .logo-text span {

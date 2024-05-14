@@ -59,6 +59,8 @@ const initialState = {
       city: data?.address?.city,
     })
 
+    const ref_code = data?.ref_code
+    localStorage.setItem('referralCode', ref_code)
   }, [data]);
 
   

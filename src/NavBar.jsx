@@ -12,20 +12,29 @@ import PartyLogo from "../src/assets/noto_party-popper.png";
 import { BsCart2 } from "react-icons/bs";
 import Cart from "./modals/Cart";
 import CheckOut from "./modals/CheckOut";
-import useGetCart from "./hooks/useGetCart";
+import useCart from "./hooks/useCart";
 import useAuthStore from "./stores/auth";
+import cartStore from "./stores/cartStore";
 
 
 const NavBar = () => {
   const token = localStorage.getItem('authToken')
   const navRef = useRef();
-  const { data } = useGetCart();
-  // const { count } = useAuthStore();
-  const count = localStorage.getItem('count')
+  const { data } = useCart();
+  const { count } = useAuthStore();
+  const counter = localStorage.getItem('count')
 
 
 
-  console.log(count)
+  const { itemCount, getTotalItemCount } = cartStore()
+
+  useEffect(() => {
+    if(!data) return
+    const { items } = data;
+    // getTotalItemCount(items.totalCount)
+  }, [data])
+
+  // console.log(count)
   // const [countData, setCountData] = useState(0)
 
   // console.log("dataCount", countData)
@@ -75,7 +84,7 @@ const NavBar = () => {
     return () => {
       // Optionally, you can clean up any subscriptions or timers here
     };
-  }, [location.pathname, data]);
+  }, [location.pathname]);
 
 
   const pathname = location.pathname.startsWith("/dashboard")
@@ -107,7 +116,7 @@ const NavBar = () => {
               >
                 <span style={{ color: "#fe7e00" }}>Cart</span>
                 <BsCart2 style={{ color: "#fe7e00" }} />
-                <div>{count}</div>
+                <div>{itemCount}</div>
               </div>
             </div>
             <div className="dashboard-last-div cursor-pointer">

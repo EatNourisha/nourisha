@@ -3,7 +3,7 @@ import { get } from "../utils/makeRequest";
 
 
 export default function useGetCart() {
-  const { data, error } = useSWR(`cart`, get);
+  const { data, error } = useSWR(`/referrals/pending`, get);
 
   return {
     data: data?.data || [], 
