@@ -3,10 +3,13 @@ import useSWR from "swr";
 import { destroy, get, put } from "../utils/makeRequest";
 import { showToast } from "../utils/toast";
 
+
 const useCart = () => {
+
   const { data, error, mutate } = useSWR("cart/", get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
+  
 
   const addItemToCartOnServer = async (itemData) => {
     setIsLoading(true);
@@ -16,7 +19,7 @@ const useCart = () => {
       if (response.data) {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
-        }, false);
+        }, true);
         showToast({
           title: "Add to Cart",
           description: "Item added to cart successfully.",
@@ -34,29 +37,35 @@ const useCart = () => {
 
   const increaseQuantityOnServer = async (itemData) => {
     try {
+      setIsLoading(true);
       const response = await put("cart/", itemData);
 
       if (response.data) {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
-        }, false);
+        }, true);
       }
+      setIsLoading(false);
     } catch (error) {
       setRequestError(error);
+      setIsLoading(false);
     }
   };
 
   const decreaseQuantityOnServer = async (itemData) => {
     try {
+      setIsLoading(true);
       const response = await destroy("cart/", itemData);
 
       if (response.data) {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
-        }, false);
+        }, true);
       }
+      setIsLoading(false);
     } catch (error) {
       setRequestError(error);
+      setIsLoading(false);
     }
   };
 
@@ -68,9 +77,9 @@ const useCart = () => {
       if (response.data) {
         mutate((currentData) => {
           return { ...currentData, ...response.data };
-        }, false);
+        }, true);
         showToast({
-          title: "Add to Cart",
+          title: "Remove from Cart",
           description: "Item removed from cart successfully.",
           status: "success",
           duration: 5000,

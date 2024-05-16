@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
@@ -31,14 +31,16 @@ const Overview = () => {
   } = useMealGhana(page);
   const countries = ["Nigeria", "Zimbabwe", "Ghana"];
 
-  const { addItemToCartOnServer } = useCart();
-  const { addToCart } = cartStore();
+  const { addItemToCartOnServer, data } = useCart();
+  const { addToCart, setTotalItemCount } = cartStore();
   const [mealId, setMealId] = useState(null);
   const [openMealToggle, setOpenMealToggle] = useState(false);
   const [ referToggle, setReferToggle ] = useState(false)
+  const [refreshCart, setRefreshCart] = useState(false)
 
-
-
+  
+  
+  
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
 
   let currentData;
@@ -69,6 +71,12 @@ const Overview = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
  
+  // useEffect(() => {
+  //   if(!data.items) return 
+  //   const { items } = data;
+  //   const total = items.totalCount || 0
+  //   setTotalItemCount(total)
+  // }, [data, refreshCart])
 
   const handleAddToCart = async (meal) => {
     const itemData = {
@@ -76,11 +84,10 @@ const Overview = () => {
       quantity: 1,
     };
 
-    console.log(itemData)
-
     try {
-      await addItemToCartOnServer(itemData);
-      await addToCart(itemData);
+      const res = await addItemToCartOnServer(itemData);
+      if(res?.data?._id) await addToCart(itemData);
+      setRefreshCart(!refreshCart)
     } catch (error) {
       console.log(error, "Can't add to cart");
     }
@@ -186,7 +193,7 @@ const Overview = () => {
                 <p>Price: £{meal.price.amount}</p>
                 <div className="cart-container">
                   <div
-                    className="add-to-cart"
+                    className="add-to-cart select-none"
                     onClick={() => handleAddToCart(meal)}
                   >
                     +

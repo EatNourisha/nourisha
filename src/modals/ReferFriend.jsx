@@ -8,6 +8,7 @@ import ReferrerHistory from "./ReferrerHistory";
 import useEarnings from "../hooks/useEarnings";
 import usePendingReferral from "../hooks/usePendingReferral";
 import useCompletedReferral from "../hooks/useCompletedReferral";
+import useUpdateProfile from "../hooks/useUpdateProfile";
 
 
 const ReferFriend = ({ onClose }) => {
@@ -16,14 +17,15 @@ const ReferFriend = ({ onClose }) => {
   const completed_referral = useCompletedReferral()
   const [ earnings, setEarnings ] = useState()
   const [toggleHistory, setToggleHistory] = useState(false);
-  const referralCode = localStorage.getItem('referralCode')
+  const useCode = useUpdateProfile();
 
 
   const pendingReward = pending_referral?.data?.totalCount * 10
   const completedReferral = completed_referral?.data?.totalCount
 
   const totalReffered = pending_referral?.data?.totalCount + completedReferral
-
+  const referralCode = useCode?.data?.ref_code
+  localStorage.setItem('referralCode', referralCode)
 
 
   useEffect(() => {
@@ -171,7 +173,7 @@ const ReferFriend = ({ onClose }) => {
                 </p>
               </div>
 
-              <div className="flex justify-center items-center mt- mb-4 gap-3 md:gap-4">
+              <div className="flex justify-center items-center mt-6 mb-4 gap-3 md:gap-4">
                 <div className="flex justify-end items-center px-2 space-x-10 py-3 bg-white rounded-md md:space-x-6 md:px-6">
                   <input className="uppercase text-[14px] w-20 outline-none select-none" id="referralCode" value={referralCode} readOnly/>
                   <button className="font-bold text-[#303237] text-[16px] select-none focus:outline-none" onClick={copyReferralCode}>

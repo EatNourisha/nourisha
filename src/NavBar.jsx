@@ -21,27 +21,16 @@ const NavBar = () => {
   const token = localStorage.getItem('authToken')
   const navRef = useRef();
   const { data } = useCart();
-  const { count } = useAuthStore();
-  const counter = localStorage.getItem('count')
-
-
-
-  const { itemCount, getTotalItemCount } = cartStore()
+  const { itemCount, setTotalItemCount } = cartStore()
+  
 
   useEffect(() => {
     if(!data) return
-    const { items } = data;
-    // getTotalItemCount(items.totalCount)
+    if (data?.items) {
+      const { items } = data;
+      setTotalItemCount(items?.totalCount)
+    }
   }, [data])
-
-  // console.log(count)
-  // const [countData, setCountData] = useState(0)
-
-  // console.log("dataCount", countData)
-  
-  // useEffect(() => {
-  //   setCountData(data?.items?.totalCount)
-  // }, [data?.items?.totalCount])
 
 
   const location = useLocation();
@@ -108,14 +97,14 @@ const NavBar = () => {
           </div>
           <div className="dashboard-second-div">
             <div className="dashboard-second-inner">
-              <div className="cont-nav-left cursor-pointer">
+              <div className="cont-nav-left cursor-pointer select-none">
                 <RiNotification2Line />
               </div>
-              <div className="cont-nav-left cursor-pointer" onClick={handlePartyPlan}>
+              <div className="cont-nav-left cursor-pointer select-none" onClick={handlePartyPlan}>
                 <img src={PartyLogo} alt="party-logo" />
               </div>
               <div
-                className="dashboard-cart-container cursor-pointer"
+                className="dashboard-cart-container cursor-pointer select-none"
                 onClick={toggleCartModal}
               >
                 <span style={{ color: "#fe7e00" }}>Cart</span>
@@ -123,7 +112,7 @@ const NavBar = () => {
                 <div>{itemCount}</div>
               </div>
             </div>
-            <div className="dashboard-last-div cursor-pointer">
+            <div className="dashboard-last-div cursor-pointer select-none">
               <RiAccountCircleLine style={{ color: "#fe7e00" }} />
               <span>Account</span>
               <RiArrowDropDownLine />
