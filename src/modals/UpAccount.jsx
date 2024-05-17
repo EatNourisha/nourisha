@@ -59,6 +59,7 @@ const initialState = {
       city: data?.address?.city,
     })
 
+    
   }, [data]);
 
   

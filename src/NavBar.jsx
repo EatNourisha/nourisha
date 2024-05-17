@@ -12,27 +12,24 @@ import PartyLogo from "../src/assets/noto_party-popper.png";
 import { BsCart2 } from "react-icons/bs";
 import Cart from "./modals/Cart";
 import CheckOut from "./modals/CheckOut";
-import useGetCart from "./hooks/useGetCart";
-import useAuthStore from "./stores/auth";
+import useCart from "./hooks/useCart";
+import cartStore from "./stores/cartStore";
 
 
 const NavBar = () => {
   const token = localStorage.getItem('authToken')
   const navRef = useRef();
-  const { data } = useGetCart();
-  // const { count } = useAuthStore();
-  const count = localStorage.getItem('count')
+  const { data } = useCart();
+  const { itemCount, setTotalItemCount } = cartStore()
 
 
-
-  console.log(count)
-  // const [countData, setCountData] = useState(0)
-
-  // console.log("dataCount", countData)
-  
-  // useEffect(() => {
-  //   setCountData(data?.items?.totalCount)
-  // }, [data?.items?.totalCount])
+  useEffect(() => {
+    if(!data) return
+    if (data?.items) {
+      const { items } = data;
+      setTotalItemCount(items?.totalCount)
+    }
+  }, [data])
 
 
   const location = useLocation();
@@ -53,6 +50,10 @@ const NavBar = () => {
     setIsCartModalOpen(false);
     setIsCheckoutModalOpen(true);
   };
+
+  const handlePartyPlan = () => {
+    navigate("/dashboard/party")
+  }
   
   useEffect(() => {
     const determineHeading = () => {
@@ -75,7 +76,7 @@ const NavBar = () => {
     return () => {
       // Optionally, you can clean up any subscriptions or timers here
     };
-  }, [location.pathname, data]);
+  }, [location.pathname]);
 
 
   const pathname = location.pathname.startsWith("/dashboard")
@@ -95,22 +96,22 @@ const NavBar = () => {
           </div>
           <div className="dashboard-second-div">
             <div className="dashboard-second-inner">
-              <div className="cont-nav-left cursor-pointer">
+              <div className="cont-nav-left cursor-pointer select-none">
                 <RiNotification2Line />
               </div>
-              <div className="cont-nav-left cursor-pointer">
+              <div className="cont-nav-left cursor-pointer select-none" onClick={handlePartyPlan}>
                 <img src={PartyLogo} alt="party-logo" />
               </div>
               <div
-                className="dashboard-cart-container cursor-pointer"
+                className="dashboard-cart-container cursor-pointer select-none"
                 onClick={toggleCartModal}
               >
                 <span style={{ color: "#fe7e00" }}>Cart</span>
                 <BsCart2 style={{ color: "#fe7e00" }} />
-                <div>{count}</div>
+                <div>{itemCount}</div>
               </div>
             </div>
-            <div className="dashboard-last-div cursor-pointer">
+            <div className="dashboard-last-div cursor-pointer select-none">
               <RiAccountCircleLine style={{ color: "#fe7e00" }} />
               <span>Account</span>
               <RiArrowDropDownLine />

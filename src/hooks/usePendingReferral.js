@@ -2,8 +2,8 @@ import useSWR from "swr";
 import { get } from "../utils/makeRequest";
 
 
-export default function useGetCart() {
-  const { data, error } = useSWR(`cart`, get);
+export default function usePendingReferral() {
+  const { data, error } = useSWR(`/referrals/pending`, get);
 
   return {
     data: data?.data || [], 

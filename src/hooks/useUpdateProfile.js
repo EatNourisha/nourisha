@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { put, get } from '../utils/makeRequest';
 import { showToast } from "../utils/toast";
@@ -6,7 +6,7 @@ import { showToast } from "../utils/toast";
 
 const useUpdateProfile = () => {
   const { data, error, mutate } = useSWR('customers/me', get);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = React.useState(null);
 
   const update = async (updateDate) => {

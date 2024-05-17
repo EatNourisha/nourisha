@@ -1,146 +1,104 @@
 import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import "./cart.css";
-import useGetCart from "../hooks/useGetCart";
-import useDelCart from "../hooks/useDelCart";
 import useCart from "../hooks/useCart";
-import useAuthStore from "../stores/auth";
-
-
+import cartStore from "../stores/cartStore";
 
 const Cart = ({ onClose, onProceedToCheckout }) => {
-  const { data, loading, error } = useGetCart();
-  const { removeItemToCart } = useDelCart();
-  const { addItemToCart } = useCart();
   const [cartItems, setCartItems] = useState([]);
-  const { count, setCount } = useAuthStore();
+  const { data, isLoading, error } = useCart();
+  const [uiLoading, setUiLoading] = useState(null)
+  const { increaseQuantityOnServer, decreaseQuantityOnServer, removeItemToCartOnServer } = useCart();
+  const { removeFromCart, increaseQuantity, decreaseQuantity, setTotalItemCount} = cartStore();
 
-
-
-
-  useEffect(() => {
-    setCartItems(data?.items?.data);
-  }, [data?.items?.data]);
-
-
-  const subtotal = cartItems?.reduce((acc, item) => {
+  const subtotal = data?.items?.data.reduce((acc, item) => {
     const priceAmount = item?.item?.price?.amount || 0;
     return acc + priceAmount * (item.quantity || 0);
   }, 0);
 
 
-  const increaseQuantity = async (cartItem) => {
+  useEffect(() => {
+    if (!data) return;
+    const { items } = data;
+    const { data: itemData } = items;
+    setCartItems(itemData);
+    setTotalItemCount(items.totalCount);
+  }, [data]);
+
+  const increaseQuantityitem = async (cartItem) => {
+    
     const itemData = {
       itemId: cartItem.item._id,
-      quantity: cartItem.quantity += 1,
+      quantity: 1,
     };
-
-    try{
-      const response = await addItemToCart(itemData);
-      
-      // Update the local state with the new quantity
-      const updatedCartItems = cartItems.map(item => {
-        if (item._id === cartItem._id) {
-          return {
-            ...item,
-            quantity: itemData.quantity
-          };
-        }
-        return item;
-      });
-      
-      // Set the local state with the updated items
-      setCartItems(updatedCartItems);
-      
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-
-    // try {
-    //   const response = await addItemToCart(itemData);
-    //   cartItem.quantity = itemData.quantity;
-    //   console.log(response);
-    // } 
     
+    try {
+      setUiLoading(cartItem.item._id)
+
+      const res = await increaseQuantityOnServer(itemData);
+      if (res?.data?._id) increaseQuantity(itemData);
+
+      setTimeout(() => {
+        setUiLoading(null)
+      }, 700);
+
+    } catch (error) {
+      console.log(error, "error in increasing quantity");
+      setUiLoading(null)
+    }
   };
 
   const removeQuantity = async (cartItem) => {
-    console.log("cartItem coming from DecreaseQuantity", cartItem);
-
-    const itemData = {
-      itemId: cartItem.item._id,
-      quantity: (cartItem.quantity -= 1),
-    };
-
-    console.log(
-      cartItems.filter((item) => item._id !== cartItem._id),
-      "HandleRemoveFromCart"
-    );
-
-    try {
-      if (cartItem.quantity <= 0) {
-        // If quantity becomes zero or less, remove the item from the cart
-        await handleRemoveFromCart(cartItem);
-        return;
-      } else {
-        const response = await removeItemToCart(itemData);
-
-        // Update the quantity locally after the server request succeeds
-        cartItem.quantity = itemData.quantity;
-        setCartItems([...cartItems]); // Trigger re-render
-        console.log("response from decrease", response);
-
-      }
-      // const response = await removeItemToCart(itemData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
-  const handleRemoveFromCart = async (cartItem) => {
-    // console.log(cartItem._id)
-
     const itemData = {
       itemId: cartItem.item._id,
       quantity: 1,
     };
 
     try {
-      const res = await removeItemToCart(itemData);
-      setCartItems(cartItems.filter((item) => item._id !== cartItem._id));
-      setCount(count - 1)
-      console.log(res)
+      setUiLoading(cartItem.item._id)
+
+      if (cartItem.quantity > 1) {
+        const res = await decreaseQuantityOnServer(itemData);
+        if (res?.data?._id) decreaseQuantity(itemData);
+
+        setTimeout(() => {
+          setUiLoading(null)
+        }, 700);
+      }
     } catch (error) {
-      // console.log(error.message);
-      console.error("Failed to remove item from cart", error);
+      console.log(error, "error in decreasing quantity");
     }
   };
 
+  const removeItemFromCart = async (cartItem) => {
+    const itemData = {
+      itemId: cartItem.item._id,
+      quantity: cartItem.quantity,
+    };
 
- 
+    try {
+      const res = await removeItemToCartOnServer(itemData);
+      if (res?.data?._id) removeFromCart(itemData);
+    } catch (error) {
+      console.log(error, "error in increasing quantity");
+    }
+  };
 
-  
-
-
-
-  if (loading) return <p>Loading cart...</p>;
-  if (error) return <p>Error loading cart: {error.message}</p>;
-  if (!data?.items?.data.length) return <p>Your cart is empty.</p>; // This line checks for empty cart
-
- 
+  // if (uiLoading) return <p>uiLoading cart...</p>;
+  // if (error) return <p>Error uiLoading cart: {error.message}</p>;
+  // if (!data?.items?.data.length) return <p>Your cart is empty.</p>; // This line checks for empty cart
 
   return (
-    <div className="cart-modal">
+    <div className="cart-modal overflow-x-hidden">
       <div className="cart-content">
         <div className="cart-header">
           <h2>Cart</h2>
-          <button className="close-btn" onClick={onClose}>
+          <button className="close-btn select-none" onClick={onClose}>
             x
           </button>
         </div>
         <div className="cart-items">
-          {cartItems?.map((cartItem) => (
+          {cartItems.map((cartItem) => (
             <div key={cartItem._id} className="cart-item">
               <div className="cart-top1">
                 <img src={cartItem.item?.image_url} alt={cartItem.item?.name} />
@@ -150,18 +108,30 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
                 </div>
               </div>
               <div className="item-details">
-                <p onClick={() => handleRemoveFromCart(cartItem)}>Remove</p>
-                <div className="cart-plus-minus-container">
+                <p onClick={() => removeItemFromCart(cartItem)}>Remove</p>
+
+                <div className="flex justify-between border  border-[#EDEDF3] p-2 gap-2  py-1 bg-white shadow-md rounded-3xl select-none">
                   <button
-                    className="cart-minus"
+                    className="border border-solid border-[#030517] text-[#030517] px-2 rounded-full select-none"
                     onClick={() => removeQuantity(cartItem)}
+                    disabled={cartItem.quantity === 1}
                   >
                     -
                   </button>
-                  <span>{cartItem.quantity}</span>
+
+                  {uiLoading === cartItem.item._id ? (
+                    <span className="flex items-center px-[6px] ">
+                      <Icon icon="gg:spinner" className="animate-spin h-4 w-4 text-orange-500" />
+                    </span>
+                  ) : (
+                    <span className="border-x-2 border-[#EDEDF3] px-2 text-[14px] select none">
+                      {cartItem.quantity}
+                    </span>
+                  )}
+
                   <button
-                    className="cart-plus"
-                    onClick={() => increaseQuantity(cartItem)}
+                    className="border bordr-solid border-[#030517]  text-[#030517] px-[6px] rounded-full select-none "
+                    onClick={() => increaseQuantityitem(cartItem)}
                   >
                     +
                   </button>
@@ -174,6 +144,7 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
             <h3>£{subtotal}</h3>
           </div>
         </div>
+        
         <div className="cart-footer">
           <button className="checkout-btn" onClick={onProceedToCheckout}>
             Proceed to checkout
@@ -189,85 +160,3 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
 
 export default Cart;
 
-// import React, { useState } from "react";
-// import "./cart.css";
-// import useGetCart from "../hooks/useGetCart";
-// import useDelCart from "../hooks/useDelCart";
-
-// const Cart = ({ onClose, onProceedToCheckout }) => {
-//   const { data, loading, error } = useGetCart();
-//   const { removeItemToCart } = useDelCart();
-
-//   const subtotal = data?.items?.data.reduce(
-//     (acc, item) => {
-//       // Ensure item.item exists and has a price before accessing price.amount
-//       const priceAmount = item?.item?.price?.amount || 0;
-//       return acc + priceAmount * (item.quantity || 0);
-//     },
-//     0
-//   );
-
-//   const handleRemoveFromCart = async (cartItem) => {
-//     const itemData = {
-//       itemId: cartItem.item._id,
-//       quantity: 1,
-//     };
-
-//     try {
-//       await removeItemToCart(itemData);
-//       alert("Item removed from cart!");
-//     } catch (error) {
-//       console.error("Failed to add item to cart", error);
-//     }
-//   };
-
-//   return (
-//     <div className="cart-modal">
-//       <div className="cart-content">
-//         <div className="cart-header">
-//           <h2>Cart</h2>
-//           <button className="close-btn" onClick={onClose}>
-//             x
-//           </button>
-//         </div>
-//         {loading && <p>Loading cart...</p>}
-//         {error && <p>Error loading cart: {error.message}</p>}
-//         <div className="cart-items">
-//           {data?.items?.data.map((cartItem) => (
-//             <div key={cartItem._id} className="cart-item">
-//               <div className="cart-top1">
-//               <img src={cartItem.item?.image_url} alt={cartItem.item?.name} />
-//                 <div className="cart-name-price">
-//                   <h3>{cartItem.item?.name}</h3>
-//                   <p>£{cartItem.item?.price.amount}</p>
-//                 </div>
-//               </div>
-//               <div className="item-details">
-//                 <p onClick={() => handleRemoveFromCart(cartItem)}>Remove</p>
-//                 <div className="cart-plus-minus-container">
-//                   <button className="cart-plus">+</button>
-//                   <span>{cartItem.quantity}</span>
-//                   <button className="cart-minus">-</button>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//           <div className="cart-subtotal">
-//             <p>Subtotal</p>
-//             <h3>£{subtotal}</h3>
-//           </div>
-//         </div>
-//         <div className="cart-footer">
-//           <button className="checkout-btn" onClick={onProceedToCheckout}>
-//             Proceed to checkout
-//           </button>
-//           <button className="continue-shopping-btn" onClick={onClose}>
-//             Continue shopping
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Cart;
