@@ -7,7 +7,7 @@ import useCart from "../../../hooks/useCart";
 import useMealZimbabwe from "../../../hooks/useMealZimbabwe";
 import useMealGhana from "../../../hooks/useMealGhana";
 import cartStore from "../../../stores/cartStore";
-import MealDetails from "../../../modals/mealDetails";
+import MealDetails from "../../../modals/MealDetails";
 import ReferFriend from "../../../modals/ReferFriend";
 
 const Overview = () => {

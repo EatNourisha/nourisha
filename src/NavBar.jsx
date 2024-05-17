@@ -13,7 +13,6 @@ import { BsCart2 } from "react-icons/bs";
 import Cart from "./modals/Cart";
 import CheckOut from "./modals/CheckOut";
 import useCart from "./hooks/useCart";
-import useAuthStore from "./stores/auth";
 import cartStore from "./stores/cartStore";
 
 
@@ -22,7 +21,7 @@ const NavBar = () => {
   const navRef = useRef();
   const { data } = useCart();
   const { itemCount, setTotalItemCount } = cartStore()
-  
+
 
   useEffect(() => {
     if(!data) return

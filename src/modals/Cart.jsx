@@ -110,7 +110,7 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
               <div className="item-details">
                 <p onClick={() => removeItemFromCart(cartItem)}>Remove</p>
 
-                <div className="flex justify-between border  border-[#EDEDF3] p-2 gap-2  py-1 bg-white shadow-md rounded-3xl">
+                <div className="flex justify-between border  border-[#EDEDF3] p-2 gap-2  py-1 bg-white shadow-md rounded-3xl select-none">
                   <button
                     className="border border-solid border-[#030517] text-[#030517] px-2 rounded-full select-none"
                     onClick={() => removeQuantity(cartItem)}
