@@ -19,8 +19,8 @@ const Login = () => {
     setState({ ...state, ...newState });
   };
   const handleSubmit = async (e) => {
-    setIsLoading(true);
     e.preventDefault();
+    setIsLoading(true);
     await login(state);
 
     setTimeout(() => {
@@ -79,7 +79,7 @@ const Login = () => {
                 <button
                   className="btn"
                   type="submit"
-                  isLoading={status === "loading"}
+                  // isLoading={status === "loading"}
                   // disabled={isLoading}
                 >
                   {isLoading ? (

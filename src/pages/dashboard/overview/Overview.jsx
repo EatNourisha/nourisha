@@ -84,6 +84,8 @@ const Overview = () => {
       quantity: 1,
     };
 
+    console.log(itemData)
+
     try {
       const res = await addItemToCartOnServer(itemData);
       if(res?.data?._id) await addToCart(itemData);

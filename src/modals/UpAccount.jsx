@@ -48,16 +48,17 @@ const initialState = {
   useEffect(() => {
     if(!data) return;
 
-    setState({
-      firstName: data?.first_name,
-      lastName: data?.last_name,
-      email: data?.email,
-      phoneNumber: data?.phone,
-      country: data?.address?.country,
-      postalCode: data?.address?.postcode,
-      address: data?.address?.address_,
-      city: data?.address?.city,
-    })
+    if(data){
+      setState({
+        firstName: data?.first_name,
+        lastName: data?.last_name,
+        email: data?.email,
+        phoneNumber: data?.phone,
+        country: data?.address?.country,
+        postalCode: data?.address?.postcode,
+        address: data?.address?.address_,
+        city: data?.address?.city,
+    }) }
 
     
   }, [data]);
