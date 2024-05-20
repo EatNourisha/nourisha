@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import "./overview.css";
 import man from "../../../assets/annouce.png";
+import backgroundImg from "../../../assets/bgmeal.png";
+import check from "../../../assets/check.png";
+import img_1 from "../../../assets/IMG20.png";
+import img_2 from "../../../assets/IMG23.png";
+import img_3 from "../../../assets/IMG21.png";
+import img_4 from "../../../assets/IMG22.png";
+
 import useMeal from "../../../hooks/useMeal";
 import useCart from "../../../hooks/useCart";
 import useMealZimbabwe from "../../../hooks/useMealZimbabwe";
@@ -9,6 +16,9 @@ import useMealGhana from "../../../hooks/useMealGhana";
 import cartStore from "../../../stores/cartStore";
 import MealDetails from "../../../modals/MealDetails";
 import ReferFriend from "../../../modals/ReferFriend";
+import DeliveryAddress from "../../../modals/DeliveryAddress";
+import SubscriptionPlan from "../../../modals/SubscriptionPlan";
+import SelectPlan from "../../../modals/SelectPlan";
 
 const Overview = () => {
   const [page, setPage] = useState(1);
@@ -31,16 +41,23 @@ const Overview = () => {
   } = useMealGhana(page);
   const countries = ["Nigeria", "Zimbabwe", "Ghana"];
 
+  const gradientStyle = {
+    background: `
+          url(${backgroundImg}) bottom center / cover no-repeat
+        `,
+    height: "550px",
+    width: "100%",
+    position: "relative",
+  };
+
   const { addItemToCartOnServer, data } = useCart();
   const { addToCart, setTotalItemCount } = cartStore();
   const [mealId, setMealId] = useState(null);
   const [openMealToggle, setOpenMealToggle] = useState(false);
-  const [ referToggle, setReferToggle ] = useState(false)
-  const [refreshCart, setRefreshCart] = useState(false)
+  const [referToggle, setReferToggle] = useState(false);
+  const [refreshCart, setRefreshCart] = useState(false);
+  const [selectPlan, setSelectPlan] = useState(false);
 
-  
-  
-  
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
 
   let currentData;
@@ -70,9 +87,8 @@ const Overview = () => {
   let totalItems = currentData?.totalCount || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
- 
   // useEffect(() => {
-  //   if(!data.items) return 
+  //   if(!data.items) return
   //   const { items } = data;
   //   const total = items.totalCount || 0
   //   setTotalItemCount(total)
@@ -84,12 +100,12 @@ const Overview = () => {
       quantity: 1,
     };
 
-    console.log(itemData)
+    console.log(itemData);
 
     try {
       const res = await addItemToCartOnServer(itemData);
-      if(res?.data?._id) await addToCart(itemData);
-      setRefreshCart(!refreshCart)
+      if (res?.data?._id) await addToCart(itemData);
+      setRefreshCart(!refreshCart);
     } catch (error) {
       console.log(error, "Can't add to cart");
     }
@@ -117,7 +133,11 @@ const Overview = () => {
   };
 
   const handleReferFriend = () => {
-    setReferToggle(!referToggle)
+    setReferToggle(!referToggle);
+  };
+
+  const handleSelectPlan = () => {
+    setSelectPlan(true)
   }
 
   return (
@@ -178,11 +198,7 @@ const Overview = () => {
             <p>Error: {error.message}</p>
           ) : (
             currentData?.data.map((meal) => (
-              <div
-                key={meal._id}
-                className="meal-container cursor-pointer"
-                
-              >
+              <div key={meal._id} className="meal-container cursor-pointer">
                 <img
                   src={meal.image_url}
                   alt={meal.name}
@@ -190,7 +206,12 @@ const Overview = () => {
                   className="meal-image select-none"
                   onClick={() => handleMealDetails(meal)}
                 />
-                <h3 onClick={() => handleMealDetails(meal)} className="select-none">{meal.name}</h3>
+                <h3
+                  onClick={() => handleMealDetails(meal)}
+                  className="select-none"
+                >
+                  {meal.name}
+                </h3>
 
                 <p>Price: £{meal.price.amount}</p>
                 <div className="cart-container">
@@ -206,19 +227,135 @@ const Overview = () => {
           )}
         </div>
       </div>
-      <div className="overview-last-container">
-        <h3>Unlock 60+ Premium Menu</h3>
-        <button>Subscribe to a meal plan</button>
-        <p>Treading Menu</p>
+
+      <div className="flex flex-col">
+        <div className="w-[344px] h-[526px] rounded-lg" style={gradientStyle}>
+          <div className="relative p-6">
+            <h1 className="text-white text-[20px] font-bold leadding-[22px] items-center ">
+              Don't Miss Out! Save Big. <br /> Up to 40% off your first order.
+            </h1>
+            <div className="relative bg-white rounded-lg w-[294px] h-[416px] mt-10 ">
+              <p className="absolute -top-5 left-28 text-[19px] text-white text-center font-bold bg-[#FF0000] p-2 border border-white w-[70px] rounded-lg ">
+                £120
+              </p>
+
+              <div className="p-2 pt-10 text-center  ">
+                <p className="font-bold text-[#1E1E1E] text-[18px]">
+                  Weekly Plan
+                </p>
+                <p className="leading-[18px] mt-2 text-[12px]">
+                  2 chef-cooked meals daily <br /> (Lunch and Dinner from Mon.
+                  to Sun.) for a week, of your choice meal.
+                </p>
+              </div>
+
+              <div className="flex flex-col mt-4 px-8">
+                <hr className="mb-3" />
+
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Monday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Tuesday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Wednesday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Thursday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Friday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Saturday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+                <div className="flex justify-between mb-1">
+                  <p className="font-medium text-[12px] text-[#000B33]">
+                    Sunday
+                  </p>
+                  <img src={check} alt="" width={20} />
+                </div>
+
+                <div className="mt-3">
+                  <button className="text-white text-[12px] font-bold p-2 w-full bg-[#FF0000]/70 rounded-lg" onClick={handleSelectPlan}>
+                    Order now
+                  </button>
+                  <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">
+                    + £10 For delivery
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=" flex flex-col justify-center items-center mt-4 bg-[#FFF2EB] h-[280px] rounded-lg ">
+          <h3 className="text-center text-[#242524] text-[20px] font-extrabold ">
+            Unlock 60+ <br /> Premium Menu
+          </h3>
+          <button className="text-[14px] text-white font-medium bg-[#FF0000]/70 p-2 px-6 rounded-lg mt-4 ">
+            Subscribe to a meal plan
+          </button>
+          <p className="text-[20px] font-extrabold text-[#FE7E00] mt-3 ">
+            Treading Menu
+          </p>
+
+          <div className="flex flex-col px-4 items-center mt-3">
+            <div className="flex gap-4 items-center mb-3">
+              <div className="flex gap-2 items-center border p-1 px-3 shadow rounded-3xl">
+                <img src={img_1} alt="" width={30} className="rounded-full" />
+                <p className="font-bold text-[14px] text-[#030838] ">Rice</p>
+              </div>
+              <div className="flex gap-2 items-center border p-1 px-3 shadow rounded-3xl">
+                <img src={img_2} alt="" width={30} className="rounded-full" />
+                <p className="font-bold text-[14px] text-[#030838] ">Swallow/Soup</p>
+              </div>{" "}
+              <br />
+            </div>
+
+            <div className="flex justify-center gap-2 -ml-2 items-center">
+              <div className="flex gap-2 items-center border p-1 px-3 shadow rounded-3xl">
+                <img src={img_3} alt="" width={30} className="rounded-full" />
+                <p className="font-bold text-[14px] text-[#030838] ">Beans</p>
+              </div>
+              <div className="flex gap-2 items-center border p-1 px-3 shadow rounded-3xl">
+                <img src={img_4} alt="" width={30} className="rounded-full" />
+                <p className="font-bold text-[14px] text-[#030838] ">Yam</p>
+              </div>
+              <div className="flex gap-2 items-center border p-1 px-3 shadow rounded-3xl">
+                <img src={img_4} alt="" width={30} className="rounded-full" />
+                <p className="font-bold text-[14px] text-[#030838] ">Others</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Select Plan */}
+      {selectPlan && <SelectPlan onClose={() => setSelectPlan(false)} />}
 
       {/* Refer a friend modal */}
-      {referToggle && (
-        <ReferFriend onClose={() => setReferToggle(false)} />
-      )}
+      {referToggle && <ReferFriend onClose={() => setReferToggle(false)} />}
 
-      
       {/* Modal for Meal Details */}
       {openMealToggle && (
         <MealDetails onClose={() => setOpenMealToggle(false)} mealId={mealId} />

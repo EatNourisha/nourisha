@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SubscriptionPlan from "./SubscriptionPlan";
 import DeliveryAddress from "./DeliveryAddress";
 import PlanPayment from "./PlanPayment";
 import SelectMeal from "./SelectMeal";
 import DeliveryDay from "./DeliveryDay";
+import back from "../assets/back.png";
 
 const SelectPlan = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const totalSteps = 5;
+  const navigate = useNavigate()
 
   const handleNext = () => {
     if (step < totalSteps) {
@@ -21,22 +24,43 @@ const SelectPlan = ({ onClose }) => {
     }
   };
 
+  const handleSkip = () => {
+    navigate('/dashboard')
+  }
+
   const renderModalContent = () => {
     switch (step) {
       case 1:
-        return <div><SubscriptionPlan /></div>;
+        return {
+          content: <SubscriptionPlan handleNext={handleNext} handleSkip={handleSkip} />,
+          nextButtonText: "Next",
+        };
       case 2:
-        return <div><DeliveryAddress /></div>;
+        return {
+          content: <DeliveryAddress handleSkip={handleSkip} />,
+          nextButtonText: "Next",
+        };
       case 3:
-        return <div><PlanPayment /></div>;
+        return {
+          content: <PlanPayment handleSkip={handleSkip} />,
+          nextButtonText: "Place Order",
+        };
       case 4:
-        return <div><SelectMeal /></div>;
+        return {
+          content: <SelectMeal handleSkip={handleSkip} />,
+          nextButtonText: "Next",
+        };
       case 5:
-        return <div><DeliveryDay /></div>;
+        return {
+          content: <DeliveryDay />,
+          nextButtonText: "Next",
+        };
       default:
-        return null;
+        return { content: null, nextButtonText: "" };
     }
   };
+
+  const { content, nextButtonText } = renderModalContent();
 
   const renderStepIndicator = () => {
     const steps = [];
@@ -60,7 +84,12 @@ const SelectPlan = ({ onClose }) => {
       <div className="bg-black bg-opacity-50 fixed top-0 left-0 w-[100%] h-[100%] flex justify-center items-center z-[1000] ">
         <div className="bg-white p-[20px] w-[423px] h-[95vh] flex flex-col rounded-lg relative overflow-scroll overflow-x-hidden">
           <div className="flex justify-between items-center">
-            <p className="text-[20px] text-[#303237] font-bold -mt-5 "></p>
+            <p
+              className="text-[20px] text-[#303237] font-bold -mt-5 cursor-pointer "
+              onClick={handlePrev}
+            >
+              <img src={back} alt="" width={25} />
+            </p>
             <button
               className="close-btn select-none mb-3 -mt-3"
               onClick={onClose}
@@ -71,29 +100,24 @@ const SelectPlan = ({ onClose }) => {
 
           <div className="px-4 py-2">
             {renderStepIndicator()}
-            <div className="mt-4">{renderModalContent()}</div>
+            <div className="mt-4">{content}</div>
           </div>
 
           <div className="flex flex-col gap-4">
-            <button
-              onClick={handlePrev}
-              disabled={step === 1}
-              className={`mx-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg ${
-                step === 1 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              Previous
-            </button>
 
-            <button
-              onClick={handleNext}
-              disabled={step === totalSteps}
-              className={`mx-4 py-2 text-[16px] font-semibold text-white bg-[#FE7E00] rounded-lg ${
-                step === totalSteps ? "opacity-50 cursor-not-allowed " : ""
-              }`}
-            >
-              Next
-            </button>
+            {step === 1 ? (
+              ""
+            ) : (
+              <button
+                onClick={handleNext}
+                disabled={step === totalSteps}
+                className={`mx-4 mt-4 py-2 text-[16px] font-semibold text-white bg-[#FE7E00] rounded-lg ${
+                  step === totalSteps ? "opacity-50 cursor-not-allowed " : ""
+                }`}
+              >
+                {nextButtonText}
+              </button>
+            )}
           </div>
         </div>
       </div>
