@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-const TransactionsDetails = () => {};
 
 const BillingHistory = ({ close }) => {
   const [showTransaction, setShowTransaction] = useState(false);

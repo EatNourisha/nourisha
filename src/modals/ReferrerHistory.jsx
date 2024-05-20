@@ -61,7 +61,7 @@ const ReferrerHistory = ({ closeHistory, copyReferralCode, shareReferralCode, co
               src={back}
               alt="back_icon"
               width={25}
-              className="-ml-5"
+              className="-ml-5 cursor-pointer"
               onClick={closeHistory}
             />
             Referral A History
