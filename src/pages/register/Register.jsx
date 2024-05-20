@@ -107,7 +107,7 @@ const Register = () => {
                 By Creating account you are agreeing to our terms and condition{" "}
               </p>
               <div className="register-buttom-container">
-                <button className="btn">Create account</button>
+                <button className="btn" disabled>Create account</button>
                 <div className="register-buttom-footer">
                   <p>Already have an account?</p>
                   <a href="/login">Sign in</a>

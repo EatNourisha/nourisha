@@ -74,7 +74,8 @@ const Login = () => {
                   className="btn"
                   type="submit"
                   isLoading={status === "loading"}
-                  disabled={isDisabled}
+                  // disabled={isDisabled} Sign in button disabled
+                  disabled
                 >
                   Sign In
                 </button>
