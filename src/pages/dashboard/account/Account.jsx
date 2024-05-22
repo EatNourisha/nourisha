@@ -21,24 +21,30 @@ import ContactUs from "../../../modals/ContactUs";
 
 
 const Account = () => {
-  const [activeTab, setActiveTab] = useState("Profile");
+  const [activeTab, setActiveTab] = useState(window.innerWidth >= 768 ? 'Profile' : '');
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setIsMenuOpen(false); // Close the menu on mobile when a tab is clicked
+  };
 
   const renderContent = () => {
     switch (activeTab) {
       case "Profile":
-        return <UpAccount />;
+        return <UpAccount isMenuOpen={isMenuOpen} onClose={() => setIsMenuOpen(true)} />;
       case "MyOrders":
-        return <MyOrders />;
+        return <MyOrders onClose={() => setIsMenuOpen(true)} />;
       case "Billings":
-        return <Billings />;
+        return <Billings onClose={() => setIsMenuOpen(true)} />;
       case "FoodService":
-        return <FoodService />;
+        return <FoodService onClose={() => setIsMenuOpen(true)} />;
       case "FoodPreference":
-        return <FoodPreference />;
+        return <FoodPreference onClose={() => setIsMenuOpen(true)} />;
       case "ReferFriend":
-        return <ReferFriend />;
+        return <ReferFriend onClose={() => setIsMenuOpen(true)} />;
       case "ChangePassword":
-        return <ChangePassword />;
+        return <ChangePassword onClose={() => setIsMenuOpen(true)} />;
       case "TermsOfUse":
         return <TermsOfUse />;
       case "PrivacyPolicy":
@@ -51,15 +57,15 @@ const Account = () => {
   };
 
   return (
-    <div className="account-container">
-      <div className="account-first-container">
+    <div className="account-container mt-14 md:mt-0">
+      <div className={`account-first-container w-full md:w-2/6 p-4 ${isMenuOpen ? "block" : "hidden"} md:block`}>
         <h1>GENERAL</h1>
         <div className="account-inner-div">
           <div
             className={`account-section-tab cursor-pointer ${
               activeTab === "Profile" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("Profile")}
+            onClick={() => handleTabClick("Profile")}
           >
             <CgProfile style={{ width: "24px", height: "24px" }} />
             <p>Profile</p>
@@ -68,7 +74,7 @@ const Account = () => {
             className={`account-section-tab cursor-pointer ${
               activeTab === "MyOrders" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("MyOrders")}
+            onClick={() => handleTabClick("MyOrders")}
           >
             <IoBagHandleOutline style={{ width: "24px", height: "24px" }} />
             <p>My orders</p>
@@ -77,7 +83,7 @@ const Account = () => {
             className={`account-section-tab cursor-pointer ${
               activeTab === "Billings" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("Billings")}
+            onClick={() => handleTabClick("Billings")}
           >
             <GoCreditCard style={{ width: "24px", height: "24px" }} />
             <p>Billings</p>
@@ -85,7 +91,7 @@ const Account = () => {
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "FoodService" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("FoodService")}
+            onClick={() => handleTabClick("FoodService")}
           >
             <FaRegEdit style={{ width: "24px", height: "24px" }} />
             <p>Edit Food Service</p>
@@ -93,7 +99,7 @@ const Account = () => {
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "FoodPreference" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("FoodPreference")}
+            onClick={() => handleTabClick("FoodPreference")}
           >
             <FaRegEdit style={{ width: "24px", height: "24px" }} />
             <p>Edit Food Preferences</p>
@@ -101,7 +107,7 @@ const Account = () => {
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "ReferFriend" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("ReferFriend")}  
+            onClick={() => handleTabClick("ReferFriend")}  
           >
             <BsGift style={{ width: "24px", height: "24px" }} />
             <p>Refer a Friend</p>
@@ -116,35 +122,35 @@ const Account = () => {
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "ChangePassword" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("ChangePassword")}   >
+            onClick={() => handleTabClick("ChangePassword")}   >
             <RiLockPasswordLine style={{ width: "24px", height: "24px" }} />
             <p>Change password</p>
           </div>
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "TermsOfUse" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("TermsOfUse")} >
+            onClick={() => handleTabClick("TermsOfUse")} >
             <MdOutlineVerifiedUser style={{ width: "24px", height: "24px" }} />
             <p>Terms of use</p>
           </div>
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "PrivacyPolicy" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("PrivacyPolicy")}>
+            onClick={() => handleTabClick("PrivacyPolicy")}>
             <MdOutlinePrivacyTip style={{ width: "24px", height: "24px" }} />
             <p>Privacy Policy</p>
           </div>
           <div className={`account-section-tab cursor-pointer ${
               activeTab === "ContactUs" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("ContactUs")}>
+            onClick={() => handleTabClick("ContactUs")}>
             <FiPhoneCall style={{ width: "24px", height: "24px" }} />
             <p>Contact us</p>
           </div>
         </div>
       </div>
       <div className="account-second-container">
-      {renderContent()}
+      {activeTab && renderContent()}
       </div>
   
     </div>

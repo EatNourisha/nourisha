@@ -3,11 +3,14 @@ import "./upAccount.css";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Icon } from "@iconify/react";
 import { Spinner } from "react-bootstrap";
+import back from "../assets/back.png"
 
 
-const UpAccount = () => {
+const UpAccount = ({ onClose, isMenuOpen }) => {
   const { update, data, isLoading } = useUpdateProfile();
 
+  const handleBack = () => {
+  }
 
 const initialState = {
   firstName: "",
@@ -65,8 +68,11 @@ const initialState = {
 
   
   return (
-    <div className="update-modal-account w-full">
-      <h1>Profile</h1>
+    <div className={`update-modal-account w-full -mt-6 md:mt-0 `}>
+      <div className="flex items-center gap-4">
+        <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2" />
+        <h1 className="mt-2">Profile</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="update-modal-form-container">
           <div className="update-modal-input-container1">

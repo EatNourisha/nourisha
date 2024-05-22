@@ -45,9 +45,7 @@ const Overview = () => {
     background: `
           url(${backgroundImg}) bottom center / cover no-repeat
         `,
-    height: "550px",
-    width: "100%",
-    position: "relative",
+   
   };
 
   const { addItemToCartOnServer, data } = useCart();
@@ -141,8 +139,8 @@ const Overview = () => {
   }
 
   return (
-    <div className="overview-container">
-      <div className="overview-container-first">
+    <div className="overview-container lg:flex">
+      <div className="overview-container-first w-full mt-[70px] md:w-[83%] lg:w-[48%] xl:w-[67%] box-border  md:mt-0">
         <div className="overview-container-first-section">
           <img src={man} alt="annouce" />
           <div className="overview-top-content">
@@ -188,11 +186,11 @@ const Overview = () => {
             )}
           </div>
         </div>
-        <div className="overview-meal-container">
+        <div className="overview-item  grid justify-center items-center xs:grid-cols-2 gap-4 xl:grid-cols-3">
           {loadingData ? (
             <Icon
               icon="gg:spinner"
-              className="animate-spin w-10 h-10 md:w-16 md:h-16 text-orange-400 ml-72 justify-center items-center mx-auto"
+              className="animate-spin w-10 h-10 mt-16 mx-auto text-orange-400 flex justify-center items-center  md:ml-72 md:w-16 md:h-16"
             />
           ) : error ? (
             <p>Error: {error.message}</p>
@@ -228,8 +226,8 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
-        <div className="w-[344px] h-[526px] rounded-lg" style={gradientStyle}>
+      <div className="flex flex-col bg-white md:w-[83%] lg:bg-transparent items-center lg:items-start">
+        <div className="relative w-full h-full rounded-lg  md:w-[344px] md:h-[550px] mt-10 lg:mt-0 flex flex-col items-center " style={gradientStyle}>
           <div className="relative p-6">
             <h1 className="text-white text-[20px] font-bold leadding-[22px] items-center ">
               Don't Miss Out! Save Big. <br /> Up to 40% off your first order.
@@ -308,7 +306,7 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col justify-center items-center mt-4 bg-[#FFF2EB] h-[280px] rounded-lg ">
+        <div className=" flex flex-col justify-center items-center w-full h-[280px] rounded-lg mb-10  mt-4 bg-[#FFF2EB] md:w-[344px] md:mt-10 ">
           <h3 className="text-center text-[#242524] text-[20px] font-extrabold ">
             Unlock 60+ <br /> Premium Menu
           </h3>

@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { useFormik } from "formik";
 import * as yup from "yup";
 import useChangePassword from '../hooks/useChangePassword';
+import back from '../assets/back.png'
 
 
-const ChangePassword = () => {
+const ChangePassword = ({ onClose }) => {
   const { changePassword, isLoading } = useChangePassword()
   const [showPassword, setShowPassword] = useState(false);
 
@@ -46,7 +47,10 @@ const ChangePassword = () => {
 
   return (
     <div className='w-full md:w-[520px]'>
-      <h1 className='text-[18px] font-semibold text-[#14013A]'>Change Password</h1>
+      <div className="flex items-center gap-2">
+        <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2 cursor-pointer" />
+        <h1 className='text-[18px] font-semibold text-[#14013A]'>Change Password</h1>
+      </div>
 
       <div>
         <form onSubmit={formik.handleSubmit}>

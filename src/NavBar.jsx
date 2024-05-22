@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./nav-bar.css";
 import Logo from "../src/assets/group16.png";
-import { NavLink, Link, useLocation, useNavigate  } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import {
   RiNotification2Line,
@@ -15,22 +15,19 @@ import CheckOut from "./modals/CheckOut";
 import useCart from "./hooks/useCart";
 import cartStore from "./stores/cartStore";
 
-
 const NavBar = () => {
-  const token = localStorage.getItem('authToken')
+  const token = localStorage.getItem("authToken");
   const navRef = useRef();
   const { data } = useCart();
-  const { itemCount, setTotalItemCount } = cartStore()
-
+  const { itemCount, setTotalItemCount } = cartStore();
 
   useEffect(() => {
-    if(!data) return
+    if (!data) return;
     if (data?.items) {
       const { items } = data;
-      setTotalItemCount(items?.totalCount)
+      setTotalItemCount(items?.totalCount);
     }
-  }, [data])
-
+  }, [data]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -52,9 +49,9 @@ const NavBar = () => {
   };
 
   const handlePartyPlan = () => {
-    navigate("/dashboard/party")
-  }
-  
+    navigate("/dashboard/party");
+  };
+
   useEffect(() => {
     const determineHeading = () => {
       const path = location.pathname;
@@ -78,43 +75,47 @@ const NavBar = () => {
     };
   }, [location.pathname]);
 
-
-  const pathname = location.pathname.startsWith("/dashboard")
+  const pathname = location.pathname.startsWith("/dashboard");
 
   useEffect(() => {
-    if ( location.pathname === "/dashboard") {
+    if (location.pathname === "/dashboard") {
       navigate("/dashboard/overview");
     }
   }, [pathname, location.pathname, navigate]);
 
   return (
-    <header>
-      { token && pathname ? (
-        <div className="dashboard-navbar-container">
-          <div className="dashboard-navbar-heading">
-            <h1>{navHeading}</h1>
-          </div>
-          <div className="dashboard-second-div">
-            <div className="dashboard-second-inner">
-              <div className="cont-nav-left cursor-pointer select-none">
-                <RiNotification2Line />
-              </div>
-              <div className="cont-nav-left cursor-pointer select-none" onClick={handlePartyPlan}>
-                <img src={PartyLogo} alt="party-logo" />
-              </div>
-              <div
-                className="dashboard-cart-container cursor-pointer select-none"
-                onClick={toggleCartModal}
-              >
-                <span style={{ color: "#fe7e00" }}>Cart</span>
-                <BsCart2 style={{ color: "#fe7e00" }} />
-                <div>{itemCount}</div>
-              </div>
+    <header className="">
+      {token && pathname ? (
+        <div className="border border-[#F2F4F7] flex justify-between items-center  ">
+          <div className="fixed justify-between items-center md:gap-20 bg-white flex mt-16 w-full z-40 md:relative md:mt-0">
+            <div className="dashboard-navbar-heading relative">
+              <h1 className="ml-6 hidden sm:flex md:ml-44">{navHeading}</h1>
             </div>
-            <div className="dashboard-last-div cursor-pointer select-none">
-              <RiAccountCircleLine style={{ color: "#fe7e00" }} />
-              <span>Account</span>
-              <RiArrowDropDownLine />
+            <div className="dashboard-second-div relative">
+              <div className="dashboard-second-inner">
+                <div className="cont-nav-left cursor-pointer select-none">
+                  <RiNotification2Line />
+                </div>
+                <div
+                  className="cont-nav-left cursor-pointer select-none"
+                  onClick={handlePartyPlan}
+                >
+                  <img src={PartyLogo} alt="party-logo" />
+                </div>
+                <div
+                  className="dashboard-cart-container cursor-pointer select-none"
+                  onClick={toggleCartModal}
+                >
+                  <span style={{ color: "#fe7e00" }}>Cart</span>
+                  <BsCart2 style={{ color: "#fe7e00" }} />
+                  <div>{itemCount}</div>
+                </div>
+              </div>
+              <div className="dashboard-last-div cursor-pointer select-none hidden md:flex">
+                <RiAccountCircleLine style={{ color: "#fe7e00" }} />
+                <span>Account</span>
+                <RiArrowDropDownLine />
+              </div>
             </div>
           </div>
         </div>

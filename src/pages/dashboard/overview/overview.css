@@ -1,5 +1,4 @@
 .overview-container {
-  display: flex;
   background-color: #f4f4f4;
   padding: 10px;
   gap: 10px;
@@ -8,7 +7,7 @@
 .overview-container-first {
   background-color: #ffffff;
   border-radius: 4px;
-  width: 64%;
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -200,4 +199,6 @@
 .overview-dropdown .overview-dropdown-content:hover {
   display: block;
 }
+
+
 

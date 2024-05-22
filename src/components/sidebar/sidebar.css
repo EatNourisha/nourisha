@@ -1,4 +1,4 @@
-.sidenav {
+/* .sidenav {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -8,10 +8,10 @@
   top: 0;
   left: 0;
   border-right: 1px solid gray;
-}
+} */
 
 .sidebar-logo{
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   padding-top: 15px;
 }
 
@@ -78,17 +78,17 @@
   font-size: 16px;
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .dashboard-header .logo {
     display: none;
   }
-}
+} */
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .sidenav {
     display: none;
   }
-}
+} */
 
 .dc-popp-modal {
   width: 100%;

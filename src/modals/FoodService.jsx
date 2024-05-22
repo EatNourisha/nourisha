@@ -8,8 +8,9 @@ import img_4 from "../assets/IMG22.png";
 import green from "../assets/round_green.png";
 import orange from "../assets/round_orange.png";
 import man from "../assets/annouce.png";
+import back from "../assets/back.png"
 
-const FoodService = () => {
+const FoodService = ({ onClose }) => {
   const [togglePlanYourMeal, setTogglePlanYourMeal] = useState(false);
   const [toggleReferFriend, setToggleReferFriend] = useState(false);
   const [toggleSelectPlan, setToggleSelectPlan] = useState(false);
@@ -28,10 +29,13 @@ const FoodService = () => {
 
   return (
     <>
-      <div className="w-full md:w-[375px]">
-        <h1 className="px-[16px] leading-8 font-bold text-[24px]">
+      <div className="w-full md:w-[375px] ">
+      <div className="flex items-center gap-2">
+        <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2 cursor-pointer" />
+        <h1 className="px-[16px] font-bold text-[24px] leading-8 ">
           Manage Food Service
         </h1>
+      </div>
 
         <div className="w-[252px] mx-auto mt-20 text-center">
           <h1 className="text-[20px] leading-[28px] font-bold">
