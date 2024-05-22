@@ -31,11 +31,12 @@ const ReferFriend = ({ onClose }) => {
   useEffect(() => {
     const earningsAmount  =  localStorage.getItem('earningsData')
     
+    console.log(data.balance, 'balance')
 
     if(earningsAmount) {
       setEarnings(earningsAmount)
     } else setEarnings(data?.balance)
-  }, [])
+  }, [data?.balance])
 
 
   const handleToggleHistory = () => {
@@ -98,7 +99,7 @@ const ReferFriend = ({ onClose }) => {
   return (
     <div>
       <div className="bg-black bg-opacity-50 fixed top-0 left-0 w-[100%] h-[100%] flex justify-center items-center z-[1000] ">
-        <div className="bg-white p-[20px] w-[400px] h-[95vh] flex flex-col rounded-lg relative overflow-scroll overflow-x-hidden">
+        <div className="bg-white p-[20px] w-[423px] h-[95vh] flex flex-col rounded-lg relative overflow-scroll overflow-x-hidden">
           <div className="flex justify-between items-center border-b border-[#ededf3] p-[10px] -mt-5 ">
             <h2 className="text-[18px] font-semibold leading-[27px] ">
               Refer A Friend

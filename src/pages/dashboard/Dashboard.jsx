@@ -1,13 +1,12 @@
-import React from "react";
+import React from "react";76
 import Sidebar from "../../components/sidebar/Sidebar";
 import Layout from "../../components/sidebar/Layout";
-import "./dashboard.css";
 
 const Dashboard = () => {
   return (
-    <div className="dashboard-layout-overall">
+    <div className="flex w-[100vw]">
       <Sidebar />
-      <div className="right-content">
+      <div className="w-full">
         <Layout />
       </div>
     </div>

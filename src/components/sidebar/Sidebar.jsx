@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { IoMdTime } from "react-icons/io";
@@ -7,24 +7,37 @@ import { MdOutlineFoodBank } from "react-icons/md";
 import { RiLogoutCircleLine, RiAccountCircleLine } from "react-icons/ri";
 import "./sidebar.css";
 import Logo1 from "../../assets/group16.png";
+import hamburger from "../../assets/hamburger.png";
 import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleModal = () => {
     setOpenModal(!openModal);
   };
 
- const { logout } = useAuth();
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
+  const { logout } = useAuth();
 
   return (
     <>
-      <nav className="sidenav">
-        <div className="sidebar-logo">
-          <Link to="/" >
-            <div className="logo">
+      <nav
+        className={`fixed top-0 left-0  bg-white z-40 transform ${
+          !sidebarOpen ? "-translate-x-5" : "translate-x-0 w-[65%]"
+        } transition-transform duration-300 ease-in-out md:translate-x-0 md:relative`}
+      >
+        <div className="sidebar-logo flex-col justify-between items-center px-2 mt-2">
+          <Link to="/">
+            <div className="logo hidden -mt-20 md:flex ">
               <div className="logo-text">
                 <img src={Logo1} alt="Nourisha Logo" />
               </div>
@@ -33,13 +46,33 @@ const Sidebar = () => {
               </div>
             </div>
           </Link>
+
+          <div onClick={handleSidebarToggle} className="ml-5 md:hidden">
+            {!sidebarOpen ? (
+              <img src={hamburger} alt="" />
+            ) : (
+                <div className="flex justify-between items-center -ml-2">
+                  <div className="logo-text flex items-center gap-2">
+                    <img src={Logo1} alt="Nourisha Logo" width={30} /> <p className="font-bold text-[18px] ">Nourisha</p>  
+                  </div>
+                  
+                <p className="text-[20px] font-bold mr-2 text-[#fe7e00]">x</p>
+                </div>
+            )}
+          </div>
         </div>
-        <div className="sidenav-container">
+
+        <div
+          className={`sidenav-container ${
+            !sidebarOpen && "hidden"
+          } h-screen md:flex `}
+        >
           <ul className="list-item-dashboard">
             <li>
               <NavLink
                 to="overview"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={closeSidebar}
               >
                 <div className="sidebar-link-content">
                   <RxDashboard className="sidebar-icon" />
@@ -51,6 +84,7 @@ const Sidebar = () => {
               <NavLink
                 to="account"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={closeSidebar}
               >
                 <div className="sidebar-link-content">
                   <RiAccountCircleLine className="sidebar-icon" />
@@ -62,6 +96,7 @@ const Sidebar = () => {
               <NavLink
                 to="party"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={closeSidebar}
               >
                 <div className="sidebar-link-content">
                   <BiParty className="sidebar-icon" />
@@ -73,6 +108,7 @@ const Sidebar = () => {
               <NavLink
                 to="history"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={closeSidebar}
               >
                 <div className="sidebar-link-content">
                   <IoMdTime className="sidebar-icon" />
@@ -101,14 +137,8 @@ const Sidebar = () => {
             <div className="logout_modal">
               <h3>Are you sure you want to logout? </h3>
               <div className="logout-button-container">
-                <button
-                    onClick={()=> logout()}
-                >
-                  Yes
-                </button>
-                <button onClick={handleModal} >
-                  No
-                </button>
+                <button onClick={() => logout()}>Yes</button>
+                <button onClick={handleModal}>No</button>
               </div>
             </div>
           </div>
@@ -120,7 +150,8 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-{/* <li>
+{
+  /* <li>
 <NavLink
   to="single-plan"
   className={({ isActive }) => (isActive ? "active-link" : "")}
@@ -130,4 +161,5 @@ export default Sidebar;
     <span>Single orders</span>
   </div>
 </NavLink>
-</li> */}
+</li> */
+}

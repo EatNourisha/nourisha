@@ -2,13 +2,17 @@ import { useState } from "react";
 import OpenOrder from "./OpenOrder";
 import CloseOder from "./CloseOder";
 import usePlaceOrder from "../hooks/usePlaceOrder";
+import back from '../assets/back.png'
 
-const Tab = ({ tabs }) => {
+const Tab = ({ tabs, onClose }) => {
 
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-md mx-auto -mt-4 md:mt-0">
+      <div className="">
+        <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2 cursor-pointer" />
+      </div>
       <div className="flex border-b border-gray-200">
         {tabs.map((tab, index) => (
           <button
@@ -29,7 +33,7 @@ const Tab = ({ tabs }) => {
   );
 };
 
-const MyOrders = () => {
+const MyOrders = ({ onClose }) => {
   const { data, isLoading, error } = usePlaceOrder();
   const openOrders = data?.filter((item)=> item.status !== 'completed')
   const completedOrders = data?.filter((item)=> item.status === 'completed')
@@ -40,7 +44,7 @@ const MyOrders = () => {
     { name: "CLOSE ORDERS", content: <CloseOder data={completedOrders} loading={isLoading} /> },
   ];
 
-  return <Tab tabs={tabs} />; // Passing the tabs prop to the Tab component
+  return <Tab tabs={tabs} onClose={onClose} />; // Passing the tabs prop to the Tab component
 };
 
 export default MyOrders;

@@ -9,18 +9,20 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
   const { data, isLoading, error } = useCart();
   const [uiLoading, setUiLoading] = useState(null)
   const { increaseQuantityOnServer, decreaseQuantityOnServer, removeItemToCartOnServer } = useCart();
-  const { removeFromCart, increaseQuantity, decreaseQuantity, setTotalItemCount} = cartStore();
+  const { removeFromCart, increaseQuantity, decreaseQuantity, setTotalItemCount, cart} = cartStore();
 
   const subtotal = data?.items?.data.reduce((acc, item) => {
     const priceAmount = item?.item?.price?.amount || 0;
     return acc + priceAmount * (item.quantity || 0);
   }, 0);
 
+  console.log(cart)
 
   useEffect(() => {
     if (!data) return;
     const { items } = data;
     const { data: itemData } = items;
+
     setCartItems(itemData);
     setTotalItemCount(items.totalCount);
   }, [data]);
