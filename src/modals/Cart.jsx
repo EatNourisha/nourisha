@@ -6,47 +6,62 @@ import cartStore from "../stores/cartStore";
 
 const Cart = ({ onClose, onProceedToCheckout }) => {
   const [cartItems, setCartItems] = useState([]);
-  const { data, isLoading, error } = useCart();
-  const [uiLoading, setUiLoading] = useState(null)
-  const { increaseQuantityOnServer, decreaseQuantityOnServer, removeItemToCartOnServer } = useCart();
-  const { removeFromCart, increaseQuantity, decreaseQuantity, setTotalItemCount, cart} = cartStore();
+  const [uiLoading, setUiLoading] = useState(null);
+  const {
+    increaseQuantityOnServer,
+    decreaseQuantityOnServer,
+    removeItemToCartOnServer,
+    data,
+    mutate,
+  } = useCart();
+  const {
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    setTotalItemCount,
+    cart,
+  } = cartStore();
 
   const subtotal = data?.items?.data.reduce((acc, item) => {
     const priceAmount = item?.item?.price?.amount || 0;
     return acc + priceAmount * (item.quantity || 0);
   }, 0);
 
-  console.log(cart)
+  const deliveryFee = data?.cart?.deliveryFee;
+
+  const total = subtotal + deliveryFee;
+
+  // useEffect(() => {
+  //   mutate('/cart')
+  // }, [cartItems, uiLoading])
 
   useEffect(() => {
     if (!data) return;
-    const { items } = data;
-    const { data: itemData } = items;
+    const items = data?.items;
+    const itemData = items?.data;
 
     setCartItems(itemData);
-    setTotalItemCount(items.totalCount);
-  }, [data]);
+    setTotalItemCount(items?.totalCount);
+  }, [data, mutate]);
 
   const increaseQuantityitem = async (cartItem) => {
-    
     const itemData = {
       itemId: cartItem.item._id,
       quantity: 1,
     };
-    
+
     try {
-      setUiLoading(cartItem.item._id)
+      setUiLoading(cartItem.item._id);
 
       const res = await increaseQuantityOnServer(itemData);
       if (res?.data?._id) increaseQuantity(itemData);
 
       setTimeout(() => {
-        setUiLoading(null)
+        setUiLoading(null);
       }, 700);
-
     } catch (error) {
       console.log(error, "error in increasing quantity");
-      setUiLoading(null)
+      setUiLoading(null);
     }
   };
 
@@ -57,14 +72,14 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
     };
 
     try {
-      setUiLoading(cartItem.item._id)
+      setUiLoading(cartItem.item._id);
 
       if (cartItem.quantity > 1) {
         const res = await decreaseQuantityOnServer(itemData);
         if (res?.data?._id) decreaseQuantity(itemData);
 
         setTimeout(() => {
-          setUiLoading(null)
+          setUiLoading(null);
         }, 700);
       }
     } catch (error) {
@@ -123,7 +138,10 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
 
                   {uiLoading === cartItem.item._id ? (
                     <span className="flex items-center px-[6px] ">
-                      <Icon icon="gg:spinner" className="animate-spin h-4 w-4 text-orange-500" />
+                      <Icon
+                        icon="gg:spinner"
+                        className="animate-spin h-4 w-4 text-orange-500"
+                      />
                     </span>
                   ) : (
                     <span className="border-x-2 border-[#EDEDF3] px-2 text-[14px] select none">
@@ -141,14 +159,26 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
               </div>
             </div>
           ))}
-          <div className="cart-subtotal">
-            <p>Subtotal</p>
-            <h3>£{subtotal}</h3>
-          </div>
         </div>
-        
+
         <div className="cart-footer">
-          <button className="checkout-btn" onClick={onProceedToCheckout}>
+            <div className="flex justify-between items-center px-2">
+              <p>Subtotal</p>
+              <h3>£{subtotal}</h3>
+            </div>
+            <div className="flex justify-between items-center px-2">
+              <p>Delivery Fee</p>
+              <h3>£{deliveryFee}</h3>
+            </div>
+          <div className="flex justify-between items-center px-2">
+            <h1 className="font-bold">Total</h1>
+            <h2 className="font-bold text-[#FE7E00]">£{total}</h2>
+          </div>
+          <button
+            className="checkout-btn"
+            onClick={onProceedToCheckout}
+            disabled={cartItems.length === 0}
+          >
             Proceed to checkout
           </button>
           <button className="continue-shopping-btn" onClick={onClose}>
@@ -161,4 +191,3 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
 };
 
 export default Cart;
-

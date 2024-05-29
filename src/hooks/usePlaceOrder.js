@@ -13,9 +13,12 @@ const usePlaceOrder = () => {
     try {
         const response = await post(`orders/`, placeOrderItem);
         if (response.data) {
-            mutate((currentData) => {
-                return { ...currentData, ...response.data };   
-            }, false)
+          // console.log(response.data)
+            // mutate((currentData) => {
+            //     return { ...currentData, ...response.data };   
+            // }, false)
+
+            return response.data
             showToast({
                 title: "Place Order",
                 description: "Order placed successfully.",

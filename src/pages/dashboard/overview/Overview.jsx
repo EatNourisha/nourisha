@@ -16,9 +16,8 @@ import useMealGhana from "../../../hooks/useMealGhana";
 import cartStore from "../../../stores/cartStore";
 import MealDetails from "../../../modals/MealDetails";
 import ReferFriend from "../../../modals/ReferFriend";
-import DeliveryAddress from "../../../modals/DeliveryAddress";
-import SubscriptionPlan from "../../../modals/SubscriptionPlan";
 import SelectPlan from "../../../modals/SelectPlan";
+
 
 const Overview = () => {
   const [page, setPage] = useState(1);
@@ -56,6 +55,7 @@ const Overview = () => {
   const [refreshCart, setRefreshCart] = useState(false);
   const [selectPlan, setSelectPlan] = useState(false);
 
+
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
 
   let currentData;
@@ -92,13 +92,12 @@ const Overview = () => {
   //   setTotalItemCount(total)
   // }, [data, refreshCart])
 
+
   const handleAddToCart = async (meal) => {
     const itemData = {
       itemId: meal._id,
       quantity: 1,
     };
-
-    console.log(itemData);
 
     try {
       const res = await addItemToCartOnServer(itemData);
@@ -206,24 +205,29 @@ const Overview = () => {
                 />
                 <h3
                   onClick={() => handleMealDetails(meal)}
-                  className="select-none"
+                  className="select-none pl-2"
                 >
                   {meal.name}
                 </h3>
 
-                <p>Price: £{meal.price.amount}</p>
+                <p className="pl-2 text-[17px] font-bold text-[#FE7E00]">£{meal.price.amount}</p>
+
                 <div className="cart-container">
-                  <div
+                  <button
                     className="add-to-cart select-none"
                     onClick={() => handleAddToCart(meal)}
+                    disabled={!meal?.available_quantity}
                   >
                     +
-                  </div>
+                  </button>
                 </div>
               </div>
             ))
           )}
         </div>
+
+        {/* <CheckoutForm /> */}
+
       </div>
 
       <div className="flex flex-col bg-white md:w-[83%] lg:bg-transparent items-center lg:items-start">
@@ -345,7 +349,9 @@ const Overview = () => {
               </div>
             </div>
           </div>
+
         </div>
+        {/* <useStripeCheckout /> */}
       </div>
 
       {/* Select Plan */}
