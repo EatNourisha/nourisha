@@ -92,6 +92,7 @@ const Overview = () => {
   //   setTotalItemCount(total)
   // }, [data, refreshCart])
 
+  // console.log(error)
 
   const handleAddToCart = async (meal) => {
     const itemData = {
@@ -192,7 +193,7 @@ const Overview = () => {
               className="animate-spin w-10 h-10 mt-16 mx-auto text-orange-400 flex justify-center items-center  md:ml-72 md:w-16 md:h-16"
             />
           ) : error ? (
-            <p>Error: {error.message}</p>
+            <p className="text-[16px] text-red-400">Check your internet connetion</p>
           ) : (
             currentData?.data.map((meal) => (
               <div key={meal._id} className="meal-container cursor-pointer">
@@ -238,7 +239,7 @@ const Overview = () => {
             </h1>
             <div className="relative bg-white rounded-lg w-[294px] h-[416px] mt-10 ">
               <p className="absolute -top-5 left-28 text-[19px] text-white text-center font-bold bg-[#FF0000] p-2 border border-white w-[70px] rounded-lg ">
-                £120
+                £100
               </p>
 
               <div className="p-2 pt-10 text-center  ">

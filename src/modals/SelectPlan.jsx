@@ -6,10 +6,11 @@ import PlanPayment from "./PlanPayment";
 import SelectMeal from "./SelectMeal";
 import DeliveryDay from "./DeliveryDay";
 import back from "../assets/back.png";
+import DeliveryDayInformation from "./DeliveryDayInformation";
 
 const SelectPlan = ({ onClose }) => {
   const [step, setStep] = useState(1);
-  const totalSteps = 5;
+  const totalSteps = 6;
   const navigate = useNavigate()
 
   const handleNext = () => {
@@ -37,13 +38,13 @@ const SelectPlan = ({ onClose }) => {
         };
       case 2:
         return {
-          content: <DeliveryAddress handleSkip={handleSkip} />,
-          nextButtonText: "Next",
+          content: <PlanPayment handleSkip={handleSkip} />,
+          nextButtonText: "Place Order",
         };
       case 3:
         return {
-          content: <PlanPayment handleSkip={handleSkip} />,
-          nextButtonText: "Place Order",
+          content: <DeliveryAddress handleSkip={handleSkip} />,
+          nextButtonText: "Next",
         };
       case 4:
         return {
@@ -52,8 +53,13 @@ const SelectPlan = ({ onClose }) => {
         };
       case 5:
         return {
+          content: <DeliveryDayInformation />,
+          nextButtonText: "Select Delivery Day",
+        };
+      case 6:
+        return {
           content: <DeliveryDay />,
-          nextButtonText: "Next",
+          nextButtonText: "Submit",
         };
       default:
         return { content: null, nextButtonText: "" };

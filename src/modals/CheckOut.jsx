@@ -102,6 +102,11 @@ const CheckOut = ({ onClose }) => {
     }
   };
 
+  // const isDayDisabled = (date) => {
+  //   const day = date.getDay();
+  //   // Disable Monday (1), Saturday (6), and Sunday (0)
+  //   return day === 1 || day === 6 || day === 0;
+  // };
 
   const isButtonDisabled = !city || !country || !postcode || !deliveryDate;
 
@@ -179,6 +184,7 @@ const CheckOut = ({ onClose }) => {
                           onChange={(e) => setDeliveryDate(e.target.value)}
                           onBlur={validateDateInput} // Validate on blur
                           min={getTomorrowDate()}
+                          // filterDate={isDayDisabled}
                           className="w-full lg:w-[180px] xl:w-[205px] select-none"
                         />
                         {errorMessage && (
