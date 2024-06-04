@@ -4,7 +4,7 @@ import back from "../assets/back.png";
 import greater from "../assets/greater.png"
 import up from "../assets/up.png"
 
-const SelectMeal = ({ handleSkip }) => {
+const SelectMeal = ({ handleSkip, handleMealSelectionChange }) => {
   const { data } = useMeal();
   const [meals, setMeals] = useState([]);
   const [accordionOpen, setAccordionOpen] = useState(false);
@@ -20,9 +20,6 @@ const SelectMeal = ({ handleSkip }) => {
     setAccordionOpen((prev) => ({ ...prev, [day]: !prev[day] }));
   };
 
-  console.log(meals);
-
-  console.log(selectedMeals);
 
   useEffect(() => {
     if (!data) return;
@@ -49,6 +46,9 @@ const SelectMeal = ({ handleSkip }) => {
         [currentMeal]: meal,
       },
     }));
+
+
+
     backToSelectMeal();
   };
 
@@ -66,6 +66,10 @@ const SelectMeal = ({ handleSkip }) => {
       return updatedMeals;
     });
   };
+
+  useEffect(() => {
+    handleMealSelectionChange(selectedMeals)
+  }, [selectedMeals, handleMealSelectionChange])
 
   // const handleDeselectMeal = (day, mealType) => {
   //   setSelectedMeals((prev) => {

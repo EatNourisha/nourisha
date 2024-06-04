@@ -22,10 +22,10 @@ import Dashboard from "./pages/dashboard/Dashboard";
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
       <HelmetProvider>
       {window.location.pathname !== "/dashboard/*" && <NavBar />}
         <main>
+            <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
