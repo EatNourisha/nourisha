@@ -5,7 +5,7 @@ import useBillings from "../hooks/useBillings";
 import configs from "../config";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import SubscribeCheckoutForm from "../components/stripe/subscribeCheckoutForm";
+import SubscribeCheckoutForm from "../components/stripe/SubscribeCheckoutForm";
 
 import vec from "../assets/vec.png";
 

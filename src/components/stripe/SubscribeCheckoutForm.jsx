@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { showToast } from "../../utils/toast";
 
