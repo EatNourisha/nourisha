@@ -1,32 +1,16 @@
-// src/CheckoutForm.jsx
-
 import React, { useEffect, useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { useNavigate } from "react-router-dom";
 import { showToast } from "../../utils/toast";
-import useCart from "../../hooks/useCart";
 
 
 
-const CheckoutForm = ({ clientSecret, onClose, closeDeliveryModal, orderAddress, orderInfo }) => {
-
-  // console.log(orderAddress, 'orderAddress')
-  const { mutate } = useCart();
+const SubscribeCheckoutForm = ({ onClose, totalPrice, onPaymentSuccess }) => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   
-  const total = orderInfo?.total
-
-  useEffect(() => {
-    if(success) {
-      mutate('cart/');
-    }
-  }, [success, mutate])
-
- 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -50,18 +34,20 @@ const CheckoutForm = ({ clientSecret, onClose, closeDeliveryModal, orderAddress,
       setLoading(false);
     } else if (paymentIntent.status === "succeeded") {
       setSuccess(true);
+      setLoading(false);
       showToast({
-        title: "Your order has been placed",
+        title: "Payment",
         description: "Payment made successfully.",
         status: "success",
-        duration: 9000,
+        duration: 8000,
         isClosable: true,
       })
-      setLoading(false);
-      // navigate('/dashboard')
-      closeDeliveryModal()
+      onPaymentSuccess()
+      onClose()
     }
   };
+
+  
 
   
 
@@ -69,22 +55,22 @@ const CheckoutForm = ({ clientSecret, onClose, closeDeliveryModal, orderAddress,
     <div className="bg-black bg-opacity-50 fixed top-0 left-0 w-[100%] h-[100%] flex justify-center items-center z-[1000]">
       <form
         onSubmit={handleSubmit}
-        className="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-md"
+        className="w-[420px] mx-auto p-6 bg-white shadow-xl rounded-md"
       >
         <div className="flex justify-between items-center border-b gap border-[#ededf3] py-[10px] -mt-5">
           <h1 className="text-[16px] font-semibold">Add Your Payment Information</h1>
-          <button className="close-btn -mt-1" onClick={onClose}>x</button>
+          <button className="close-btn -mt-1" type="button" onClick={onClose }>x</button>
         </div>
 
         <p className="mb-1 mt-5">Card information</p>
-        <PaymentElement className="my-4" />
+        <PaymentElement className="my-4"  options={{paymentMethodOrder: ['card']}} />
 
         <button
           type="submit"
           className="w-full bg-[#FE7E00] text-white text-[16px] font-bold p-2 rounded-lg"
           disabled={!stripe || loading}
         >
-          {loading ? "Processing..." : `Pay £${total} `}
+          {loading ? "Processing..." : `Pay £${totalPrice} `}
         </button>
         {/* {error && <div className="text-red-400">{error}</div>} */}
       </form>
@@ -92,4 +78,4 @@ const CheckoutForm = ({ clientSecret, onClose, closeDeliveryModal, orderAddress,
   );
 };
 
-export default CheckoutForm;
+export default SubscribeCheckoutForm;

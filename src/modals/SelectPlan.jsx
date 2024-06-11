@@ -1,23 +1,41 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import useLineUp from "../hooks/useLineUp";
+
 import SubscriptionPlan from "./SubscriptionPlan";
-import DeliveryAddress from "./DeliveryAddress";
+// import DeliveryAddress from "./DeliveryAddress";
 import PlanPayment from "./PlanPayment";
 import SelectMeal from "./SelectMeal";
 import DeliveryDay from "./DeliveryDay";
-import back from "../assets/back.png";
 import DeliveryDayInformation from "./DeliveryDayInformation";
+import back from "../assets/back.png";
+import chef from "../assets/chef.png"
+import greenMark from "../assets/greenMark.png"
+import successLogo from "../assets/successLogo.png"
+// import { showToast } from "../utils/toast";
 
-const SelectPlan = ({ onClose }) => {
+
+
+const SelectPlan = ({ onClose, initialStep = 1 }) => {
+  const { handleMealSelections, data: lineupData} = useLineUp()
+
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
-  const [deliveryDateData, setDeliveryDateData] = useState({});
-  const [addressData, setAddressData] = useState({})
+  const [deliveryDate, setDeliveryDate] = useState({});
+  // const [addressData, setAddressData] = useState({})
   const [selectedMealData, setSelectedMealData] = useState({})
-  const [isAddressFormValid, setIsAddressFormValid] = useState(false);
+  // const [isAddressFormValid, setIsAddressFormValid] = useState(false);
   const [weekMealsSelected, setWeekMealsSelected] = useState(false);
-  const [step, setStep] = useState(1);
-  const totalSteps = 6;
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [completedOrder ,setCompletedOrder] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [step, setStep] = useState(initialStep);
+
+  const totalSteps = 5;
   const navigate = useNavigate()
+
+  
 
   const handleNext = () => {
     if (step < totalSteps) {
@@ -50,48 +68,43 @@ const SelectPlan = ({ onClose }) => {
   // For Payment
   const handleSubmitPlanPayment = () => {
     // Handle Plan Payment submission
-    console.log("Submitting Plan Payment");
-    handleNext();
+    if (paymentSuccess) {
+      handleNext();
+    }
   };
 
 
 
 // For Address
-  const handleAddressChange = (values) => {
-    setAddressData(values)
-  }
+  // const handleAddressChange = (values) => {
+  //   setAddressData(values)
+  // }
 
-  const handleValidationStatus = (isValid) => {
-    setIsAddressFormValid(isValid);
-  };
+  // const handleValidationStatus = (isValid) => {
+  //   setIsAddressFormValid(isValid);
+  // };
 
-  const handleSubmitDeliveryAddress = () => {
-    // Handle Delivery Address submission
+  // const handleSubmitDeliveryAddress = () => {
+  //   // Handle Delivery Address submission
 
-    if(isAddressFormValid) {
-      console.log("Submitting Delivery Address", addressData);
-      handleNext();
-    }
-  };
+  //   if(isAddressFormValid) {
+  //     handleNext();
+  //   }
+  // };
 
 
 
   // For Meal Selection
   const handleMealSelectionChange = (data) => {
-    console.log(data, 'handleselectionChange')
-    const mondayToFridaySelected = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].every(day =>
-      Object.keys(data[day]?.Lunch && data[day]?.Lunch || {}).length > 0 // Check if any meal is selected for the day
+    const mondayToFridaySelected = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].every(day =>
+      Object.keys(data[day]?.Lunch && data[day]?.Dinner || {}).length > 0 // Check if any meal is selected for the day
     );
     setWeekMealsSelected(mondayToFridaySelected);
     setSelectedMealData(data)
   }
 
-  const handleSubmitSelectMeal = () => {
-    // Handle Select Meal submission
-    if(weekMealsSelected) {
-      console.log("Submitting Select Meal", selectedMealData);
-      handleNext();
-    }
+  const handleSubmitSelectMeal = async() => {
+    handleNext()
   };
 
 
@@ -105,14 +118,54 @@ const SelectPlan = ({ onClose }) => {
 
   // For Delivery
   const handleDeliveryChange = (selectedValue) => {
-    setDeliveryDateData(selectedValue)
+    setDeliveryDate(selectedValue)
   }
 
-  const handleSubmitDeliveryDay = () => {
-    // Handle Delivery Day submission
-    console.log("Selected value:", deliveryDateData);
-    localStorage.removeItem("selectedDeliveryDay");
-    handleNext();
+  const handleSubmitDeliveryDay = async() => {
+    // Handle Delivery Day & Lineup mMeal submission
+    const mealsLineup = {
+      monday: {
+        lunch: selectedMealData.Monday.Lunch._id,
+        dinner: selectedMealData.Monday.Dinner._id
+      },
+      tuesday: {
+        lunch: selectedMealData.Tuesday.Lunch._id,
+        dinner: selectedMealData.Tuesday.Dinner._id,
+      },
+      wednesday: {
+        lunch: selectedMealData.Wednesday.Lunch._id,
+        dinner: selectedMealData.Wednesday.Dinner._id
+      },
+      thursday: {
+        lunch: selectedMealData.Thursday.Lunch._id,
+        dinner: selectedMealData.Thursday.Dinner._id
+      },
+      friday: {
+        lunch: selectedMealData.Friday.Lunch._id,
+        dinner: selectedMealData.Friday.Dinner._id,
+      },
+      saturday: {
+        lunch: selectedMealData.Saturday.Lunch._id,
+        dinner: selectedMealData.Saturday.Dinner._id,
+      },
+      sunday: {
+        lunch: selectedMealData.Sunday.Lunch._id,
+        dinner: selectedMealData.Sunday.Dinner._id,
+      },
+      delivery_date: deliveryDate
+    }
+
+    if(mealsLineup) {
+      try {
+        setIsLoading(true)
+        const res = await handleMealSelections(mealsLineup)
+        // handleNext();
+        setCompletedOrder(true)
+        setIsLoading(false)
+      } catch (error) {
+        setIsLoading(false)
+      }
+    }
   };
 
 
@@ -126,38 +179,43 @@ const SelectPlan = ({ onClose }) => {
         };
       case 2:
         return {
-          content: <PlanPayment handleSkip={handleSkip} />,
+          content: <PlanPayment handleSkip={handleSkip} onPaymentSuccess={() => { setPaymentSuccess(true); handleNext();}} />,
           nextButtonText: "Place Order",
           submitFunction: handleSubmitPlanPayment,
         };
+      // case 3:
+      //   return {
+      //     content: <DeliveryAddress handleSkip={handleSkip} handleValidationStatus={handleValidationStatus} handleAddressChange={handleAddressChange} />,
+      //     nextButtonText: "Next",
+      //     submitFunction: handleSubmitDeliveryAddress,
+      //   };
       case 3:
         return {
-          content: <DeliveryAddress handleSkip={handleSkip} handleValidationStatus={handleValidationStatus} handleAddressChange={handleAddressChange} />,
-          nextButtonText: "Next",
-          submitFunction: handleSubmitDeliveryAddress,
-        };
-      case 4:
-        return {
           content: <SelectMeal handleSkip={handleSkip} handleMealSelectionChange={handleMealSelectionChange} />,
-          nextButtonText: "Next",
+          nextButtonText: `${!lineupData?._id ? "Next" : "Update"}`,
           submitFunction: handleSubmitSelectMeal,
         };
-      case 5:
+      case 4:
         return {
           content: <DeliveryDayInformation />,
           nextButtonText: "Select Delivery Day",
           submitFunction: handleSubmitDeliveryDayInformation,
         };
-      case 6:
+      case 5:
         return {
           content: <DeliveryDay onEnableSubmit={handleEnableSubmit} handleDeliveryChange={handleDeliveryChange} />,
-          nextButtonText: "Submit",
+          nextButtonText: isLoading ? <span className="flex justify-center items-center px-3">
+                                        <Icon icon="gg:spinner" className="animate-spin h-6 w-6" />
+                                      </span> : "Submit",
           submitFunction: handleSubmitDeliveryDay,
         };
       default:
         return { content: null, nextButtonText: "", submitFunction: null };
     }
   };
+
+
+  
 
   const { content, nextButtonText, submitFunction  } = renderModalContent();
 
@@ -209,17 +267,42 @@ const SelectPlan = ({ onClose }) => {
             ) : (
               <button
                 onClick={submitFunction}
-                disabled={(step === totalSteps && !isSubmitEnabled) || (step === 3 && !isAddressFormValid) || (step === 4 && !weekMealsSelected) }
+                // disabled={(step === totalSteps && !deliveryDate) || (step === 2 && !paymentSuccess) || (step === 3 && !isAddressFormValid) || (step === 4 && !weekMealsSelected) }
+                disabled={(step === totalSteps && !isSubmitEnabled) || (step === 2 && !paymentSuccess) || (step === 3 && !weekMealsSelected) }
+                // className={`mx-4 mt-4 py-2 text-[16px] font-semibold text-white bg-[#FE7E00] rounded-lg select-none ${
+                //   (step === totalSteps && !isSubmitEnabled) || (step === 2 && !paymentSuccess) || (step === 3 && !isAddressFormValid) || (step === 4 && !weekMealsSelected) ? "opacity-50 cursor-not-allowed " : ""
+                // }`}
                 className={`mx-4 mt-4 py-2 text-[16px] font-semibold text-white bg-[#FE7E00] rounded-lg select-none ${
-                  (step === totalSteps && !isSubmitEnabled) || (step === 3 && !isAddressFormValid) || (step === 4 && !weekMealsSelected) ? "opacity-50 cursor-not-allowed " : ""
+                  (step === totalSteps && !isSubmitEnabled) || (step === 2 && !paymentSuccess) || (step === 3 && !weekMealsSelected) ? "opacity-50 cursor-not-allowed " : ""
                 }`}
               >
-                {nextButtonText}
+                
+                  {nextButtonText}
               </button>
             )}
           </div>
         </div>
       </div>
+
+      {completedOrder &&
+        <div className="fixed top-0 left-0 w-[100%] h-[100%] flex justify-center items-center z-[1000] ">
+          <div className="relative w-full h-full rounded-lg  md:w-[425px] md:h-[570px] flex flex-col items-center bg-[#FE7E00] "> 
+            <img src={successLogo} alt="" width={170} className="mt-5" />
+            <img src={chef} alt="" width={250} className="mt-10" />
+
+            <div className="relative bottom-5 bg-white w-[340px] h-[250px] flex flex-col items-center rounded-lg text-center">
+              <img src={greenMark} alt="" width={35} className="mt-6" />
+              <div className="mt-2">
+                <p className="text-[16px] font-bold ">Your order is being processed</p>
+                <p className="mt-2 text-[13px]">Our chefs will start making your order <br /> shortly</p>
+              </div>
+
+              <button className="p-2 w-72 mt-4 text-white bg-[#FE7E00] rounded-lg " onClick={handleSkip}>Go home</button>
+            </div>
+
+          </div>
+        </div>
+      }
     </div>
   );
 };

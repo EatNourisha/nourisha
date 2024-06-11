@@ -10,10 +10,13 @@ import orange from "../assets/round_orange.png";
 import man from "../assets/annouce.png";
 import back from "../assets/back.png"
 
+
 const FoodService = ({ onClose }) => {
   const [togglePlanYourMeal, setTogglePlanYourMeal] = useState(false);
   const [toggleReferFriend, setToggleReferFriend] = useState(false);
   const [toggleSelectPlan, setToggleSelectPlan] = useState(false);
+
+
 
   const handlePlanMeal = () => {
     setTogglePlanYourMeal(true);
@@ -45,9 +48,9 @@ const FoodService = ({ onClose }) => {
             If you’d like to make changes to your food service, please reach out
             to your gardener.
           </p>
-          <button className="bg-orange-500 py-[12px] px-[36px] rounded-[8px] text-white text-[16px] font-semibold leading-[24px] mt-6 w-full ">
+          {/* <button className="bg-orange-500 py-[12px] px-[36px] rounded-[8px] text-white text-[16px] font-semibold leading-[24px] mt-6 w-full ">
             View your weekly lineup
-          </button>
+          </button> */}
           <button
             className="bg-white py-[12px] px-[36px] rounded-[8px] text-orange-500 text-[16px] font-semibold leading-[24px] mt-5 border border-orange-500 border-solid w-full  "
             onClick={handlePlanMeal}
@@ -142,6 +145,8 @@ const FoodService = ({ onClose }) => {
           </div>
         </div>
       )}
+
+
     </>
   );
 };

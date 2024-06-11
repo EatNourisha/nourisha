@@ -85,6 +85,7 @@ const Overview = () => {
   let totalItems = currentData?.totalCount || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+
   // useEffect(() => {
   //   if(!data.items) return
   //   const { items } = data;
@@ -235,7 +236,7 @@ const Overview = () => {
         <div className="relative w-full h-full rounded-lg  md:w-[344px] md:h-[550px] mt-10 lg:mt-0 flex flex-col items-center " style={gradientStyle}>
           <div className="relative p-6">
             <h1 className="text-white text-[20px] font-bold leadding-[22px] items-center ">
-              Don't Miss Out! Save Big. <br /> Up to 40% off your first order.
+              Don't Miss Out! Save Big. <br /> Up to 17% off your first order.
             </h1>
             <div className="relative bg-white rounded-lg w-[294px] h-[416px] mt-10 ">
               <p className="absolute -top-5 left-28 text-[19px] text-white text-center font-bold bg-[#FF0000] p-2 border border-white w-[70px] rounded-lg ">
@@ -303,7 +304,7 @@ const Overview = () => {
                     Order now
                   </button>
                   <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">
-                    + £10 For delivery
+                     Free delivery
                   </p>
                 </div>
               </div>
@@ -315,7 +316,7 @@ const Overview = () => {
           <h3 className="text-center text-[#242524] text-[20px] font-extrabold ">
             Unlock 60+ <br /> Premium Menu
           </h3>
-          <button className="text-[14px] text-white font-medium bg-[#FF0000]/70 p-2 px-6 rounded-lg mt-4 ">
+          <button className="text-[14px] text-white font-medium bg-[#FF0000]/70 p-2 px-6 rounded-lg mt-4 "  onClick={handleSelectPlan}>
             Subscribe to a meal plan
           </button>
           <p className="text-[20px] font-extrabold text-[#FE7E00] mt-3 ">
@@ -352,7 +353,6 @@ const Overview = () => {
           </div>
 
         </div>
-        {/* <useStripeCheckout /> */}
       </div>
 
       {/* Select Plan */}

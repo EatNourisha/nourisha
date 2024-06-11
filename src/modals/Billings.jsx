@@ -17,7 +17,7 @@ const Billings = ({ onClose }) => {
 
   return (
     <div className="billings-modal-container">
-      {!subscribe ? (<div>
+      {/* {!subscribe ? (<div>
         <div className="flex items-center gap-2">
         <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2 cursor-pointer" />
         <h1>Billings</h1>
@@ -29,9 +29,9 @@ const Billings = ({ onClose }) => {
           <button onClick={goToSubscribe}>Subscribe</button>
         </div>
       </div>) 
-        : 
+        :  */}
         <SubscribeBilling goBack={ handleGoBack} />
-      }
+      {/* // } */}
       
 
       

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./checkout.css";
 import { Icon } from "@iconify/react";
+import configs from "../config";
 import usePlaceOrder from "../hooks/usePlaceOrder";
 import useGetCart from "../hooks/useGetCart";
 import CheckoutForm from "../components/stripe/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe("pk_test_CTdNlDzkd3JhDT8yof3Hdw5B");
+const stripePromise = loadStripe(configs.stripeSecret);
 
 const CheckOut = ({ onClose }) => {
   const { placeOrder } = usePlaceOrder();

@@ -26,11 +26,11 @@ const SubscriptionPlan = ({ handleNext, handleSkip }) => {
         <div className="w-[344px] h-[526px] rounded-lg" style={gradientStyle}>
           <div className="relative p-6">
             <h1 className="text-white text-[20px] font-bold leadding-[22px] items-center ">
-              Don't Miss Out! Save Big. <br /> Up to 40% off your first order.
+              Don't Miss Out! Save Big. <br /> Up to 17% off your first order.
             </h1>
             <div className="relative bg-white rounded-lg w-[294px] h-[416px] mt-10 ">
               <p className="absolute -top-5 left-28 text-[19px] text-white text-center font-bold bg-[#FF0000] p-2 border border-white w-[70px] rounded-lg ">
-                £120
+                £100
               </p>
 
               <div className="p-2 pt-10 text-center  ">
@@ -91,7 +91,8 @@ const SubscriptionPlan = ({ handleNext, handleSkip }) => {
                
                <div className="mt-3">
                     <button className="text-white text-[12px] font-bold p-2 w-full bg-[#FF0000]/70 rounded-lg" onClick={handleNext}>Order now</button>
-                    <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">+ £10 For delivery</p>
+                    <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">Free delivery</p>
+                    {/* <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">+ £10 For delivery</p> */}
                </div>
               </div>
             </div>

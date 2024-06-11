@@ -4,6 +4,7 @@ import useUpdateProfile from "../hooks/useUpdateProfile";
 import { Icon } from "@iconify/react";
 import { Spinner } from "react-bootstrap";
 import back from "../assets/back.png"
+import lock from "../assets/lock.png"
 
 
 const UpAccount = ({ onClose, isMenuOpen }) => {
@@ -76,46 +77,58 @@ const initialState = {
       <form onSubmit={handleSubmit}>
         <div className="update-modal-form-container">
           <div className="update-modal-input-container1">
-            <div>
-              <label>First Name</label>
+            <div className="relative">
+              <label className="text-[#0B0806]/50">First Name</label>
               <input
                 type="text"
                 placeholder="First Name"
                 value={state.firstName}
                 onChange={handleState}
                 name="firstName"
+                readOnly
+                className="readonly-input select-none cursor-not-allowed text-[#0B0806]/50"
               />
+              <img src={lock} alt="password-lock" width={17} className="absolute top-11 right-4 "  />
             </div>
-            <div>
-              <label>Last Name</label>
+            <div className="relative">
+              <label className="text-[#0B0806]/50">Last Name</label>
               <input
                 type="text"
                 placeholder="Last Name"
                 value={state.lastName}
                 onChange={handleState}
                 name="lastName"
+                readOnly
+                className="readonly-input select-none cursor-not-allowed text-[#0B0806]/50"
               />
+              <img src={lock} alt="password-lock" width={17} className="absolute top-11 right-4 "  />
             </div>
           </div>
-          <div className="update-modal-input-container">
-            <label>Email address</label>
+          <div className="update-modal-input-container relative">
+            <label className="text-[#0B0806]/50">Email address</label>
             <input
               type="email"
               placeholder="Email"
               value={state.email}
               onChange={handleState}
               name="email"
+              readOnly
+              className="readonly-input select-none cursor-not-allowed text-[#0B0806]/50"
             />
+            <img src={lock} alt="password-lock" width={17} className="absolute top-11 right-4 "  />
           </div>
-          <div className="update-modal-input-container">
-            <label>Phone Number</label>
+          <div className="update-modal-input-container relative">
+            <label className="text-[#0B0806]/50">Phone Number</label>
             <input
               type="text"
               placeholder="Phone Number"
               value={state.phoneNumber}
               onChange={handleState}
               name="phoneNumber"
+              readOnly
+              className="readonly-input select-none text-[#0B0806]/50"
             />
+            <img src={lock} alt="password-lock" width={17} className="absolute top-11 right-4 "  />
           </div>
           <div className="update-modal-input-container1">
             <div>
@@ -127,6 +140,7 @@ const initialState = {
               value={state.country}
               onChange={handleState}
               name="country"
+              className="shadow"
             />
             </div>
             <div>
@@ -137,6 +151,7 @@ const initialState = {
               value={state.city}
               onChange={handleState}
               name="city"
+              className="shadow"
               />
             </div>
           </div>
@@ -148,6 +163,7 @@ const initialState = {
               value={state.postalCode}
               onChange={handleState}
               name="postalCode"
+              className="shadow"
             />
           </div>
           <div className="update-modal-input-container">
@@ -158,6 +174,7 @@ const initialState = {
               value={state.address}
               onChange={handleState}
               name="address"
+              className="shadow"
             />
           </div>
           <div className="update-modal-button-container">

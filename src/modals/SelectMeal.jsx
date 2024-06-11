@@ -14,7 +14,7 @@ const SelectMeal = ({ handleSkip, handleMealSelectionChange }) => {
   const [currentMeal, setCurrentMeal] = useState("");
   const [selectedMeals, setSelectedMeals] = useState({});
 
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   const toggleAccordion = (day) => {
     setAccordionOpen((prev) => ({ ...prev, [day]: !prev[day] }));
@@ -132,6 +132,7 @@ const SelectMeal = ({ handleSkip, handleMealSelectionChange }) => {
                             </p>
                             <button
                              onClick={() => handleDeselectMeal(day, "Lunch")}
+                             className="text-font px-2 bg-slate-600 text-white text-[10px] rounded-full"
                             >
                               X
                             </button>
@@ -172,12 +173,13 @@ const SelectMeal = ({ handleSkip, handleMealSelectionChange }) => {
                     {selectedMeals[day]?.Dinner ? (
                       <div className="flex flex-col mt-3">
                         <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] bg-[#ECEFFE] rounded-lg ">
-                          <div className="pl-1 gap-14 sm:pl-3 absolute flex sm:gap-20 mt-1">
+                          <div className="pl-1 gap-14 sm:pl-3 absolute flex sm:gap-20 mt-1 -ml-1">
                             <p className="text-[12px] text-[#303237] font-normal">
                               Dinner
                             </p>
                             <button
                               onClick={() => handleDeselectMeal(day, "Dinner")}
+                              className="text-font px-2 bg-slate-600 text-white text-[10px] rounded-full"
                             >
                               X
                             </button>

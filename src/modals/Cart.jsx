@@ -7,20 +7,8 @@ import cartStore from "../stores/cartStore";
 const Cart = ({ onClose, onProceedToCheckout }) => {
   const [cartItems, setCartItems] = useState([]);
   const [uiLoading, setUiLoading] = useState(null);
-  const {
-    increaseQuantityOnServer,
-    decreaseQuantityOnServer,
-    removeItemToCartOnServer,
-    data,
-    mutate,
-  } = useCart();
-  const {
-    removeFromCart,
-    increaseQuantity,
-    decreaseQuantity,
-    setTotalItemCount,
-    cart,
-  } = cartStore();
+  const { increaseQuantityOnServer, decreaseQuantityOnServer, removeItemToCartOnServer, data, mutate} = useCart();
+  const { removeFromCart, increaseQuantity, decreaseQuantity, setTotalItemCount, cart} = cartStore();
 
   const subtotal = data?.items?.data.reduce((acc, item) => {
     const priceAmount = item?.item?.price?.amount || 0;
@@ -30,6 +18,8 @@ const Cart = ({ onClose, onProceedToCheckout }) => {
   const deliveryFee = data?.cart?.deliveryFee;
 
   const total = subtotal + deliveryFee;
+
+  console.log(cart)
 
   // useEffect(() => {
   //   mutate('/cart')
