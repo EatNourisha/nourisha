@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCcMastercard } from "react-icons/fa";
 import back from "../assets/back.png";
 import wallet from "../assets/wallet.png";
 import BillingHistory from "./BillingHistory";
+import useSubscription from "../hooks/useSubscription";
+import SelectPlan from "./SelectPlan";
 
 const SubscribeBilling = ({ goBack }) => {
   const [cardNumber, setCardNumber] = useState("");
@@ -10,6 +12,26 @@ const SubscribeBilling = ({ goBack }) => {
   const [rememberCard, setRememberCard] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [subscriptionData, setSubscriptionData] = useState([])
+  const [showPlanPayment, setShowPlanPayment] = useState(false)
+
+  const {data, cancelSubscription} = useSubscription()
+
+  const dateStr = subscriptionData?.next_billing_date
+  const date = new Date(dateStr);
+
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  const month = monthNames[date.getUTCMonth()];
+  const day = date.getUTCDate();
+  const year = date.getUTCFullYear();
+
+  const formattedDate = `${month} ${day}, ${year}`;
+
+  useEffect(() => {
+    setSubscriptionData(data)
+  }, [data])
+
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value);
@@ -31,24 +53,50 @@ const SubscribeBilling = ({ goBack }) => {
     setShowHistory(true)
   }
 
+  const handleCancelSubscription = async() => {
+    try {
+      const res = await cancelSubscription(subscriptionData.plan?._id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubscription = () => {
+    console.log("subscribe")
+    setShowPlanPayment(true)
+  }
+
   return (
     <div className="w-[400px] ">
       <div className="flex items-center space-x-6">
-        <img
+        {/* <img
           src={back}
           alt=""
           width={25}
           onClick={goBack}
           className="cursor-pointer"
-        />
+        /> */}
         <h1>Billings</h1>
+      </div>
+
+      <div className="mt-4">
+        <h2 className="text-[#7E8494] text-[14px] leading-[18px] font-normal"> {subscriptionData?.status === "cancelled" ? "Create a new subscription service" : "Active Subscription"} </h2>
+        <div className="flex justify-between items-center">
+          {subscriptionData?.status === "cancelled" ? (
+            <p>No Active Subscription</p>
+          ) : (
+            <p>£{subscriptionData?.plan?.amount}</p>
+          )}
+          
+          {subscriptionData?.status === "active" ? <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleCancelSubscription}>Cancel</button> : <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleSubscription}>Subscribe</button>} 
+        </div>
       </div>
 
       <div className="flex flex-col mt-8">
         <p className="text-[#7E8494] text-[14px] leading-[18px] font-normal ">
           Next Billing Amount
         </p>
-        <p className="mt-2 text-[#303237] text-[15px] font-medium ">£157</p>
+        <p className="mt-2 text-[#303237] text-[15px] font-medium ">£{subscriptionData?.plan?.amount}</p>
 
         <hr className="my-4" />
 
@@ -56,7 +104,7 @@ const SubscribeBilling = ({ goBack }) => {
           Next Billing Date
         </p>
         <p className="mt-2 text-[#303237] text-[15px] font-medium ">
-          August 20, 2021
+          {formattedDate}
         </p>
 
         <div className="mx-auto text-center mt-8 cursor-pointer" onClick={handleBillingHistory}>
@@ -119,6 +167,7 @@ const SubscribeBilling = ({ goBack }) => {
       </div>
 
       {showHistory && <BillingHistory close={() => setShowHistory(false)} />}
+      {showPlanPayment && <SelectPlan onClose={() => setShowPlanPayment(false)} initialStep={2} />}
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import useSWR from 'swr';
 import { post, get } from '../utils/makeRequest';
-import { useState } from 'react';
 import { showToast } from "../utils/toast";
+import { useState } from 'react';
 
-const usePlaceOrder = () => {
-  const { data, error, mutate } = useSWR('orders/', get);
+const useBillings = () => {
+//   const { data, error, mutate } = useSWR('billings/', get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
 
-  const placeOrder = async (placeOrderItem) => {
+  const subscribe = async (subscribePlan) => {
     setIsLoading(true)
     try {
-        const response = await post(`orders/`, placeOrderItem);
+        const response = await post(`billings/subscribe`, subscribePlan);
         if (response.data) {
           // console.log(response.data)
             // mutate((currentData) => {
@@ -35,12 +35,11 @@ const usePlaceOrder = () => {
   };
 
   return {
-    data: data?.data?.data || [],
-    isLoading: isLoading || !error && !data,
-    error: requestError || error,
-    placeOrder,
-    
+    // data: data?.data?.data || [],
+    // isLoading: isLoading || !error && !data,
+    // error: requestError || error,
+    subscribe,
   };
 };
 
-export default usePlaceOrder;
+export default useBillings;

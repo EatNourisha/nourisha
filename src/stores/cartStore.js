@@ -8,7 +8,11 @@ const cartStore = create(persist((set) => ({
 
   addToCart: (itemData) =>
     set((state) => {
+      console.log("Adding to cart", itemData)
+      console.log('brrr')
       const existingItem = state.cart.find(item => item.itemId === itemData.itemId )
+
+      console.log(existingItem, 'existing Data')
       
       if(existingItem) {
         return {
@@ -27,11 +31,12 @@ const cartStore = create(persist((set) => ({
       }
     }),
 
-  removeFromCart: (itemData) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.itemId !== itemData.itemId),
-      // itemCount: state.itemCount === 0 ? 0 : state.itemCount - 1,
-    })),
+    removeFromCart: (itemData) => set((state) => {
+      console.log("Removing from cart:", itemData); // Log item being removed
+      return {
+        cart: state.cart.filter((item) => item.itemId !== itemData.itemId),
+      };
+    }),
 
   increaseQuantity: (itemData) =>
     set((state) => ({

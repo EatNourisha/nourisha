@@ -4,9 +4,9 @@ import "./dashboardParty.css";
 
 const DashboardParty = () => {
   return (
-    <div className='dashboardParty-container'>
+    <div className='dashboardParty-container space-x-4 pl-6 pt-4'>
       <img src={pic} />
-      <div className='dashboardPary-second-container'>
+      <div className='dashboardPary-second-container w-[60%]'>
         <p>Please provide us with some details to get started. Fill out the form below, and we'll be in touch with a menu proposal that suits your event perfectly.</p>
         <div>
         <form>

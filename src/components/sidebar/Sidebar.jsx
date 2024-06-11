@@ -32,7 +32,7 @@ const Sidebar = () => {
     <>
       <nav
         className={`fixed top-0 left-0  bg-white z-40 transform ${
-          !sidebarOpen ? "-translate-x-5" : "translate-x-0 w-[65%]"
+          !sidebarOpen ? "-translate-x-5" : "translate-x-0 "
         } transition-transform duration-300 ease-in-out md:translate-x-0 md:relative`}
       >
         <div className="sidebar-logo flex-col justify-between items-center px-2 mt-2">

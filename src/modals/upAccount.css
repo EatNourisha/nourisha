@@ -60,3 +60,14 @@
     justify-content: flex-end;
     gap: 10px;
 }
+
+
+.readonly-input {
+    border: 1px solid #EDEDF3; /* Light grey border */
+    pointer-events: none; /* Prevents interaction */
+  }
+  
+  .readonly-input:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: none; /* Remove focus shadow */
+  }

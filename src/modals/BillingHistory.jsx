@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useBillingHistory from "../hooks/useBillingHistory";
+
 
 
 const BillingHistory = ({ close }) => {
   const [showTransaction, setShowTransaction] = useState(false);
+  const [billings, setBillings] = useState([])
+
+  const { data } = useBillingHistory()
+
+  useEffect(() => {
+    setBillings(data?.data)
+  }, [data])
+
+  console.log(billings)
 
   const toggleTransaction = () => {
     setShowTransaction(true);
@@ -23,10 +34,11 @@ const BillingHistory = ({ close }) => {
             </div>
             <hr className="my-3" />
 
-            <div className="flex justify-between border p-4 rounded-lg shadow ">
+            {billings.map((history) => (
+            <div className="flex justify-between border p-4 rounded-lg shadow " key={history._id}>
               <div className="flex flex-col">
                 <p className="font-semibold text-[15px text-[#303237] ">
-                  Successful Subscription
+                  Subscription {history.status}
                 </p>
                 <p className="mb-3 text-[#7E8494] text-[13px] ">
                   Fri, July 23, 2021
@@ -41,6 +53,7 @@ const BillingHistory = ({ close }) => {
               </div>
               <p className="font-semibold text-[15px] text-[#303237] ">£157</p>
             </div>
+            ))}
           </>
         ) : (
             <>

@@ -16,9 +16,8 @@ import useMealGhana from "../../../hooks/useMealGhana";
 import cartStore from "../../../stores/cartStore";
 import MealDetails from "../../../modals/MealDetails";
 import ReferFriend from "../../../modals/ReferFriend";
-import DeliveryAddress from "../../../modals/DeliveryAddress";
-import SubscriptionPlan from "../../../modals/SubscriptionPlan";
 import SelectPlan from "../../../modals/SelectPlan";
+
 
 const Overview = () => {
   const [page, setPage] = useState(1);
@@ -56,6 +55,7 @@ const Overview = () => {
   const [refreshCart, setRefreshCart] = useState(false);
   const [selectPlan, setSelectPlan] = useState(false);
 
+
   const loadingData = loadingNigeria || loadingZimbabwe || loadingGhana;
 
   let currentData;
@@ -85,6 +85,7 @@ const Overview = () => {
   let totalItems = currentData?.totalCount || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+
   // useEffect(() => {
   //   if(!data.items) return
   //   const { items } = data;
@@ -92,13 +93,13 @@ const Overview = () => {
   //   setTotalItemCount(total)
   // }, [data, refreshCart])
 
+  // console.log(error)
+
   const handleAddToCart = async (meal) => {
     const itemData = {
       itemId: meal._id,
       quantity: 1,
     };
-
-    console.log(itemData);
 
     try {
       const res = await addItemToCartOnServer(itemData);
@@ -193,7 +194,7 @@ const Overview = () => {
               className="animate-spin w-10 h-10 mt-16 mx-auto text-orange-400 flex justify-center items-center  md:ml-72 md:w-16 md:h-16"
             />
           ) : error ? (
-            <p>Error: {error.message}</p>
+            <p className="text-[16px] text-red-400">Check your internet connetion</p>
           ) : (
             currentData?.data.map((meal) => (
               <div key={meal._id} className="meal-container cursor-pointer">
@@ -206,35 +207,40 @@ const Overview = () => {
                 />
                 <h3
                   onClick={() => handleMealDetails(meal)}
-                  className="select-none"
+                  className="select-none pl-2"
                 >
                   {meal.name}
                 </h3>
 
-                <p>Price: £{meal.price.amount}</p>
+                <p className="pl-2 text-[17px] font-bold text-[#FE7E00]">£{meal.price.amount}</p>
+
                 <div className="cart-container">
-                  <div
+                  <button
                     className="add-to-cart select-none"
                     onClick={() => handleAddToCart(meal)}
+                    disabled={!meal?.available_quantity}
                   >
                     +
-                  </div>
+                  </button>
                 </div>
               </div>
             ))
           )}
         </div>
+
+        {/* <CheckoutForm /> */}
+
       </div>
 
       <div className="flex flex-col bg-white md:w-[83%] lg:bg-transparent items-center lg:items-start">
         <div className="relative w-full h-full rounded-lg  md:w-[344px] md:h-[550px] mt-10 lg:mt-0 flex flex-col items-center " style={gradientStyle}>
           <div className="relative p-6">
             <h1 className="text-white text-[20px] font-bold leadding-[22px] items-center ">
-              Don't Miss Out! Save Big. <br /> Up to 40% off your first order.
+              Don't Miss Out! Save Big. <br /> Up to 17% off your first order.
             </h1>
             <div className="relative bg-white rounded-lg w-[294px] h-[416px] mt-10 ">
               <p className="absolute -top-5 left-28 text-[19px] text-white text-center font-bold bg-[#FF0000] p-2 border border-white w-[70px] rounded-lg ">
-                £120
+                £100
               </p>
 
               <div className="p-2 pt-10 text-center  ">
@@ -298,7 +304,7 @@ const Overview = () => {
                     Order now
                   </button>
                   <p className="text-center text-[#FE7E00] text-[12px] mt-1 ">
-                    + £10 For delivery
+                     Free delivery
                   </p>
                 </div>
               </div>
@@ -310,7 +316,7 @@ const Overview = () => {
           <h3 className="text-center text-[#242524] text-[20px] font-extrabold ">
             Unlock 60+ <br /> Premium Menu
           </h3>
-          <button className="text-[14px] text-white font-medium bg-[#FF0000]/70 p-2 px-6 rounded-lg mt-4 ">
+          <button className="text-[14px] text-white font-medium bg-[#FF0000]/70 p-2 px-6 rounded-lg mt-4 "  onClick={handleSelectPlan}>
             Subscribe to a meal plan
           </button>
           <p className="text-[20px] font-extrabold text-[#FE7E00] mt-3 ">
@@ -345,6 +351,7 @@ const Overview = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
