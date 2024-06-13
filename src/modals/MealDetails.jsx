@@ -20,6 +20,7 @@ const MealDetails = ({ onClose, mealId }) => {
   const price = data?.price?.amount;
   const delivery = data?.price?.deliveryFee;
 
+  // const images = [ mealpepper, img80, img76  ]
 
   const settings = {
     dots: true,

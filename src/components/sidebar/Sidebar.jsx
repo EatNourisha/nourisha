@@ -31,13 +31,13 @@ const Sidebar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0  bg-white z-40 transform ${
-          !sidebarOpen ? "-translate-x-5" : "translate-x-0 "
-        } transition-transform duration-300 ease-in-out md:translate-x-0 md:relative`}
+        className={`fixed top-0 left-0  bg-white z-40 transform  lg:w-[15%] ${
+          !sidebarOpen ? "-translate-x-5" : "translate-x-0 w-[45%] md:w-[25%]"
+        } transition-transform duration-300 ease-in-out md:translate-x-0 lg:relative`}
       >
         <div className="sidebar-logo flex-col justify-between items-center px-2 mt-2">
           <Link to="/">
-            <div className="logo hidden -mt-20 md:flex ">
+            <div className="logo hidden -mt-20 lg:flex ">
               <div className="logo-text">
                 <img src={Logo1} alt="Nourisha Logo" />
               </div>
@@ -47,13 +47,13 @@ const Sidebar = () => {
             </div>
           </Link>
 
-          <div onClick={handleSidebarToggle} className="ml-5 md:hidden">
+          <div onClick={handleSidebarToggle} className="ml-5 lg:hidden">
             {!sidebarOpen ? (
-              <img src={hamburger} alt="" />
+              <img src={hamburger} alt="" className="" />
             ) : (
-                <div className="flex justify-between items-center -ml-2">
-                  <div className="logo-text flex items-center gap-2">
-                    <img src={Logo1} alt="Nourisha Logo" width={30} /> <p className="font-bold text-[18px] ">Nourisha</p>  
+                <div className="flex justify-between items-center -ml-2 cursor-pointer">
+                  <div className="logo-text flex items-center gap-2 -ml-4 ">
+                    <img src={Logo1} alt="Nourisha Logo" width={30} /> <p className="font-bold text-[18px] -ml-2 ">Nourisha</p>  
                   </div>
                   
                 <p className="text-[20px] font-bold mr-2 text-[#fe7e00]">x</p>
@@ -65,7 +65,7 @@ const Sidebar = () => {
         <div
           className={`sidenav-container ${
             !sidebarOpen && "hidden"
-          } h-screen md:flex `}
+          } h-screen lg:flex `}
         >
           <ul className="list-item-dashboard">
             <li>

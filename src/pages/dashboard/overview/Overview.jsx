@@ -140,7 +140,7 @@ const Overview = () => {
   }
 
   return (
-    <div className="overview-container lg:flex">
+    <div className="overview-container md:w-[950px] lg:w-[100%] lg:flex  md:mt-16 lg:mt-0">
       <div className="overview-container-first w-full mt-[70px] md:w-[83%] lg:w-[48%] xl:w-[67%] box-border  md:mt-0">
         <div className="overview-container-first-section">
           <img src={man} alt="annouce" />
@@ -175,7 +175,7 @@ const Overview = () => {
 
         <div className="overview-meal-heading">
           <h3>Order a single meal</h3>{" "}
-          <div className="overview-meal-pagination-container">
+          <div className="overview-meal-pagination-container mr-10">
             {page > 1 && <button onClick={handleViewLess}>Previous</button>}
             {page < totalPages && (
               <button
@@ -187,7 +187,7 @@ const Overview = () => {
             )}
           </div>
         </div>
-        <div className="overview-item  grid justify-center items-center xs:grid-cols-2 gap-4 xl:grid-cols-3">
+        <div className="overview-item  grid justify-center items-center xs:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 ">
           {loadingData ? (
             <Icon
               icon="gg:spinner"

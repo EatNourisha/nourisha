@@ -87,9 +87,9 @@ const NavBar = () => {
     <header className="">
       {token && pathname ? (
         <div className="border border-[#F2F4F7] flex justify-between items-center  ">
-          <div className="fixed justify-between items-center md:gap-20 bg-white flex mt-16 w-full z-40 md:relative md:mt-0">
+          <div className="fixed justify-between items-center md:gap-20 bg-white flex mt-16 w-full z-40 lg:relative lg:mt-0">
             <div className="dashboard-navbar-heading relative">
-              <h1 className="ml-6 hidden sm:flex md:ml-44">{navHeading}</h1>
+              <h1 className="ml-6 mt-1 hidden sm:flex md:ml-20 lg:mt-0 lg:ml-44 -z-50 ">{navHeading}</h1>
             </div>
             <div className="dashboard-second-div relative">
               <div className="dashboard-second-inner">

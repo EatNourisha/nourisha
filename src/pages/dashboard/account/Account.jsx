@@ -15,16 +15,22 @@ import FoodService from "../../../modals/FoodService";
 import FoodPreference from "../../../modals/FoodPreference";
 import ReferFriend from "../../../modals/ReferFriend";
 import ChangePassword from "../../../modals/ChangePassword";
-import TermsOfUse from "../../../modals/TermsOfUse";
-import PrivacyPolicy from "../../../modals/PrivacyPolicy";
-import ContactUs from "../../../modals/ContactUs";
+import { useNavigate } from "react-router-dom";
 
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState(window.innerWidth >= 768 ? 'Profile' : '');
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const navigate = useNavigate()
 
   const handleTabClick = (tab) => {
+    if(tab === "PrivacyPolicy"){
+      navigate('/privacy-policy')
+    } else if(tab === "TermsOfUse"){
+      navigate('/terms-of-service')
+    } else if(tab === "ContactUs"){
+      navigate('/contact-us')
+    }
     setActiveTab(tab);
     setIsMenuOpen(false); // Close the menu on mobile when a tab is clicked
   };
@@ -45,12 +51,6 @@ const Account = () => {
         return <ReferFriend onClose={() => setIsMenuOpen(true)} />;
       case "ChangePassword":
         return <ChangePassword onClose={() => setIsMenuOpen(true)} />;
-      case "TermsOfUse":
-        return <TermsOfUse />;
-      case "PrivacyPolicy":
-        return <PrivacyPolicy />;
-      case "ContactUs":
-        return <ContactUs />;
       default:
         return null;
     }
