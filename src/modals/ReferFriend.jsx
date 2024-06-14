@@ -31,8 +31,6 @@ const ReferFriend = ({ onClose }) => {
   useEffect(() => {
     const earningsAmount  =  localStorage.getItem('earningsData')
     
-    console.log(data.balance, 'balance')
-
     if(earningsAmount) {
       setEarnings(earningsAmount)
     } else setEarnings(data?.balance)

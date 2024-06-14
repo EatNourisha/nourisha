@@ -5,7 +5,7 @@ import Layout from "../../components/sidebar/Layout";
 const Dashboard = () => {
   
   return (
-    <div className="flex w-[100vw]">
+    <div className="flex ">
       <Sidebar />
       <div className="w-full">
         <Layout />

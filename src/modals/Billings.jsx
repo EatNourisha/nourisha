@@ -5,7 +5,7 @@ import "./billings.css";
 import back from '../assets/back.png'
 
 const Billings = ({ onClose }) => {
-  const [subscribe, setSubscribe] = useState(false);
+  const [subscribe, setSubscribe] = useState(true);
 
   const goToSubscribe = () => {
     setSubscribe(true)
@@ -30,7 +30,7 @@ const Billings = ({ onClose }) => {
         </div>
       </div>) 
         :  */}
-        <SubscribeBilling goBack={ handleGoBack} />
+        <SubscribeBilling goBack={onClose} />
       {/* // } */}
       
 

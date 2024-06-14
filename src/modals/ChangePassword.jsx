@@ -46,7 +46,7 @@ const ChangePassword = ({ onClose }) => {
   });
 
   return (
-    <div className='w-full md:w-[520px]'>
+    <div className='w-full md:w-[520px] -ml-5 md:-ml-0'>
       <div className="flex items-center gap-2">
         <img src={back} alt="" onClick={onClose} width={25} className="md:hidden -ml-2 cursor-pointer" />
         <h1 className='text-[18px] font-semibold text-[#14013A]'>Change Password</h1>
@@ -55,8 +55,8 @@ const ChangePassword = ({ onClose }) => {
       <div>
         <form onSubmit={formik.handleSubmit}>
             <div className='mt-6'>
-              <label  className='text-[14px] font-medium pb-3 '>Old Password</label><br />
-              <input type="password" name='oldPassword' placeholder='Old Password'  className='p-3 border border-[#EDEDF3] border-solid w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.oldPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+              <label  className='text-[14px] font-medium pb-3 ml-2 md:ml-0 '>Old Password</label><br />
+              <input type="password" name='oldPassword' placeholder='Old Password'  className='p-3 border border-[#EDEDF3] border-solid w-[350px] md:w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.oldPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
 
               <div className="text-red-500 text-[13px]">
                 {formik.errors.oldPassword && formik.touched.oldPassword ? (
@@ -66,8 +66,8 @@ const ChangePassword = ({ onClose }) => {
             </div>  
 
             <div className='mt-6'>
-              <label  className='text-[14px] font-medium pb-3 '>New Password</label><br />
-              <input type="password" name='newPassword' placeholder='New Password' className='p-3 border border-[#EDEDF3] border-solid w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.newPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+              <label  className='text-[14px] font-medium pb-3 ml-2 md:ml-0 '>New Password</label><br />
+              <input type="password" name='newPassword' placeholder='New Password' className='p-3 border border-[#EDEDF3] border-solid w-[350px] md:w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.newPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
 
               <div className="text-red-500 text-[13px] ">
                 {formik.errors.newPassword && formik.touched.newPassword ? (
@@ -77,8 +77,8 @@ const ChangePassword = ({ onClose }) => {
             </div>  
 
             <div className='mt-6'>
-              <label  className='text-[14px] font-medium pb-3 '>Confirm New Password</label><br />
-              <input type="password" name='confirmPassword' placeholder='Confirm New Password' className='p-3 border border-[#EDEDF3] borde-solid w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.confirmPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+              <label  className='text-[14px] font-medium pb-3 ml-2 md:ml-0 '>Confirm New Password</label><br />
+              <input type="password" name='confirmPassword' placeholder='Confirm New Password' className='p-3 border border-[#EDEDF3] borde-solid w-[350px] md:w-[500px] rounded-lg outline-none mt-2 shadow ' value={formik.values.confirmPassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
 
               <div className="text-red-500 text-[13px] ">
                 {formik.errors.confirmPassword && formik.touched.confirmPassword ? (

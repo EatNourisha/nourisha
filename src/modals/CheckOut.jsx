@@ -86,7 +86,7 @@ const CheckOut = ({ onClose }) => {
     const inputDate = e.target.value;
     const datePattern = /^\d{4}-\d{2}-\d{2}$/; // Regex to match YYYY-MM-DD format
     if (!datePattern.test(inputDate)) {
-      setErrorMessage("Please enter a valid date in the format MM-DD-YYYY.");
+      setErrorMessage("Please enter a valid date in the format.");
       setDeliveryDate("");
     } else {
       const enteredDate = new Date(inputDate);

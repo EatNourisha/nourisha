@@ -19,7 +19,7 @@ const FoodPreference = ({ onClose }) => {
   };
 
   return (
-    <div className="w-[375px]">
+    <div className="w-[330px] md:w-[375px]">
       <div className="flex items-center gap-2">
         <img
           src={back}

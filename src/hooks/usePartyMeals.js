@@ -1,38 +1,36 @@
 import useSWR from 'swr';
-import { get, put } from '../utils/makeRequest';
+import { post, get } from '../utils/makeRequest';
 import { useState } from 'react';
 import { showToast } from "../utils/toast";
 
-const useSubscription = () => {
-  const { data, error, mutate } = useSWR('subscriptions/me', get);
+const usePartyMeals = () => {
+  const { data, error, mutate } = useSWR('meals/parties/', get);
   const [isLoading, setIsLoading] = useState(false);
   const [requestError, setRequestError] = useState(null);
 
-
-  const cancelSubscription = async (plan_id) => {
+  const partyPlan = async (partyMeals) => {
     setIsLoading(true)
     try {
-        const response = await put(`subscriptions/cancel`, plan_id);
+        const response = await post(`meals/parties/`, partyMeals);
         if (response.data) {
             mutate((currentData) => {
                 return { ...currentData, ...response.data };   
-            }, true)
+            }, false)
 
             showToast({
-                title: "Subscription",
-                description: "Subscription Cancelled.",
+                title: "Party Plan",
+                description: "Submitted successfully.",
                 status: "success",
                 duration: 5000,
                 isClosable: true,
             })
-            return response.data
         } 
         setIsLoading(false); 
     } catch (error) {
         setRequestError(error);
         showToast({
-            title: "Subscription",
-            description: 'No active subscription',
+            title: "Party Plan",
+            description: error.message,
             status: "error",
             duration: 5000,
             isClosable: true,
@@ -42,12 +40,12 @@ const useSubscription = () => {
   };
 
   return {
-    data: data?.data || [],
-    subLoading: isLoading || !error && !data,
+    data: data?.data?.data || [],
+    isLoading: isLoading || !error && !data,
     error: requestError || error,
-    cancelSubscription,
+    partyPlan,
     
   };
 };
 
-export default useSubscription;
+export default usePartyMeals;

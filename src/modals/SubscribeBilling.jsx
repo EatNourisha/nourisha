@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaCcMastercard } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 import back from "../assets/back.png";
 import wallet from "../assets/wallet.png";
 import BillingHistory from "./BillingHistory";
@@ -14,8 +15,10 @@ const SubscribeBilling = ({ goBack }) => {
   const [showHistory, setShowHistory] = useState(false);
   const [subscriptionData, setSubscriptionData] = useState([])
   const [showPlanPayment, setShowPlanPayment] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-  const {data, cancelSubscription} = useSubscription()
+  const {data, cancelSubscription, subLoading} = useSubscription()
+
 
   const dateStr = subscriptionData?.next_billing_date
   const date = new Date(dateStr);
@@ -29,7 +32,7 @@ const SubscribeBilling = ({ goBack }) => {
   const formattedDate = `${month} ${day}, ${year}`;
 
   useEffect(() => {
-    setSubscriptionData(data)
+    if(data) setSubscriptionData(data)
   }, [data])
 
 
@@ -54,10 +57,13 @@ const SubscribeBilling = ({ goBack }) => {
   }
 
   const handleCancelSubscription = async() => {
+    setIsLoading(true)
     try {
       const res = await cancelSubscription(subscriptionData.plan?._id)
+      setIsLoading(false)
     } catch (error) {
       console.log(error)
+      setIsLoading(false)
     }
   }
 
@@ -67,28 +73,47 @@ const SubscribeBilling = ({ goBack }) => {
   }
 
   return (
-    <div className="w-[400px] ">
-      <div className="flex items-center space-x-6">
-        {/* <img
+    <div className="xss:w-[100%] md:w-[450px] ">
+      {subLoading ? (<Icon
+              icon="gg:spinner"
+              className="animate-spin w-10 h-10 mt-10 mx-auto text-orange-400 flex justify-center items-center md:w-12 md:h-12"
+            />) : (
+              <>
+       <div className="flex items-center space-x-6 xxs:-ml-4 md:-ml-5 ">
+        <img
           src={back}
           alt=""
           width={25}
           onClick={goBack}
-          className="cursor-pointer"
-        /> */}
-        <h1>Billings</h1>
+          className="cursor-pointer md:hidden"
+        />
+        <h1 className="mb-2">Billings</h1>
       </div>
 
       <div className="mt-4">
         <h2 className="text-[#7E8494] text-[14px] leading-[18px] font-normal"> {subscriptionData?.status === "cancelled" ? "Create a new subscription service" : "Active Subscription"} </h2>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center xxs:mt-2 md:mt-0">
           {subscriptionData?.status === "cancelled" ? (
             <p>No Active Subscription</p>
           ) : (
             <p>£{subscriptionData?.plan?.amount}</p>
           )}
           
-          {subscriptionData?.status === "active" ? <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleCancelSubscription}>Cancel</button> : <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleSubscription}>Subscribe</button>} 
+          {subscriptionData?.status === "active" ? 
+            
+            <div>
+              {isLoading ?
+                  <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl  ">
+                    <span className="flex items-center px-3">
+                      <Icon icon="gg:spinner" className="animate-spin h-5 w-5" />
+                    </span> 
+                  </button> :
+              <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleCancelSubscription}>Cancel</button>}
+            </div>  : (
+            <div>
+              <button className="p-2 px-4 text-[14px] bg-red-500 text-white rounded-xl " onClick={handleSubscription}>Subscribe</button>
+            </div>
+          )} 
         </div>
       </div>
 
@@ -113,8 +138,12 @@ const SubscribeBilling = ({ goBack }) => {
           </p>
         </div>
       </div>
+              </>
+            )
+      }
 
-      <div className="p-[#7E8494] mt-10">
+
+      <div className="text-[#7E8494] mt-10">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-[20px] text-[#303237] ">Cards</h1>
           <button
