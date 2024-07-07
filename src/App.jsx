@@ -16,9 +16,14 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {singularSdk, SingularConfig} from "singular-sdk";
-
+import { useEffect } from "react;
+  
 function App() {
-  const config = new SingularConfig("eatnourisha_bac81d30", "8742d9e1265a79363121d268ce1e242a", "eatnourisha.com");
+  
+  useEffect(()=>{
+    const config = new SingularConfig("eatnourisha_bac81d30", "8742d9e1265a79363121d268ce1e242a", "eatnourisha.com");
+    singularSdk.init(config)
+  }, []);
   return (
     <BrowserRouter>
       <ScrollToTop />
