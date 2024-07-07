@@ -22,7 +22,8 @@ function App() {
   
   useEffect(()=>{
     const config = new SingularConfig("eatnourisha_bac81d30", "8742d9e1265a79363121d268ce1e242a", "eatnourisha.com");
-    singularSdk.init(config)
+    singularSdk.init(config);
+    alert("here")
   }, []);
   return (
     <BrowserRouter>
