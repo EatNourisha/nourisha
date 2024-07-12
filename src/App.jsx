@@ -16,7 +16,7 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {singularSdk, SingularConfig} from "singular-sdk";
-import { useEffect } from "react;
+import { useEffect } from "react";
   
 function App() {
   
